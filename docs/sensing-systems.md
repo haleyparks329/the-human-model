@@ -4,6 +4,14 @@ The sensing layer is the bridge between software and physical movement.
 
 The near-term hardware direction is intentionally simple: one clean sensor-to-data-to-insight project before attempting a larger robotics or rehab system.
 
+## Current Hardware Context
+
+The current setup combines consumer wearable data with a local development environment:
+
+- Mac mini for local development, chatbot operation, data scripts, and future always-on workflows
+- Apple Watch as the first wearable data source for recovery and activity signals
+- Planned Arduino / IMU setup for direct movement-quality sensing
+
 ## Candidate Prototypes
 
 ### Joint Angle Tracker
@@ -63,4 +71,3 @@ IMU joint angle tracker
 ```
 
 That keeps the project coherent and directly connected to recovery, movement quality, and adaptive feedback.
-

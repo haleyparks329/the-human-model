@@ -58,6 +58,12 @@ It is responsible for:
 - Future analytics stack: pandas, NumPy, matplotlib, Plotly, scikit-learn, Jupyter, Streamlit
 - Future sensing stack: Arduino, IMU sensors, force sensors, possible EMG experiments
 
+## Current Hardware Context
+
+- Mac mini: local development environment for the chatbot, data scripts, and future always-on services
+- Apple Watch: wearable source for recovery signals such as sleep, heart rate, HRV, activity, and trend data
+- Future Arduino / IMU setup: planned movement-quality prototype for joint angle, tempo, and range-of-motion tracking
+
 ## First Closed Loop
 
 The first meaningful system loop is Recovery Tracking V1:
@@ -71,4 +77,3 @@ natural-language check-in
 ```
 
 This gives the project a working data spine before adding more advanced modeling or hardware.
-
