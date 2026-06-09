@@ -40,3 +40,13 @@ capture movement
 
 The first practical prototype will likely use a simple IMU-based joint angle tracker before expanding into richer sensing or computer vision.
 
+## Relationship to Current Work
+
+Movement analysis is not implemented yet. The current recovery and training-log work is building the context layer that movement data will eventually connect to:
+
+- Recovery state before the session
+- Training plan and exercise selection
+- Logged sets, reps, load, and notes
+- Future movement-quality features such as ROM, tempo, and fatigue drift
+
+The first movement prototype should answer one narrow question well, such as whether range of motion or tempo changes across a set.

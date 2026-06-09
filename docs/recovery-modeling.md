@@ -1,10 +1,10 @@
 # Recovery Modeling
 
-Recovery modeling is the first active sprint because it creates the simplest useful feedback loop.
+Recovery modeling is the first active system because it creates the simplest useful feedback loop.
 
 ## Goal
 
-Build a lightweight system that turns daily recovery check-ins into structured data that can be reviewed over time.
+Build a lightweight system that turns wearable metrics and daily recovery check-ins into structured data that can be reviewed over time.
 
 Example input:
 
@@ -12,9 +12,11 @@ Example input:
 Slept 6 hours, energy 4, stress 7, mood okay.
 ```
 
-Expected structured fields:
+Current structured fields:
 
 - Sleep duration
+- HRV
+- Resting heart rate
 - Energy
 - Stress
 - Mood
@@ -29,6 +31,19 @@ The larger Human Model idea depends on having enough structured data to reason f
 - Directly connected to training performance
 - Useful even with a small dataset
 - A natural fit for natural-language chatbot input
+
+## Current Implementation
+
+The current recovery loop combines:
+
+- Apple Watch data exported through Health Auto Export
+- A local Apple Health importer
+- A scheduled Telegram morning prompt
+- Manual energy, stress, mood, and context replies
+- Notion as the early recovery database
+- A weekly review template for interpretation
+
+The morning prompt intentionally avoids stale sleep data. If Apple sleep data is missing, it says that directly; if sleep is suspiciously low, it asks for manual correction.
 
 ## Future Model Inputs
 
@@ -55,3 +70,6 @@ Potential outputs include:
 - Pattern recognition between sleep, stress, and performance
 - Suggested adjustments for training intensity, volume, or recovery behaviors
 
+## Current Modeling Discipline
+
+The project is not claiming a stable recovery score yet. The near-term goal is to collect enough trustworthy records to understand which signals are useful before formalizing a score or recommendation engine.

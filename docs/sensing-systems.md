@@ -2,7 +2,7 @@
 
 The sensing layer is the bridge between software and physical movement.
 
-The near-term hardware direction is intentionally simple: one clean sensor-to-data-to-insight project before attempting a larger robotics or rehab system.
+The near-term hardware direction is intentionally simple: one clean sensor-to-data-to-insight project before attempting a larger robotics, rehab, or assistive-technology system.
 
 ## Current Hardware Context
 
@@ -10,6 +10,7 @@ The current setup combines consumer wearable data with a local development envir
 
 - Mac mini for local development, chatbot operation, data scripts, and future always-on workflows
 - Apple Watch as the first wearable data source for recovery and activity signals
+- Health Auto Export for moving Apple Watch metrics into local JSON files
 - Planned Arduino / IMU setup for direct movement-quality sensing
 
 ## Candidate Prototypes
@@ -71,3 +72,16 @@ IMU joint angle tracker
 ```
 
 That keeps the project coherent and directly connected to recovery, movement quality, and adaptive feedback.
+
+## Product Direction
+
+The longer-term sensing idea is a modular pod rather than a fixed wearable form factor: one sensor package that can move to the body location relevant to the question.
+
+Examples:
+
+- Sleep: ring-like or wrist attachment
+- Squats: thigh strap
+- Deadlifts: lower-back clip
+- Running: shoe attachment
+
+The key principle is adaptive sensor placement: measure from the location that best answers the performance question.

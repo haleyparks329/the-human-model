@@ -6,26 +6,31 @@ The Human Model is organized as a layered system.
 flowchart TD
     A[Inputs] --> B[Capture Layer]
     B --> C[Structured Data Layer]
-    C --> D[Analysis Layer]
+    C --> D[Analysis and Review Layer]
     D --> E[Feedback Layer]
     E --> F[Behavior and Training Adjustments]
     F --> A
 
     A1[Manual check-ins] --> A
     A2[Training logs] --> A
-    A3[Wearable metrics] --> A
-    A4[Future IMU / sensor data] --> A
+    A3[Apple Watch metrics] --> A
+    A4[Zenfit screenshots] --> A
+    A5[Future IMU / sensor data] --> A
 
     B1[Telegram chatbot] --> B
-    B2[Notion databases] --> C
-    B3[Python scripts and notebooks] --> D
+    B2[Apple Health import] --> B
+    B3[Zenfit OCR import] --> B
+    C1[Notion databases] --> C
+    C2[Schema docs and contracts] --> C
+    D1[Weekly review] --> D
+    D2[Future notebooks and dashboards] --> D
 ```
 
 ## Repository Roles
 
 ### `human-model`
 
-The foundation repo defines the project structure and source-of-truth documentation.
+The foundation repo defines the source-of-truth project structure.
 
 It is responsible for:
 
@@ -38,42 +43,53 @@ It is responsible for:
 
 ### `human-model-chatbot`
 
-The chatbot repo is the interface and automation layer.
+The chatbot repo is the capture and automation layer.
 
 It is responsible for:
 
-- Accepting natural-language inputs
+- Accepting natural-language Telegram inputs
 - Calling a local LLM through Ollama
-- Returning useful coaching-style responses
-- Parsing structured check-ins
-- Sending future entries to Notion or another data store
+- Parsing structured recovery and workout logs
+- Writing recovery entries to Notion
+- Importing Apple Health exports into daily recovery rows
+- OCR/importing Zenfit screenshots into structured Notion databases
+- Running local scheduled jobs through macOS `launchd`
+
+### `the-human-model-overview`
+
+This repo is the public narrative layer. It explains the system, implementation progress, roadmap, and product/research reasoning without exposing private health data or Notion database contents.
 
 ## Current Technical Stack
 
 - Python
 - Telegram bot API
 - Ollama running a local model
-- Notion as the early knowledge and database layer
-- GitHub issues for sprint planning
+- Notion as the early database and review layer
+- Health Auto Export for Apple Health JSON exports
+- Apple Vision/OCR flow through the Zenfit importer
+- macOS `launchd` for local scheduled automation
+- GitHub issues and repos for implementation planning
 - Future analytics stack: pandas, NumPy, matplotlib, Plotly, scikit-learn, Jupyter, Streamlit
 - Future sensing stack: Arduino, IMU sensors, force sensors, possible EMG experiments
 
-## Current Hardware Context
+## First Working Loops
 
-- Mac mini: local development environment for the chatbot, data scripts, and future always-on services
-- Apple Watch: wearable source for recovery signals such as sleep, heart rate, HRV, activity, and trend data
-- Future Arduino / IMU setup: planned movement-quality prototype for joint angle, tempo, and range-of-motion tracking
-
-## First Closed Loop
-
-The first meaningful system loop is Recovery Tracking V1:
+### Recovery Loop
 
 ```text
-natural-language check-in
--> parsed recovery fields
--> Notion recovery entry
+Apple Watch metrics + Telegram check-in
+-> daily Recovery Tracking V1 row
 -> weekly review
 -> next training / recovery adjustment
 ```
 
-This gives the project a working data spine before adding more advanced modeling or hardware.
+### Training Context Loop
+
+```text
+Zenfit screenshots or Telegram workout log
+-> OCR / parser / structured workout fields
+-> Notion training log
+-> future comparison against recovery and performance trends
+```
+
+These loops give the project a working data spine before advanced modeling or hardware.

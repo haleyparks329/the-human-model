@@ -1,95 +1,98 @@
 # The Human Model
 
-Modeling human performance through data, biomechanics, and adaptive systems.
+The Human Model is an independent human-performance systems project: a working attempt to measure recovery, behavior, training, and movement quality, then turn those signals into useful feedback loops.
 
-The Human Model is an independent research and experimentation project exploring how human performance, recovery, movement quality, and adaptive feedback systems can be measured and improved over time.
-
-The project combines self-tracking, systems thinking, data analysis, AI-assisted interfaces, and early hardware/sensing concepts. It is currently structured as a public overview hub supported by two active development repositories: the main Human Model foundation repo and the Human Model Chatbot repo.
-
-## Current Status
-
-This is an early-stage research and development project. The current goal is not to present a finished product, but to document a thoughtful technical exploration as it moves from concept to working systems.
-
-Current work is focused on:
-
-- Defining the core tracking schemas for recovery, training, body metrics, and experiments
-- Building a natural-language logging assistant for structured self-tracking
-- Creating a minimum data contract between the chatbot and tracking databases
-- Designing future sensing and movement-quality prototypes
-- Organizing the project into a clear public technical narrative
-
-## Project Repositories
-
-### Human Model
-
-The main project foundation for schemas, research notes, tracking workflows, experiment design, and system architecture.
-
-Current focus:
-
-- Recovery Tracking V1 schema
-- Body metrics tracking schema
-- Experiment tracking schema
-- Weekly review template
-- Minimum data contract for chatbot logging
-- Project documentation and knowledge organization
-
-Repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
-
-### Human Model Chatbot
-
-A Telegram-based chatbot that uses a local Ollama model to support training, recovery, biomechanics, habits, movement quality, and human-performance reflection.
-
-Current implementation:
-
-- Python backend
-- Telegram bot interface
-- Local Ollama model integration
-- Environment-based configuration
-- macOS launchd service notes for always-on local use
-
-Current sprint direction:
-
-- Parse natural-language recovery check-ins into structured fields
-- Connect parsed recovery entries to a Notion recovery database
-- Support the first closed loop: check-in -> structured record -> reviewable trend
-
-Repository: [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
-
-## Current Focus Areas
-
-- Recovery and readiness modeling
-- Movement quality analysis
-- Closed-loop intervention systems
-- Biomechanics and sensing systems
-- Human-machine interaction
-- Longitudinal n=1 performance tracking
-
-## System Concept
-
-The long-term idea is to treat the body as a dynamic system:
+The short version: I am building an n=1 performance lab that starts with real daily data and grows toward a personalized model of human capability.
 
 ```text
 measure -> model -> optimize -> adapt
 ```
 
-The project starts with structured observation and logging, then builds toward analytics, feedback loops, and sensor-driven movement analysis.
+## Current Status
+
+This is an early-stage research and engineering project, not a finished product. The current milestone is building the data spine: reliable capture, structured records, and review loops that can support later modeling.
+
+Implemented so far:
+
+- Main project repo with Recovery Tracking V1 schema, weekly review template, and chatbot logging contract
+- Telegram chatbot powered by a local Ollama model
+- Natural-language recovery check-in parsing and Notion upserts
+- Apple Health import for sleep, HRV, resting heart rate, and weight
+- Scheduled morning check-ins through macOS `launchd`
+- Guardrails for missing or suspicious Apple Watch sleep data
+- Zenfit screenshot OCR/import workflow for workouts, weekly coach check-ins, and body measurements
+- Telegram workout logging path with tests
+
+Current focus:
+
+- Keep the recovery loop reliable in real daily use
+- Review patterns across Apple Watch metrics, subjective check-ins, and training context
+- Expand structured training/body-metric logging without overbuilding the interface
+- Prepare the next movement-quality prototype around IMU sensing and execution analysis
+
+## Project Repositories
+
+### Human Model
+
+The foundation repo for schemas, durable project docs, data contracts, review workflows, experiment design, and future analysis artifacts.
+
+Repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
+
+Notable work:
+
+- Recovery Tracking V1 schema
+- Chatbot Logging Contract V1
+- Weekly Review V1
+- Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
+
+### Human Model Chatbot
+
+The implementation repo for the conversational logging and automation layer.
+
+Repository: [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
+
+Notable work:
+
+- Python Telegram bot with local LLM support through Ollama
+- Recovery check-in parser and Notion writer
+- Apple Health importer using Health Auto Export data
+- Morning check-in one-shot service with duplicate prevention
+- Zenfit OCR pipeline and Notion sync
+- Workout logging from Telegram messages
+- Unit tests for parser, scheduling, and data edge cases
+
+## System Concept
+
+The long-term idea is not only to track fitness data. It is to build a personalized model that can learn how one person recovers, executes movement, responds to training, and benefits from feedback.
 
 ```mermaid
 flowchart LR
-    A[Human inputs] --> B[Structured tracking]
-    B --> C[Recovery and performance models]
-    C --> D[Insights and recommendations]
-    D --> E[Behavior or training adjustment]
+    A[Athlete] --> B[Signals]
+    B --> C[Human Model]
+    C --> D[Coach Intelligence]
+    D --> E[Intervention]
     E --> A
 
-    F[Sensor data] --> B
-    G[Chatbot interface] --> B
+    B1[Apple Watch] --> B
+    B2[Chatbot check-ins] --> B
+    B3[Training logs] --> B
+    B4[Future sensors] --> B
 ```
+
+## Why This Project Exists
+
+Most trackers tell people what happened. The more interesting question is what decision should change because of it.
+
+This project explores that gap by combining software, data modeling, human-centered product thinking, and future sensing systems. Bodybuilding and self-tracking are the test environment because they provide repeated movements, measurable load, adaptation cycles, and clear recovery constraints.
+
+The broader direction reaches into sports performance, physical therapy, rehabilitation, assistive technology, and human-machine interaction.
 
 ## Documentation
 
 - [Vision](docs/vision.md)
 - [Architecture](docs/architecture.md)
+- [Implementation Progress](docs/implementation-progress.md)
+- [Project Evolution](docs/project-evolution.md)
 - [Recovery Modeling](docs/recovery-modeling.md)
 - [Movement Analysis](docs/movement-analysis.md)
 - [Sensing Systems](docs/sensing-systems.md)
@@ -97,21 +100,12 @@ flowchart LR
 - [Research Notes](docs/research-notes.md)
 - [Source Context](docs/source-context.md)
 
-## Why This Project Exists
+## What This Demonstrates
 
-I am interested in data when it helps people better understand themselves, improve their lives, and expand what they are capable of.
+- Turning an ambiguous product/research idea into executable milestones
+- Building local automation around real personal workflows
+- Designing schemas and data contracts before advanced modeling
+- Integrating Telegram, Notion, Apple Health exports, OCR, and macOS services
+- Thinking across software, sensing, biomechanics, coaching, and human feedback systems
 
-The Human Model is a place to explore that idea technically: how to capture meaningful human signals, turn them into useful models, and eventually create adaptive systems that support better recovery, movement, and performance decisions.
-
-## What This Project Demonstrates
-
-This repo is intended to show:
-
-- Independent technical initiative
-- Systems thinking
-- Human-centered product reasoning
-- Ability to organize ambiguous ideas into executable milestones
-- Interest in AI, data, sensing, and human-performance technology
-- Early experience connecting software systems to real-world physical behavior
-
-The implementation repos and planning links may be private. This public repo is the readable overview layer.
+Some implementation details depend on private Notion databases and local health data. This public repo is the readable overview layer.

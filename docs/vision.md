@@ -4,17 +4,19 @@ The Human Model explores human performance as a measurable, adaptive system.
 
 The project began with a practical question: how can training, recovery, behavior, and movement quality be tracked in a way that helps a person make better decisions over time?
 
-The broader vision is to build toward systems that can:
+The current answer is a staged system:
 
-- Capture meaningful signals from daily behavior, training, and recovery
-- Convert subjective check-ins and objective measurements into structured records
-- Identify useful patterns across time
-- Recommend or guide small interventions
-- Eventually incorporate real-time sensing and feedback for movement quality
+```text
+capture meaningful signals
+-> structure them into durable records
+-> review patterns over time
+-> make better training and recovery decisions
+-> eventually support real-time feedback
+```
 
 ## Core Thesis
 
-Human performance is not a single metric. It emerges from the interaction between physiology, behavior, movement, environment, and feedback.
+Human performance is not one metric. It emerges from the interaction between physiology, behavior, movement, environment, training stress, and feedback.
 
 The Human Model treats those layers as parts of one system:
 
@@ -28,5 +30,16 @@ The Human Model treats those layers as parts of one system:
 
 This is an n=1 human performance lab: a longitudinal self-experimentation environment for learning how to structure data, test hypotheses, and build useful feedback loops.
 
-The early project is intentionally modest. The immediate goal is to create a reliable data spine before overbuilding analytics, dashboards, recommendations, or hardware.
+The immediate work is deliberately grounded. Before building advanced dashboards, recommendations, or hardware, the project is proving that daily data can be captured reliably from real workflows:
 
+- Apple Watch recovery metrics
+- Telegram check-ins
+- Zenfit training/check-in screenshots
+- Notion databases
+- Weekly review workflows
+
+## Longer-Term Direction
+
+The long-term product is not a watch, dashboard, or chatbot by itself. The product is the personalized model: a system that can learn how a specific person recovers, moves, adapts, and responds to intervention.
+
+That makes bodybuilding the first test environment, not the final boundary. The same logic can extend toward sports performance, physical therapy, rehabilitation, assistive technology, prosthetics, exoskeletons, and human-machine interaction.
