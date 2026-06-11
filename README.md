@@ -92,6 +92,7 @@ The broader direction reaches into sports performance, physical therapy, rehabil
 - [Vision](docs/vision.md)
 - [Architecture](docs/architecture.md)
 - [Implementation Progress](docs/implementation-progress.md)
+- [Telegram Chatbot Evolution](docs/chatbot-telegram-evolution.md)
 - [Project Evolution](docs/project-evolution.md)
 - [Recovery Modeling](docs/recovery-modeling.md)
 - [Movement Analysis](docs/movement-analysis.md)
