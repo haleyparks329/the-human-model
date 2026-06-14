@@ -40,6 +40,8 @@ capture movement
 
 The first practical prototype will likely use a simple IMU-based joint angle tracker before expanding into richer sensing or computer vision.
 
+Recent VBT research adds an intermediate option: a controlled output test that asks whether today's physical output is above, near, or below the personal baseline. That could be a bar-speed test, jump test, or simple movable-pod protocol before the system attempts broad exercise-quality coverage.
+
 ## Relationship to Current Work
 
 Movement analysis is not implemented yet. The current recovery and training-log work is building the context layer that movement data will eventually connect to:
@@ -47,6 +49,7 @@ Movement analysis is not implemented yet. The current recovery and training-log 
 - Recovery state before the session
 - Training plan and exercise selection
 - Logged sets, reps, load, and notes
+- Readiness state and data freshness from Coach Dashboard V1
 - Future movement-quality features such as ROM, tempo, and fatigue drift
 
 The first movement prototype should answer one narrow question well, such as whether range of motion or tempo changes across a set.

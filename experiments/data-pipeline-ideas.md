@@ -7,8 +7,8 @@ chat message
 -> parser
 -> structured fields
 -> Notion database
--> CSV/API export
--> notebook or dashboard
+-> SQLite dashboard store
+-> local dashboard / future notebook
 -> weekly review
 ```
 
@@ -19,4 +19,5 @@ chat message
 - Simple parser output format
 - Notion database connection
 - Export path for analysis
-
+- Source freshness and conflict policy
+- Clear boundary between local canonical data and Notion mirrors

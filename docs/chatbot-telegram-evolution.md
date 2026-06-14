@@ -57,6 +57,18 @@ The workout logging path returns a concise confirmation after parsing the traini
 
 This is still an early interface, but it shows the direction of the system: quick capture first, structured records underneath, and increasingly useful feedback as the personal dataset grows.
 
+## 7. Flexible Training Plan Logging
+
+The workout logger now supports more realistic training-plan updates instead of requiring every workout to be typed from scratch. Recent parser work added:
+
+- copy-forward logging from stable weekly workout templates
+- per-set weights
+- qualitative loads such as bodyweight or machine-weight descriptions
+- workout-level and exercise-level notes
+- month-name dates for delayed logging
+
+This keeps Telegram useful for real gym behavior: the user can capture what changed, attach notes, and avoid rebuilding the whole training log manually.
+
 ## Product Direction
 
 The Telegram chatbot is not the final product surface. It is the smallest useful interface for real daily data capture.
@@ -69,6 +81,7 @@ free-form advice
 -> structured recovery logs
 -> Apple Health-aware prompts
 -> Telegram workout logging
+-> copy-forward and flexible workout updates
 -> future review and coaching intelligence
 ```
 
