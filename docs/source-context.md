@@ -11,6 +11,10 @@ Some links may require access. The public overview is designed to stand on its o
 - [Long-Term Expansion Path](https://app.notion.com/p/37acf4d8ba18817ab88ac9307f00aade)
 - [Next Sprint: Recovery Tracking V1](https://www.notion.so/35ecf4d8ba1881cc8b52f397187ded25)
 - [Next Sprint: Recovery Loop Review V1](https://app.notion.com/p/367cf4d8ba18810fa13dd79471d333fd)
+- [Coach Dashboard V1](https://app.notion.com/p/37bcf4d8ba1881d28a0bc7658ccdcbe3)
+- [Product Research](https://app.notion.com/p/37bcf4d8ba1880d0be52c355b2947695)
+- [Competitive Teardown](https://app.notion.com/p/37bcf4d8ba1880daba34d201c8a62181)
+- [VBT Product Research](https://app.notion.com/p/37dcf4d8ba188170a1b6ec3b4ada0465)
 
 ## Repositories Reviewed
 
@@ -26,6 +30,7 @@ Main repo:
 - `d2066aa5` - Add Recovery Tracking V1 schema
 - `c934b6a5` - Add weekly review template
 - `bbdf6619` - Document chatbot logging contract
+- `59523704` - Add local coach dashboard app
 
 Chatbot repo:
 
@@ -36,6 +41,16 @@ Chatbot repo:
 - `275d65a` - Run morning check-in via launchd one-shot
 - `68700a8` - Handle morning sleep data edge cases
 - `f286eeb` - Add Telegram workout logging
+- `2345ef9` - Fix workout set parsing with per-set weights
+- `68b54d3` - Add copy-forward workout logging
+- `a69448e` - Support non-numeric workout loads
+- `0bbc1c7` - Support workout notes in Telegram logging
+
+Local uncommitted chatbot work reviewed on 2026-06-14:
+
+- `readiness.py` readiness computation and Notion schema setup
+- Telegram and Apple Health hooks that refresh readiness after new recovery data
+- Tests for readiness scoring, data confidence, low-sleep caps, bad-mood rest calls, and coach override behavior
 
 ## Codex Chats Reviewed
 
@@ -44,6 +59,9 @@ Chatbot repo:
 - Handling Apple Health sleep edge cases
 - Investigating Zenfit sync/import behavior
 - Adding the idea evolution and long-term expansion framing
+- Planning Coach Dashboard V1
+- Capturing Human Model research logs around local dashboard direction, product positioning, VBT/product research, copy-forward workout logging, readiness writeback, and the local dashboard app
+- Syncing chatbot workout parsing with the training plan
 
 ## Public/Private Boundary
 

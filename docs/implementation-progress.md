@@ -1,6 +1,6 @@
 # Implementation Progress
 
-Last updated: 2026-06-09.
+Last updated: 2026-06-14.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
@@ -15,6 +15,9 @@ Implemented:
 - Weekly Review V1 template
 - Chatbot Logging Contract V1
 - Separation of responsibilities between the foundation repo and chatbot repo
+- Local Coach Dashboard V1 app using FastAPI, SQLite, and Next.js
+- Dashboard data audit defining source ownership, conflict policy, SQLite mappings, and blocked/unavailable states
+- Readiness Dashboard V1 documentation for the push/maintain/modify/rest training decision loop
 
 Key commits reviewed:
 
@@ -22,6 +25,7 @@ Key commits reviewed:
 - `d2066aa5` - Add Recovery Tracking V1 schema
 - `c934b6a5` - Add weekly review template
 - `bbdf6619` - Document chatbot logging contract
+- `59523704` - Add local coach dashboard app
 
 ## Chatbot Repo
 
@@ -40,6 +44,10 @@ Implemented:
 - Zenfit screenshot OCR/import for workouts, weekly coach check-ins, and body measurements
 - Parser hardening for Zenfit UI noise, supersets, unilateral exercises, low-confidence OCR, and multi-screenshot merges
 - Telegram workout logging
+- Per-set workout weight parsing
+- Copy-forward workout logging for stable weekly training templates
+- Non-numeric load handling, such as bodyweight or machine-weight notes
+- Workout-level and exercise-level notes in Telegram logs
 - Unit tests for core parser and scheduling behavior
 
 Key commits reviewed:
@@ -51,6 +59,17 @@ Key commits reviewed:
 - `275d65a` - Run morning check-in via launchd one-shot
 - `68700a8` - Handle morning sleep data edge cases
 - `f286eeb` - Add Telegram workout logging
+- `2345ef9` - Fix workout set parsing with per-set weights
+- `68b54d3` - Add copy-forward workout logging
+- `a69448e` - Support non-numeric workout loads
+- `0bbc1c7` - Support workout notes in Telegram logging
+
+Local in-progress work reviewed but not counted as committed release state:
+
+- Python readiness computation for Coach Dashboard V1 in the chatbot repo working tree
+- Notion schema setup/repair for readiness fields, steps, and weight
+- Readiness refresh hooks after Telegram recovery check-ins and Apple Health imports
+- Focused readiness tests covering scoring, low-sleep caps, missing-data confidence, bad-mood rest calls, and coach overrides
 
 ## Current Working System
 
@@ -63,11 +82,16 @@ The current system can:
 5. Parse a manual recovery reply into structured fields.
 6. OCR Zenfit screenshots and convert them into structured workout, progress, and check-in records.
 7. Log workout summaries through Telegram.
+8. Reuse previous workout templates through Telegram copy-forward logging.
+9. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
 
 ## What Is Still Early
 
 - The recovery score is not yet a stable model.
-- Dashboards and notebooks are still future work.
+- Coach Dashboard V1 exists, but it is still a local working dashboard rather than a polished product.
+- The Python readiness pipeline is under active local integration and should be treated as in progress until committed.
+- Notion Weekly Review historical backfill is blocked until the database is shared with the integration or replaced with a confirmed ID.
+- Analytics notebooks are still future work.
 - Movement-quality sensing is planned but not implemented yet.
 - Recommendations are intentionally limited until the data spine has enough real use.
 - Private health/training data lives in Notion and local files, not in public GitHub.
@@ -84,6 +108,8 @@ project concept
 -> wearable import
 -> scheduled automation
 -> OCR import for training context
+-> copy-forward training logs
+-> local dashboard and readiness data model
 -> future modeling and sensing
 ```
 

@@ -10,7 +10,7 @@ measure -> model -> optimize -> adapt
 
 ## Current Status
 
-This is an early-stage research and engineering project, not a finished product. The current milestone is building the data spine: reliable capture, structured records, and review loops that can support later modeling.
+This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style review loop: reliable capture, structured records, local dashboarding, and simple readiness interpretation that can support later modeling.
 
 Implemented so far:
 
@@ -21,14 +21,17 @@ Implemented so far:
 - Scheduled morning check-ins through macOS `launchd`
 - Guardrails for missing or suspicious Apple Watch sleep data
 - Zenfit screenshot OCR/import workflow for workouts, weekly coach check-ins, and body measurements
-- Telegram workout logging path with tests
+- Telegram workout logging path with tests, including copy-forward logging, per-set weights, qualitative loads, and notes
+- Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
+- Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
 
 Current focus:
 
 - Keep the recovery loop reliable in real daily use
 - Review patterns across Apple Watch metrics, subjective check-ins, and training context
-- Expand structured training/body-metric logging without overbuilding the interface
-- Prepare the next movement-quality prototype around IMU sensing and execution analysis
+- Make the local dashboard useful as the first daily review surface
+- Connect readiness, training context, and data freshness without overstating recommendation quality
+- Prepare the next movement-quality prototype around IMU or output-sensing experiments
 
 ## Project Repositories
 
@@ -43,6 +46,7 @@ Notable work:
 - Recovery Tracking V1 schema
 - Chatbot Logging Contract V1
 - Weekly Review V1
+- Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
 ### Human Model Chatbot
@@ -59,6 +63,8 @@ Notable work:
 - Morning check-in one-shot service with duplicate prevention
 - Zenfit OCR pipeline and Notion sync
 - Workout logging from Telegram messages
+- Copy-forward workout logging for stable training templates
+- Flexible workout parsing for per-set weights, non-numeric loads, workout notes, and month-name dates
 - Unit tests for parser, scheduling, and data edge cases
 
 ## System Concept

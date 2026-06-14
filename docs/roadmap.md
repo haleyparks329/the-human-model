@@ -26,25 +26,31 @@ Status: implemented and being hardened through real use.
 
 ## Phase 3: Training Context Capture
 
-Status: partially implemented.
+Status: implemented for core capture paths and still being hardened.
 
 - Import Zenfit screenshots through OCR
 - Write workouts to Notion Training Log
 - Write weekly coach check-ins to Notion
 - Write progress/body measurement screenshots to Notion
 - Log workout summaries through Telegram
+- Reuse stable weekly training plans through copy-forward Telegram logging
+- Support per-set weights, qualitative loads, and workout notes
 - Improve date handling for delayed screenshot imports
 - Compare training context against recovery trends
 
 ## Phase 4: Analytics
 
-Status: planned.
+Status: started.
 
 - Export or query structured recovery/training data
+- Build first local dashboard
+- Map source ownership and data health for dashboard fields
+- Compute basic readiness state and confidence
 - Analyze recovery and training trends
-- Build first dashboard
 - Compare subjective recovery with performance outputs
 - Identify useful weekly review metrics
+
+Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product.
 
 ## Phase 5: Movement Quality Prototype
 
@@ -54,6 +60,7 @@ Status: planned.
 - Log movement data
 - Estimate range of motion and rep timing
 - Explore tempo consistency and fatigue drift
+- Evaluate a VBT-inspired output test, such as bar speed or a controlled jump/pod protocol, as an intermediate performance signal
 - Compare movement-quality features across sessions
 
 ## Phase 6: Closed-Loop Feedback
@@ -74,6 +81,8 @@ Status: future.
 ## Near-Term Next Steps
 
 - Keep the morning recovery loop stable in daily use.
-- Review a week of recovery entries against training context.
-- Decide whether the next automation target should be dashboarding, better Zenfit date handling, or the first movement-quality sensor prototype.
+- Finish committing and verifying the chatbot readiness writeback path.
+- Use Coach Dashboard V1 against real recovery/training rows and tighten data freshness states.
+- Resolve Notion Weekly Review access or keep that dashboard section visibly blocked.
+- Decide whether the next prototype should be VBT-inspired output testing, IMU movement sensing, or dashboard analytics hardening.
 - Keep public docs current as implementation changes land.
