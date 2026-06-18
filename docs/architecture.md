@@ -111,4 +111,6 @@ Notion / Telegram / Health exports / app entry
 -> future weekly analysis
 ```
 
+See [Coach Dashboard V1](coach-dashboard-v1.md) for the current local UI screenshots.
+
 These loops give the project a working data spine before advanced modeling or hardware.

@@ -1,6 +1,6 @@
 # Implementation Progress
 
-Last updated: 2026-06-14.
+Last updated: 2026-06-18.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
@@ -18,6 +18,7 @@ Implemented:
 - Local Coach Dashboard V1 app using FastAPI, SQLite, and Next.js
 - Dashboard data audit defining source ownership, conflict policy, SQLite mappings, and blocked/unavailable states
 - Readiness Dashboard V1 documentation for the push/maintain/modify/rest training decision loop
+- Screenshot documentation for Coach Dashboard V1 across overview, recovery, training, body, signals, and reviews
 
 Key commits reviewed:
 
@@ -84,6 +85,17 @@ The current system can:
 7. Log workout summaries through Telegram.
 8. Reuse previous workout templates through Telegram copy-forward logging.
 9. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
+
+## Coach Dashboard V1 Screenshots
+
+The current local dashboard is documented in [Coach Dashboard V1](coach-dashboard-v1.md). The screenshots show the working review surface across:
+
+- Operating call and recovery trend
+- Recovery table and manual recovery entry
+- Training output and training log audit views
+- Body composition trends and raw measurements
+- Import/sync signal health
+- Weekly review creation/edit surface
 
 ## Public Example Code
 
