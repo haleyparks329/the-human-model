@@ -69,6 +69,14 @@ The workout logger now supports more realistic training-plan updates instead of 
 
 This keeps Telegram useful for real gym behavior: the user can capture what changed, attach notes, and avoid rebuilding the whole training log manually.
 
+## 8. Bridget Calibration
+
+The chatbot can now calibrate its behavior through a short preference flow. Instead of assuming the right coaching style, schedule, quiet hours, or wearable-data policy, Bridget asks directly and saves the answers as an operating profile.
+
+![Telegram screenshot showing Bridget calibration questions for proactivity, gym days, quiet hours, and Apple Watch reliability.](../assets/screenshots/telegram-07-bridget-calibration.png)
+
+This makes the assistant less generic and less annoying: the bot can adapt how proactive it should be, when it should expect training, when it should stay quiet, and how cautiously it should treat missing Apple Watch data.
+
 ## Product Direction
 
 The Telegram chatbot is not the final product surface. It is the smallest useful interface for real daily data capture.
@@ -82,6 +90,7 @@ free-form advice
 -> Apple Health-aware prompts
 -> Telegram workout logging
 -> copy-forward and flexible workout updates
+-> preference calibration
 -> future review and coaching intelligence
 ```
 

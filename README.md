@@ -4,6 +4,8 @@ The Human Model is an independent human-performance systems project: a working a
 
 The short version: I am building an n=1 performance lab that starts with real daily data and grows toward a personalized model of human capability.
 
+Portfolio page: [The Human Model Overview](https://app.notion.com/p/382cf4d8ba1880a188dbc6a664b5a7cc)
+
 ```text
 measure -> model -> optimize -> adapt
 ```
@@ -106,6 +108,16 @@ The broader direction reaches into sports performance, physical therapy, rehabil
 - [Roadmap](docs/roadmap.md)
 - [Research Notes](docs/research-notes.md)
 - [Source Context](docs/source-context.md)
+
+## Public Code Examples
+
+This repo includes small, sanitized examples extracted from the private working system:
+
+- [Readiness scoring demo](examples/readiness_scoring_demo.py)
+- [Bridget prompt demo](examples/bridget_prompt_demo.py)
+- [Daily card demo](examples/daily_card_demo.py)
+
+The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
 
 ## What This Demonstrates
 
