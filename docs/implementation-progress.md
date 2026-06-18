@@ -85,6 +85,16 @@ The current system can:
 8. Reuse previous workout templates through Telegram copy-forward logging.
 9. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
 
+## Public Example Code
+
+The overview repo now includes sanitized example code under [`examples/`](../examples/README.md). These examples use mock data and no private Notion credentials or personal health records.
+
+Included examples:
+
+- Readiness scoring from recovery inputs, training context, and confidence metadata
+- Bridget prompt timing, missing-data wording, prompt budgets, and quick replies
+- A dependency-light SVG daily card renderer for a chat-friendly readiness summary
+
 ## What Is Still Early
 
 - The recovery score is not yet a stable model.
