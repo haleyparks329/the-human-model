@@ -12,7 +12,7 @@ measure -> model -> optimize -> adapt
 
 ## Current Status
 
-This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style review loop: reliable capture, structured records, local dashboarding, and simple readiness interpretation that can support later modeling.
+This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style feedback loop: reliable capture, structured records, Bridget as the daily delivery surface, local dashboarding for deeper review, and simple readiness interpretation that can support later modeling.
 
 Implemented so far:
 
@@ -24,14 +24,24 @@ Implemented so far:
 - Guardrails for missing or suspicious Apple Watch sleep data
 - Zenfit screenshot OCR/import workflow for workouts, weekly coach check-ins, and body measurements
 - Telegram workout logging path with tests, including copy-forward logging, per-set weights, qualitative loads, and notes
+- Bridget daily card V1 for a chat-delivered morning summary
+- Planned-workout logging so Bridget can reuse expected training context instead of making the user retype the whole workout
 - Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
 - Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
+
+Recent branch/in-progress work reviewed but not presented as stable release state:
+
+- Body-measurement progress charts on the active dashboard branch
+- Structured dashboard backfill for Apple Health and training-plan data
+- Training-session summaries for volume, muscle groups, parse warnings, and review needs
+- A Bridget daily-card guard that waits for sleep data before sending automatic image summaries
 
 Current focus:
 
 - Keep the recovery loop reliable in real daily use
 - Review patterns across Apple Watch metrics, subjective check-ins, and training context
-- Make the local dashboard useful as the first daily review surface
+- Keep Bridget useful as the low-friction daily surface
+- Make the local dashboard useful as the weekly/deeper review surface
 - Connect readiness, training context, and data freshness without overstating recommendation quality
 - Prepare the next movement-quality prototype around IMU or output-sensing experiments
 
@@ -49,6 +59,7 @@ Notable work:
 - Chatbot Logging Contract V1
 - Weekly Review V1
 - Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
+- Active dashboard branch work for body-measurement trend charts and structured training-session summaries
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
 ### Human Model Chatbot
@@ -67,6 +78,7 @@ Notable work:
 - Workout logging from Telegram messages
 - Copy-forward workout logging for stable training templates
 - Flexible workout parsing for per-set weights, non-numeric loads, workout notes, and month-name dates
+- Bridget rhythm prompts, preference calibration, daily card generation, and planned-workout follow-up logic
 - Unit tests for parser, scheduling, and data edge cases
 
 ## System Concept
@@ -117,6 +129,7 @@ This repo includes small, sanitized examples extracted from the private working 
 - [Readiness scoring demo](examples/readiness_scoring_demo.py)
 - [Bridget prompt demo](examples/bridget_prompt_demo.py)
 - [Daily card demo](examples/daily_card_demo.py)
+- [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
 
 The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
 

@@ -16,6 +16,17 @@ from bridget_prompt_demo import (  # noqa: E402
     should_send_prompt,
 )
 from daily_card_demo import render_svg, sample_card  # noqa: E402
+from dashboard_data_shaping_demo import (  # noqa: E402
+    ImportRun,
+    body_trends,
+    dashboard_payload,
+    sample_body_rows,
+    sample_imports,
+    sample_sessions,
+    signal_health,
+    training_session_summary,
+    weekly_volume,
+)
 from readiness_scoring_demo import (  # noqa: E402
     RecoveryDay,
     TrainingContext,
@@ -84,6 +95,51 @@ class DailyCardDemoTests(unittest.TestCase):
         self.assertIn("Bridget daily card", svg)
         self.assertIn("Modify", svg)
         self.assertIn("68/100", svg)
+
+
+class DashboardDataShapingDemoTests(unittest.TestCase):
+    def test_body_trends_include_direction_and_delta(self):
+        trends = {row["metric_name"]: row for row in body_trends(sample_body_rows())}
+
+        self.assertEqual(trends["waist_cm"]["direction"], "down")
+        self.assertEqual(trends["waist_cm"]["delta"], -0.6)
+        self.assertEqual(trends["weight_kg"]["direction"], "up")
+
+    def test_training_summary_flags_qualitative_loads(self):
+        summary = training_session_summary(sample_sessions()[0])
+
+        self.assertEqual(summary["exercise_count"], 3)
+        self.assertEqual(summary["work_set_count"], 3)
+        self.assertEqual(summary["volume_load"], 1390.0)
+        self.assertTrue(summary["needs_review"])
+        self.assertIn("chest", summary["muscle_groups"])
+        self.assertIn("back", summary["muscle_groups"])
+        self.assertIn("shoulders", summary["muscle_groups"])
+        self.assertNotIn("triceps", summary["muscle_groups"])
+        self.assertTrue(any("reps missing" in item for item in summary["review_warnings"]))
+
+    def test_dashboard_payload_can_feed_review_surface(self):
+        payload = dashboard_payload(sample_body_rows(), sample_sessions(), sample_imports())
+
+        self.assertEqual(payload["signals"]["status"], "OK")
+        self.assertIn("review", payload["daily_review_hint"])
+        self.assertIn("body_trends", payload)
+        self.assertIn("latest_training", payload)
+        self.assertEqual(payload["weekly_volume"]["session_count"], 3)
+        self.assertEqual(payload["progression_signals"][0]["exercise"], "Bench press")
+        self.assertEqual(payload["progression_signals"][0]["status"], "up")
+
+    def test_weekly_volume_groups_sessions_by_muscle(self):
+        summary = weekly_volume(sample_sessions(), "2026-06-18")
+
+        self.assertEqual(summary["work_sets"], 9)
+        self.assertEqual(summary["muscle_group_counts"]["chest"], 2)
+
+    def test_signal_health_surfaces_blocked_imports(self):
+        health = signal_health(sample_imports() + [ImportRun("notion", "blocked", 0, 0)])
+
+        self.assertEqual(health["status"], "Needs review")
+        self.assertIn("notion", health["blocked_sources"])
 
 
 if __name__ == "__main__":

@@ -58,8 +58,8 @@ It is responsible for:
 - Importing Apple Health exports into daily recovery rows
 - OCR/importing Zenfit screenshots into structured Notion databases
 - Running local scheduled jobs through macOS `launchd`
-- Supporting Telegram workout logging, copy-forward templates, flexible load parsing, and workout notes
-- Locally integrating Coach Dashboard V1 readiness computation in the working tree
+- Supporting Telegram workout logging, copy-forward templates, flexible load parsing, workout notes, and Bridget daily cards
+- Locally integrating Coach Dashboard V1 readiness and daily-card guard behavior in the working tree
 
 ### `the-human-model-overview`
 
@@ -106,9 +106,19 @@ Zenfit screenshots or Telegram workout log
 ```text
 Notion / Telegram / Health exports / app entry
 -> SQLite dashboard store
--> readiness result and data-health context
+-> readiness result, structured sessions, data-health context, and progression signals
 -> coach-style daily review
 -> future weekly analysis
+```
+
+### Bridget Daily Surface
+
+```text
+Health sync + readiness context + Bridget state
+-> daily card schema
+-> chat-friendly image and short prompt
+-> one small reply or correction
+-> updated context for later review
 ```
 
 See [Coach Dashboard V1](coach-dashboard-v1.md) for the current local UI screenshots.

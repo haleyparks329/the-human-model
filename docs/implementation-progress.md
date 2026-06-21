@@ -1,6 +1,6 @@
 # Implementation Progress
 
-Last updated: 2026-06-18.
+Last updated: 2026-06-21.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
@@ -19,6 +19,14 @@ Implemented:
 - Dashboard data audit defining source ownership, conflict policy, SQLite mappings, and blocked/unavailable states
 - Readiness Dashboard V1 documentation for the push/maintain/modify/rest training decision loop
 - Screenshot documentation for Coach Dashboard V1 across overview, recovery, training, body, signals, and reviews
+- Body-measurement progress charts on the active dashboard branch
+
+Active integration work reviewed:
+
+- Apple Health backfill path into the local dashboard data spine, including sleep-window HRV aggregation and readiness recomputation after upserts
+- Structured lifting schema for sessions, exercises, sets, and training-plan days
+- Structured training-session summaries for exercise count, work sets, volume load, muscle groups, parse warnings, weekly volume, and progression signals
+- Dashboard V2 API/UI payload for today's lift call, evidence stack, risk/progression cards, weekly training strip, recent-session detail, and recommendations
 
 Key commits reviewed:
 
@@ -27,6 +35,7 @@ Key commits reviewed:
 - `c934b6a5` - Add weekly review template
 - `bbdf6619` - Document chatbot logging contract
 - `59523704` - Add local coach dashboard app
+- `1ac8be43` - Add body measurement progress charts
 
 ## Chatbot Repo
 
@@ -49,6 +58,9 @@ Implemented:
 - Copy-forward workout logging for stable weekly training templates
 - Non-numeric load handling, such as bodyweight or machine-weight notes
 - Workout-level and exercise-level notes in Telegram logs
+- Bridget rhythm prompts and preference calibration
+- Bridget planned-workout logging for lower-typing training follow-up
+- Bridget daily card generation for a chat-friendly readiness summary
 - Unit tests for core parser and scheduling behavior
 
 Key commits reviewed:
@@ -64,13 +76,14 @@ Key commits reviewed:
 - `68b54d3` - Add copy-forward workout logging
 - `a69448e` - Support non-numeric workout loads
 - `0bbc1c7` - Support workout notes in Telegram logging
+- `38c59a3` - Add Bridget rhythm prompts and readiness tracking
+- `313ecc6` - Add planned Bridget workout logging
+- `7bcde69` - Add Bridget daily card
 
 Local in-progress work reviewed but not counted as committed release state:
 
-- Python readiness computation for Coach Dashboard V1 in the chatbot repo working tree
-- Notion schema setup/repair for readiness fields, steps, and weight
-- Readiness refresh hooks after Telegram recovery check-ins and Apple Health imports
-- Focused readiness tests covering scoring, low-sleep caps, missing-data confidence, bad-mood rest calls, and coach overrides
+- Human Model dashboard working-tree integration for Apple Health backfill, normalized training-plan imports, richer training-session views, and dashboard API payloads
+- Human Model chatbot working-tree guard that skips automatic daily-card image sending when sleep data is missing
 
 ## Current Working System
 
@@ -84,7 +97,9 @@ The current system can:
 6. OCR Zenfit screenshots and convert them into structured workout, progress, and check-in records.
 7. Log workout summaries through Telegram.
 8. Reuse previous workout templates through Telegram copy-forward logging.
-9. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
+9. Generate and send a Bridget daily card through Telegram.
+10. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
+11. Show body-measurement progress charts and dashboard-level trend summaries on the active dashboard branch.
 
 ## Coach Dashboard V1 Screenshots
 
@@ -106,12 +121,13 @@ Included examples:
 - Readiness scoring from recovery inputs, training context, and confidence metadata
 - Bridget prompt timing, missing-data wording, prompt budgets, and quick replies
 - A dependency-light SVG daily card renderer for a chat-friendly readiness summary
+- Dashboard data shaping for body trend deltas, training session volume, weekly load, parse warnings, progression signals, and import health
 
 ## What Is Still Early
 
 - The recovery score is not yet a stable model.
 - Coach Dashboard V1 exists, but it is still a local working dashboard rather than a polished product.
-- The Python readiness pipeline is under active local integration and should be treated as in progress until committed.
+- Structured dashboard backfill/session work is under active integration and should be treated as in progress until it lands on the main foundation branch.
 - Notion Weekly Review historical backfill is blocked until the database is shared with the integration or replaced with a confirmed ID.
 - Analytics notebooks are still future work.
 - Movement-quality sensing is planned but not implemented yet.
@@ -131,7 +147,8 @@ project concept
 -> scheduled automation
 -> OCR import for training context
 -> copy-forward training logs
--> local dashboard and readiness data model
+-> Bridget daily cards
+-> local dashboard, readiness data model, and structured trend/session summaries
 -> future modeling and sensing
 ```
 

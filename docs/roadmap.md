@@ -36,6 +36,7 @@ Status: implemented for core capture paths and still being hardened.
 - Reuse stable weekly training plans through copy-forward Telegram logging
 - Support per-set weights, qualitative loads, and workout notes
 - Improve date handling for delayed screenshot imports
+- Shape raw workout rows into sessions, sets, weekly volume, review flags, and progression signals for the dashboard
 - Compare training context against recovery trends
 
 ## Phase 4: Analytics
@@ -46,11 +47,12 @@ Status: started.
 - Build first local dashboard
 - Map source ownership and data health for dashboard fields
 - Compute basic readiness state and confidence
+- Build a dashboard V2 payload that combines readiness, weekly volume, recent session detail, review warnings, and progression signals
 - Analyze recovery and training trends
 - Compare subjective recovery with performance outputs
 - Identify useful weekly review metrics
 
-Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product.
+Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. Structured lifting and dashboard V2 data shaping are active local integration work, not a public release claim yet.
 
 ## Phase 5: Movement Quality Prototype
 
@@ -81,6 +83,7 @@ Status: future.
 ## Near-Term Next Steps
 
 - Keep the morning recovery loop stable in daily use.
+- Finish and commit the structured lifting / dashboard V2 integration after local verification.
 - Finish committing and verifying the chatbot readiness writeback path.
 - Use Coach Dashboard V1 against real recovery/training rows and tighten data freshness states.
 - Resolve Notion Weekly Review access or keep that dashboard section visibly blocked.

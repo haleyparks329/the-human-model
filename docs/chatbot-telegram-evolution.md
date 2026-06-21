@@ -77,9 +77,15 @@ The chatbot can now calibrate its behavior through a short preference flow. Inst
 
 This makes the assistant less generic and less annoying: the bot can adapt how proactive it should be, when it should expect training, when it should stay quiet, and how cautiously it should treat missing Apple Watch data.
 
+## 9. Bridget Daily Cards
+
+Bridget now has a daily-card path: a small image summary designed for Telegram rather than a full dashboard screenshot. The card turns the same recovery/readiness context into a glanceable daily read, then Bridget adds a short interpretation or asks for the smallest missing context.
+
+The important product decision is that Bridget is the daily front door and the dashboard is the deeper review surface. Active local work adds a guard so automatic image summaries wait for sleep data instead of treating missing sync data as a false recovery signal.
+
 ## Product Direction
 
-The Telegram chatbot is not the final product surface. It is the smallest useful interface for real daily data capture.
+The Telegram chatbot is not the whole product, but it is the smallest useful daily interface for capture and feedback.
 
 The evolution so far:
 
@@ -91,6 +97,7 @@ free-form advice
 -> Telegram workout logging
 -> copy-forward and flexible workout updates
 -> preference calibration
+-> daily readiness cards
 -> future review and coaching intelligence
 ```
 

@@ -10,6 +10,9 @@ prototype:
 - `readiness_scoring_demo.py` shows a small recovery/readiness scoring loop.
 - `bridget_prompt_demo.py` shows rhythm-aware prompt decisions and quick replies.
 - `daily_card_demo.py` renders a simple SVG daily card from mock readiness data.
+- `dashboard_data_shaping_demo.py` shows dashboard aggregation for body trends,
+  training-session summaries, weekly volume, parse warnings, progression
+  signals, and import health.
 
 Run all examples:
 
@@ -17,6 +20,7 @@ Run all examples:
 python3 examples/readiness_scoring_demo.py
 python3 examples/bridget_prompt_demo.py
 python3 examples/daily_card_demo.py
+python3 examples/dashboard_data_shaping_demo.py
 ```
 
 Run tests:
