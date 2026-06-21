@@ -1,6 +1,6 @@
 # Coach Dashboard V1
 
-Coach Dashboard V1 is the first local review surface for The Human Model. It turns the recovery, training, body, review, and import pipelines into a single coach-style operating view.
+Coach Dashboard V1 is the local review surface for The Human Model. It turns the recovery, training, body, review, and import pipelines into a single coach-style operating view.
 
 This is not presented as a finished SaaS product. It is a local-first working dashboard built to make the data spine easier to audit, review, and improve.
 
@@ -10,6 +10,8 @@ This is not presented as a finished SaaS product. It is a local-first working da
 - Recovery history from Apple Watch metrics and subjective check-ins
 - Training output summaries from logged sessions
 - Body measurement trends from imported and app-entered records
+- Body-measurement progress charts on the active dashboard branch
+- Structured training-session summaries, weekly volume, review flags, and progression signals in active integration work
 - Signal health for Notion sync and backfill jobs
 - Weekly review creation/edit surface
 
@@ -23,7 +25,9 @@ The dashboard lives in the foundation repo and uses:
 - Notion as a selected mirror and review layer
 - Apple Health, Telegram, and OCR-derived records as upstream context
 
-The V1 design priority is operational usefulness: one place to see the current call, the evidence behind it, and whether the data feeding the system is trustworthy.
+The V1 design priority is operational usefulness: one place to see the current call, the evidence behind it, and whether the data feeding the system is trustworthy. Bridget remains the daily delivery surface; the dashboard is the deeper review and audit layer.
+
+Active local integration work is making the dashboard less like a raw table viewer and more like a coaching data spine. The private working tree now includes Health Auto Export backfill into SQLite, structured lifting tables, training-plan import, a dashboard V2 payload, and UI panels for today's lift call, risk/progression, weekly training status, and recent-session detail. Those pieces are documented here as directionally current but should be read as in-progress until the private implementation is committed and verified.
 
 ## Screenshots
 
@@ -59,5 +63,6 @@ The V1 design priority is operational usefulness: one place to see the current c
 
 - The dashboard is still local-only.
 - The readiness call is a V1 interpretation layer, not a validated predictive model.
+- Structured Apple Health backfill and training-session normalization are still in active integration.
 - Some Notion backfill paths depend on database sharing and integration access.
 - Private health and training data remain outside this public repository.
