@@ -21,15 +21,14 @@ Implemented:
 - Screenshot documentation for Coach Dashboard V1 across overview, recovery, training, body, signals, and reviews
 - Body-measurement progress charts on the active dashboard branch
 - Standalone readiness-modeling layer with daily feature generation, a transparent baseline model, report generation, tests, and a dashboard page
+- Readiness vs Actual training-output review that compares baseline readiness calls with Apple Watch movement output
 
 Active integration work reviewed:
 
 - Apple Health backfill path into the local dashboard data spine, including sleep-window HRV aggregation and readiness recomputation after upserts
-- Apple Watch workout and active-energy import path for training-output context
 - Structured lifting schema for sessions, exercises, sets, and training-plan days
 - Structured training-session summaries for exercise count, work sets, volume load, muscle groups, parse warnings, weekly volume, and progression signals
 - Dashboard V2 API/UI payload for today's lift call, evidence stack, risk/progression cards, weekly training strip, recent-session detail, and recommendations
-- Training output dashboard work that links watch workouts, lifting summaries, and model review context
 
 Key commits reviewed:
 
@@ -40,6 +39,7 @@ Key commits reviewed:
 - `59523704` - Add local coach dashboard app
 - `1ac8be43` - Add body measurement progress charts
 - `a6bf60d7` - Add standalone readiness model dashboard
+- `fd259d2d` - Add readiness vs training output review
 
 ## Chatbot Repo
 
@@ -105,6 +105,8 @@ The current system can:
 10. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
 11. Show body-measurement progress charts and dashboard-level trend summaries on the active dashboard branch.
 12. Build daily modeling features, score a baseline readiness model, generate a readable report, and expose the model output in a standalone local dashboard view.
+13. Import Apple Watch workout and active-energy rows into SQLite for training-output context.
+14. Review whether the readiness call aligned with actual movement output through the dashboard's Readiness vs Actual view.
 
 ## Coach Dashboard V1 Screenshots
 
@@ -133,7 +135,7 @@ Included examples:
 
 - The readiness model is a transparent V0 baseline, not a validated predictive model.
 - Coach Dashboard V1 exists, but it is still a local working dashboard rather than a polished product.
-- Structured dashboard backfill/session work and Apple Watch workout import work are under active local integration and should be treated as in progress until they land cleanly.
+- Structured dashboard backfill/session work is under active local integration and should be treated as in progress until it lands cleanly.
 - Notion Weekly Review historical backfill is blocked until the database is shared with the integration or replaced with a confirmed ID.
 - Analytics notebooks are still future work.
 - Movement-quality sensing is planned but not implemented yet.
@@ -155,6 +157,7 @@ project concept
 -> copy-forward training logs
 -> Bridget daily cards
 -> local dashboard, readiness data model, structured trend/session summaries, and transparent baseline modeling
+-> Apple Watch movement-output review against readiness calls
 -> future calibration, stronger analytics, and sensing
 ```
 

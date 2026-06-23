@@ -206,6 +206,19 @@ def report_lines(result: BaselineResult) -> list[str]:
     ]
 
 
+def movement_output_summary(day: DailyFeature) -> str:
+    """Summarize Watch movement output without treating it as the model input."""
+
+    if day.workout_minutes:
+        return (
+            f"Watch output: {day.workout_minutes} min workout, "
+            f"{round(day.active_kcal or 0)} active kcal."
+        )
+    if day.active_kcal:
+        return f"Watch output: {round(day.active_kcal)} active kcal; no workout session detail."
+    return "Watch output: no movement-output rows available yet."
+
+
 def sample_history() -> list[DailyFeature]:
     return [
         DailyFeature("2026-06-16", 7.3, 81, 52, 7, 4, 3, True, 420, 52),
@@ -232,7 +245,7 @@ def main() -> None:
         workout_minutes=0,
     )
     result = score_day(target, sample_history())
-    print("\n".join(report_lines(result)))
+    print("\n".join(report_lines(result) + [movement_output_summary(target)]))
 
 
 if __name__ == "__main__":

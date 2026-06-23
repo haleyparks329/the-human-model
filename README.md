@@ -29,6 +29,7 @@ Implemented so far:
 - Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
 - Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
 - Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions separate from LLM explanation
+- Apple Watch workout and active-energy import for training-output context, plus a dashboard review comparing readiness calls with actual movement output
 
 Recent branch/in-progress work reviewed but not presented as stable release state:
 
@@ -36,7 +37,6 @@ Recent branch/in-progress work reviewed but not presented as stable release stat
 - Structured dashboard backfill for Apple Health and training-plan data
 - Training-session summaries for volume, muscle groups, parse warnings, and review needs
 - A Bridget daily-card guard that waits for sleep data before sending automatic image summaries
-- Active Apple Watch workout/energy import and training-output dashboard work in the local foundation repo
 
 Current focus:
 
@@ -62,7 +62,8 @@ Notable work:
 - Weekly Review V1
 - Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
 - Baseline readiness-modeling layer: daily feature generation, transparent heuristic scoring, report generation, tests, and a standalone dashboard page
-- Active dashboard branch work for body-measurement trend charts, Apple Watch workout imports, and structured training-session summaries
+- Readiness vs Actual training-output review using Apple Watch workout duration/type, active energy, model output, and recent alignment labels
+- Active dashboard branch work for body-measurement trend charts and structured training-session summaries
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
 ### Human Model Chatbot

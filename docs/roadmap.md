@@ -48,12 +48,14 @@ Status: started.
 - Map source ownership and data health for dashboard fields
 - Compute basic readiness state and confidence
 - Build a standalone transparent readiness baseline using daily features, personal baselines, data quality, and report output
+- Import Apple Watch workout duration, workout type, and daily active energy as training-output context
+- Compare readiness model calls with actual movement output in the dashboard
 - Build a dashboard V2 payload that combines readiness, weekly volume, recent session detail, review warnings, and progression signals
 - Analyze recovery and training trends
 - Compare subjective recovery with performance outputs
 - Identify useful weekly review metrics
 
-Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. The first standalone readiness-modeling layer has landed as a transparent V0 baseline. Structured lifting, Apple Watch workout import, and dashboard V2 data shaping remain active local integration work, not a public release claim yet.
+Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. The first standalone readiness-modeling layer has landed as a transparent V0 baseline, and the dashboard now has Apple Watch movement-output context for Readiness vs Actual review. Structured lifting and dashboard V2 data shaping remain active local integration work, not public release claims yet.
 
 ## Phase 5: Movement Quality Prototype
 
@@ -84,7 +86,7 @@ Status: future.
 ## Near-Term Next Steps
 
 - Keep the morning recovery loop stable in daily use.
-- Finish and commit the structured lifting, Apple Watch workout import, and dashboard V2 integration after local verification.
+- Finish and commit the structured lifting and dashboard V2 integration after local verification.
 - Finish committing and verifying the chatbot readiness writeback path.
 - Use Coach Dashboard V1 and the baseline modeling layer against real recovery/training rows, then tighten data freshness and calibration states.
 - Resolve Notion Weekly Review access or keep that dashboard section visibly blocked.

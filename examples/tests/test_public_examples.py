@@ -35,6 +35,7 @@ from readiness_scoring_demo import (  # noqa: E402
 )
 from readiness_modeling_demo import (  # noqa: E402
     DailyFeature,
+    movement_output_summary,
     report_lines,
     sample_history as modeling_sample_history,
     score_day,
@@ -167,6 +168,11 @@ class ReadinessModelingDemoTests(unittest.TestCase):
         self.assertIn("Baseline Readiness Report", text)
         self.assertIn("Data Quality: High", text)
         self.assertIn("So What:", text)
+
+    def test_movement_output_is_context_not_model_decision(self):
+        target = DailyFeature("2026-06-23", 6.4, 72, 54, None, None, None, True, 410, 45)
+
+        self.assertIn("45 min workout", movement_output_summary(target))
 
 
 if __name__ == "__main__":

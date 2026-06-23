@@ -14,6 +14,7 @@ flowchart TD
     A1[Manual check-ins] --> A
     A2[Training logs] --> A
     A3[Apple Watch metrics] --> A
+    A6[Apple Watch workouts / active energy] --> A
     A4[Zenfit screenshots] --> A
     A5[Future IMU / sensor data] --> A
 
@@ -57,6 +58,7 @@ It is responsible for:
 - Parsing structured recovery and workout logs
 - Writing recovery entries to Notion
 - Importing Apple Health exports into daily recovery rows
+- Importing Apple Watch workouts and active energy as training-output context
 - OCR/importing Zenfit screenshots into structured Notion databases
 - Running local scheduled jobs through macOS `launchd`
 - Supporting Telegram workout logging, copy-forward templates, flexible load parsing, workout notes, and Bridget daily cards
@@ -131,6 +133,15 @@ Health sync + readiness context + Bridget state
 -> chat-friendly image and short prompt
 -> one small reply or correction
 -> updated context for later review
+```
+
+### Readiness vs Actual Review
+
+```text
+Baseline readiness call + Apple Watch movement output
+-> alignment label
+-> recent 14-day review table
+-> calibration questions for later model improvement
 ```
 
 See [Coach Dashboard V1](coach-dashboard-v1.md) for the current local UI screenshots.

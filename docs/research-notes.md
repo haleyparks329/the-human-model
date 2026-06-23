@@ -69,7 +69,7 @@ The implementation rule from the dashboard audit is useful beyond V1: every disp
 
 The first readiness model is deliberately transparent. It uses personal HRV and resting-HR baselines, sleep duration, subjective recovery inputs, and data-quality notes to produce a baseline band and a short report. LLMs may explain the result later, but they should not generate the model decision.
 
-The next research step is calibration: compare the model's daily call against actual workout execution, perceived effort, soreness, and follow-up recovery rather than treating a readiness score as self-validating.
+The next research step is calibration: compare the model's daily call against actual workout execution, Apple Watch movement output, perceived effort, soreness, and follow-up recovery rather than treating a readiness score as self-validating. Apple Watch active energy is useful as a rough movement-output context signal, not as exact calorie truth or a complete training-load model.
 
 ## Engineering Questions
 
