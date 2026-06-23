@@ -25,7 +25,8 @@ flowchart TD
     C3[Schema docs and contracts] --> C
     D1[Weekly review] --> D
     D2[Coach Dashboard V1] --> D
-    D3[Future notebooks] --> D
+    D3[Baseline readiness modeling] --> D
+    D4[Future notebooks] --> D
 ```
 
 ## Repository Roles
@@ -43,7 +44,7 @@ It is responsible for:
 - Research notes
 - Future notebooks, dashboards, and hardware notes
 
-The repo now also contains the first local Coach Dashboard V1 app. For this dashboard, SQLite is the canonical local store and Notion is treated as a mirror, review, and selected manual-input layer.
+The repo now also contains the first local Coach Dashboard V1 app and a standalone readiness-modeling layer. For the dashboard, SQLite is the canonical local store and Notion is treated as a mirror, review, and selected manual-input layer. The modeling layer builds daily features, scores a transparent baseline model, and writes reviewable outputs before any LLM explanation layer touches the result.
 
 ### `human-model-chatbot`
 
@@ -74,6 +75,7 @@ This repo is the public narrative layer. It explains the system, implementation 
 - SQLite as the local canonical store for Coach Dashboard V1
 - FastAPI backend for the local dashboard
 - Next.js frontend for the local dashboard UI
+- Transparent readiness-modeling scripts for feature generation, baseline scoring, and report output
 - Health Auto Export for Apple Health JSON exports
 - Apple Vision/OCR flow through the Zenfit importer
 - macOS `launchd` for local scheduled automation
@@ -109,6 +111,16 @@ Notion / Telegram / Health exports / app entry
 -> readiness result, structured sessions, data-health context, and progression signals
 -> coach-style daily review
 -> future weekly analysis
+```
+
+### Baseline Modeling Loop
+
+```text
+SQLite dashboard rows
+-> daily recovery/training features
+-> transparent baseline readiness score and data-quality notes
+-> report and local model dashboard
+-> later calibration against actual training outcomes
 ```
 
 ### Bridget Daily Surface

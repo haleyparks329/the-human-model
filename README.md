@@ -12,7 +12,7 @@ measure -> model -> optimize -> adapt
 
 ## Current Status
 
-This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style feedback loop: reliable capture, structured records, Bridget as the daily delivery surface, local dashboarding for deeper review, and simple readiness interpretation that can support later modeling.
+This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style feedback loop: reliable capture, structured records, Bridget as the daily delivery surface, local dashboarding for deeper review, and a transparent baseline readiness model that can be audited before it becomes a recommendation engine.
 
 Implemented so far:
 
@@ -28,6 +28,7 @@ Implemented so far:
 - Planned-workout logging so Bridget can reuse expected training context instead of making the user retype the whole workout
 - Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
 - Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
+- Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions separate from LLM explanation
 
 Recent branch/in-progress work reviewed but not presented as stable release state:
 
@@ -35,6 +36,7 @@ Recent branch/in-progress work reviewed but not presented as stable release stat
 - Structured dashboard backfill for Apple Health and training-plan data
 - Training-session summaries for volume, muscle groups, parse warnings, and review needs
 - A Bridget daily-card guard that waits for sleep data before sending automatic image summaries
+- Active Apple Watch workout/energy import and training-output dashboard work in the local foundation repo
 
 Current focus:
 
@@ -59,7 +61,8 @@ Notable work:
 - Chatbot Logging Contract V1
 - Weekly Review V1
 - Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
-- Active dashboard branch work for body-measurement trend charts and structured training-session summaries
+- Baseline readiness-modeling layer: daily feature generation, transparent heuristic scoring, report generation, tests, and a standalone dashboard page
+- Active dashboard branch work for body-measurement trend charts, Apple Watch workout imports, and structured training-session summaries
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
 ### Human Model Chatbot
@@ -127,6 +130,7 @@ The broader direction reaches into sports performance, physical therapy, rehabil
 This repo includes small, sanitized examples extracted from the private working system:
 
 - [Readiness scoring demo](examples/readiness_scoring_demo.py)
+- [Readiness modeling demo](examples/readiness_modeling_demo.py)
 - [Bridget prompt demo](examples/bridget_prompt_demo.py)
 - [Daily card demo](examples/daily_card_demo.py)
 - [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
