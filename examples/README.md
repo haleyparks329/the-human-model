@@ -8,6 +8,8 @@ The goal is to show the shape of the system without publishing the whole working
 prototype:
 
 - `readiness_scoring_demo.py` shows a small recovery/readiness scoring loop.
+- `readiness_modeling_demo.py` shows a transparent baseline model with
+  personal baselines, data quality, limiting factors, and a report summary.
 - `bridget_prompt_demo.py` shows rhythm-aware prompt decisions and quick replies.
 - `daily_card_demo.py` renders a simple SVG daily card from mock readiness data.
 - `dashboard_data_shaping_demo.py` shows dashboard aggregation for body trends,
@@ -18,6 +20,7 @@ Run all examples:
 
 ```bash
 python3 examples/readiness_scoring_demo.py
+python3 examples/readiness_modeling_demo.py
 python3 examples/bridget_prompt_demo.py
 python3 examples/daily_card_demo.py
 python3 examples/dashboard_data_shaping_demo.py

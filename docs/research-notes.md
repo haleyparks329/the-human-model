@@ -65,6 +65,12 @@ Coach Dashboard V1 is the first local review surface. Its job is not to look imp
 
 The implementation rule from the dashboard audit is useful beyond V1: every displayed field needs a source mapping, a manual entry path, or a visible unavailable state.
 
+## Current Modeling Direction
+
+The first readiness model is deliberately transparent. It uses personal HRV and resting-HR baselines, sleep duration, subjective recovery inputs, and data-quality notes to produce a baseline band and a short report. LLMs may explain the result later, but they should not generate the model decision.
+
+The next research step is calibration: compare the model's daily call against actual workout execution, perceived effort, soreness, and follow-up recovery rather than treating a readiness score as self-validating.
+
 ## Engineering Questions
 
 - How should schemas be versioned?
@@ -75,3 +81,4 @@ The implementation rule from the dashboard audit is useful beyond V1: every disp
 - How can the system avoid overfitting to tiny datasets?
 - Where should SQLite, Notion, and future analytics notebooks each own data?
 - How should app-native edits, Notion edits, Telegram logs, and imports resolve conflicts?
+- How should baseline readiness calls be evaluated against actual training outcomes before recommendations become stronger?

@@ -31,6 +31,7 @@ Main repo:
 - `c934b6a5` - Add weekly review template
 - `bbdf6619` - Document chatbot logging contract
 - `59523704` - Add local coach dashboard app
+- `a6bf60d7` - Add standalone readiness model dashboard
 
 Chatbot repo:
 
@@ -51,6 +52,12 @@ Local uncommitted chatbot work reviewed on 2026-06-14:
 - `readiness.py` readiness computation and Notion schema setup
 - Telegram and Apple Health hooks that refresh readiness after new recovery data
 - Tests for readiness scoring, data confidence, low-sleep caps, bad-mood rest calls, and coach override behavior
+
+Local uncommitted foundation work reviewed on 2026-06-23:
+
+- Apple Watch workout and active-energy import path for training-output context
+- Training output dashboard view work connecting watch workouts, lifting summaries, and review context
+- Additional modeling feature/report updates under active local verification
 
 ## Codex Chats Reviewed
 

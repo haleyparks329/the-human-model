@@ -33,6 +33,12 @@ from readiness_scoring_demo import (  # noqa: E402
     calculate_readiness,
     sample_history,
 )
+from readiness_modeling_demo import (  # noqa: E402
+    DailyFeature,
+    report_lines,
+    sample_history as modeling_sample_history,
+    score_day,
+)
 
 
 class ReadinessScoringDemoTests(unittest.TestCase):
@@ -140,6 +146,27 @@ class DashboardDataShapingDemoTests(unittest.TestCase):
 
         self.assertEqual(health["status"], "Needs review")
         self.assertIn("notion", health["blocked_sources"])
+
+
+class ReadinessModelingDemoTests(unittest.TestCase):
+    def test_score_day_surfaces_quality_and_limiting_factor(self):
+        target = DailyFeature("2026-06-23", 6.4, 72, 54, None, None, None, True)
+        result = score_day(target, modeling_sample_history())
+
+        self.assertEqual(result.band, "Yellow")
+        self.assertEqual(result.data_quality, "Medium")
+        self.assertEqual(result.limiting_factor, "hrv")
+        self.assertIn("missing energy", result.model_notes)
+        self.assertIn("Cautious training day", result.so_what)
+
+    def test_report_lines_are_portfolio_readable(self):
+        target = DailyFeature("2026-06-23", 7.6, 83, 52, 8, 3, 2, True)
+        result = score_day(target, modeling_sample_history())
+        text = "\n".join(report_lines(result))
+
+        self.assertIn("Baseline Readiness Report", text)
+        self.assertIn("Data Quality: High", text)
+        self.assertIn("So What:", text)
 
 
 if __name__ == "__main__":
