@@ -4,7 +4,7 @@ The Human Model is an independent human-performance systems project: a working a
 
 The short version: I am building an n=1 performance lab that starts with real daily data and grows toward a personalized model of human capability.
 
-Portfolio page: [The Human Model Overview](https://app.notion.com/p/382cf4d8ba1880a188dbc6a664b5a7cc)
+Portfolio page: [The Human Model](https://hallowed-seat-b6b.notion.site/The-Human-Model-382cf4d8ba1880a188dbc6a664b5a7cc)
 
 ```text
 measure -> model -> optimize -> adapt
