@@ -1,8 +1,8 @@
 # The Human Model
 
-The Human Model is an independent human-performance systems project: a working attempt to measure recovery, behavior, training, and movement quality, then turn those signals into useful feedback loops.
+The Human Model is an independent human-performance systems project that turns recovery, training, Apple Watch, and natural-language check-in data into usable feedback loops.
 
-The short version: I am building an n=1 performance lab that starts with real daily data and grows toward a personalized model of human capability.
+The short version: I am building an n=1 performance lab with a Telegram coaching surface, Apple Health imports, a local Coach Dashboard, and transparent readiness modeling that can be audited before it becomes a recommendation engine.
 
 Portfolio page: [The Human Model](https://hallowed-seat-b6b.notion.site/The-Human-Model-382cf4d8ba1880a188dbc6a664b5a7cc)
 
@@ -12,9 +12,11 @@ measure -> model -> optimize -> adapt
 
 ## Current Status
 
-This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style feedback loop: reliable capture, structured records, Bridget as the daily delivery surface, local dashboarding for deeper review, and a transparent baseline readiness model that can be audited before it becomes a recommendation engine.
+This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style feedback loop: reliable capture, structured records, Bridget as the daily delivery surface, local dashboarding for deeper review, and a transparent baseline readiness model.
 
 Implemented so far:
+
+**Capture and automation**
 
 - Main project repo with Recovery Tracking V1 schema, weekly review template, and chatbot logging contract
 - Telegram chatbot powered by a local Ollama model
@@ -24,14 +26,20 @@ Implemented so far:
 - Guardrails for missing or suspicious Apple Watch sleep data
 - Zenfit screenshot OCR/import workflow for workouts, weekly coach check-ins, and body measurements
 - Telegram workout logging path with tests, including copy-forward logging, per-set weights, qualitative loads, and notes
+
+**Bridget and daily feedback**
+
 - Bridget daily card V1 for a chat-delivered morning summary
 - Planned-workout logging so Bridget can reuse expected training context instead of making the user retype the whole workout
+
+**Dashboard and modeling**
+
 - Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
 - Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
-- Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions separate from LLM explanation
+- Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions auditable rather than LLM-generated
 - Apple Watch workout and active-energy import for training-output context, plus a dashboard review comparing readiness calls with actual movement output
 
-Recent branch/in-progress work reviewed but not presented as stable release state:
+Current build work:
 
 - Body-measurement progress charts on the active dashboard branch
 - Structured dashboard backfill for Apple Health and training-plan data
@@ -47,7 +55,21 @@ Current focus:
 - Connect readiness, training context, and data freshness without overstating recommendation quality
 - Prepare the next movement-quality prototype around IMU or output-sensing experiments
 
+## Public Code Examples
+
+This repo includes small, sanitized examples extracted from the private working system:
+
+- [Readiness scoring demo](examples/readiness_scoring_demo.py)
+- [Readiness modeling demo](examples/readiness_modeling_demo.py)
+- [Bridget prompt demo](examples/bridget_prompt_demo.py)
+- [Daily card demo](examples/daily_card_demo.py)
+- [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
+
+The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
+
 ## Project Repositories
+
+The active implementation is split across two working repos plus this public overview layer.
 
 ### Human Model
 
@@ -87,7 +109,7 @@ Notable work:
 
 ## System Concept
 
-The long-term idea is not only to track fitness data. It is to build a personalized model that can learn how one person recovers, executes movement, responds to training, and benefits from feedback.
+The goal is not just to track fitness data. It is to build a personalized model that can learn how one person recovers, executes movement, responds to training, and benefits from feedback.
 
 ```mermaid
 flowchart LR
@@ -125,18 +147,6 @@ The broader direction reaches into sports performance, physical therapy, rehabil
 - [Roadmap](docs/roadmap.md)
 - [Research Notes](docs/research-notes.md)
 - [Source Context](docs/source-context.md)
-
-## Public Code Examples
-
-This repo includes small, sanitized examples extracted from the private working system:
-
-- [Readiness scoring demo](examples/readiness_scoring_demo.py)
-- [Readiness modeling demo](examples/readiness_modeling_demo.py)
-- [Bridget prompt demo](examples/bridget_prompt_demo.py)
-- [Daily card demo](examples/daily_card_demo.py)
-- [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
-
-The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
 
 ## What This Demonstrates
 
