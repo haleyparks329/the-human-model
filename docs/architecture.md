@@ -58,11 +58,10 @@ It is responsible for:
 - Parsing structured recovery and workout logs
 - Writing recovery entries to Notion
 - Importing Apple Health exports into daily recovery rows
-- Importing Apple Watch workouts and active energy as training-output context
 - OCR/importing Zenfit screenshots into structured Notion databases
 - Running local scheduled jobs through macOS `launchd`
 - Supporting Telegram workout logging, copy-forward templates, flexible load parsing, workout notes, and Bridget daily cards
-- Locally integrating Coach Dashboard V1 readiness and daily-card guard behavior in the working tree
+- Supporting Bridget readiness context and daily-card behavior
 
 ### `the-human-model-overview`
 

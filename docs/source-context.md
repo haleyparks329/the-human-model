@@ -1,6 +1,6 @@
 # Source Context
 
-This overview was synthesized from active project repositories, GitHub commit history, Codex chat summaries, and private Notion planning pages available during setup.
+This overview was synthesized from active project repositories, GitHub commit history, and private Notion planning pages available during setup.
 
 Some links may require access. The public overview is designed to stand on its own even when implementation details depend on private Notion databases or local health/training data.
 
@@ -48,28 +48,11 @@ Chatbot repo:
 - `a69448e` - Support non-numeric workout loads
 - `0bbc1c7` - Support workout notes in Telegram logging
 
-Local uncommitted chatbot work reviewed on 2026-06-14:
-
-- `readiness.py` readiness computation and Notion schema setup
-- Telegram and Apple Health hooks that refresh readiness after new recovery data
-- Tests for readiness scoring, data confidence, low-sleep caps, bad-mood rest calls, and coach override behavior
-
 Foundation work reviewed on 2026-06-23:
 
 - Apple Watch workout and active-energy import path for training-output context
 - Training output dashboard view connecting readiness calls, watch movement output, and recent alignment labels
 - Additional modeling feature/report updates around readiness quality and daily output review
-
-## Codex Chats Reviewed
-
-- Planning next Human Model steps
-- Fixing chatbot schedule and Apple Health references
-- Handling Apple Health sleep edge cases
-- Investigating Zenfit sync/import behavior
-- Adding the idea evolution and long-term expansion framing
-- Planning Coach Dashboard V1
-- Capturing Human Model research logs around local dashboard direction, product positioning, VBT/product research, copy-forward workout logging, readiness writeback, and the local dashboard app
-- Syncing chatbot workout parsing with the training plan
 
 ## Public/Private Boundary
 

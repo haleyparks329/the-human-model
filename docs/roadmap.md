@@ -41,7 +41,7 @@ Status: implemented for core capture paths and still being hardened.
 
 ## Phase 4: Analytics
 
-Status: started.
+Status: started, with the first local dashboard and transparent readiness baseline implemented.
 
 - Export or query structured recovery/training data
 - Build first local dashboard

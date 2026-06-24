@@ -72,4 +72,4 @@ Potential outputs include:
 
 ## Current Modeling Discipline
 
-The project is not claiming a stable recovery score yet. The near-term goal is to collect enough trustworthy records to understand which signals are useful before formalizing a score or recommendation engine.
+The project now has a transparent V0 readiness baseline, but it is not presented as a validated predictive model. The current discipline is to keep the score auditable, expose missing inputs, and calibrate it against actual training outcomes before making stronger recommendations.
