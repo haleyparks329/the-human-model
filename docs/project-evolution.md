@@ -100,6 +100,7 @@ Core coach questions:
 1. Did they recover?
 2. Did they execute?
 3. Did they push?
+4. Did they adapt?
 
 At this stage, the dashboard and intelligence layer became more important than the hardware.
 

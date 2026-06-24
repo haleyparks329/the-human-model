@@ -1,6 +1,6 @@
 """Render a public-safe Bridget daily card as SVG.
 
-The private system can generate chat-friendly daily summaries from live data.
+The live system can generate chat-friendly daily summaries from live data.
 This demo uses mock data and standard-library SVG output so it can run in the
 public overview repo with no image dependencies.
 """
@@ -114,7 +114,7 @@ def sample_card() -> DailyCard:
         ),
         signal="Sleep duration is usable, but recent training load keeps the morning call flexible.",
         nudge="Start with the planned session, then let the first working set decide intensity.",
-        uncertainty="This is mock data. In the private system, sync uncertainty is shown when health data is incomplete.",
+        uncertainty="This is mock data. In the live system, sync uncertainty is shown when health data is incomplete.",
     )
 
 

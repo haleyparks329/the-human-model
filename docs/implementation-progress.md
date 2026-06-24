@@ -19,13 +19,12 @@ Implemented:
 - Dashboard data audit defining source ownership, conflict policy, SQLite mappings, and blocked/unavailable states
 - Readiness Dashboard V1 documentation for the push/maintain/modify/rest training decision loop
 - Screenshot documentation for Coach Dashboard V1 across overview, recovery, training, body, signals, and reviews
-- Body-measurement progress charts on the active dashboard branch
+- Body-measurement progress charts
 - Standalone readiness-modeling layer with daily feature generation, a transparent baseline model, report generation, tests, and a dashboard page
 - Readiness vs Actual training-output review that compares baseline readiness calls with Apple Watch movement output
 
-Active integration work reviewed:
+Remaining active integration work reviewed:
 
-- Apple Health backfill path into the local dashboard data spine, including sleep-window HRV aggregation and readiness recomputation after upserts
 - Structured lifting schema for sessions, exercises, sets, and training-plan days
 - Structured training-session summaries for exercise count, work sets, volume load, muscle groups, parse warnings, weekly volume, and progression signals
 - Dashboard V2 API/UI payload for today's lift call, evidence stack, risk/progression cards, weekly training strip, recent-session detail, and recommendations
@@ -84,11 +83,6 @@ Key commits reviewed:
 - `313ecc6` - Add planned Bridget workout logging
 - `7bcde69` - Add Bridget daily card
 
-Local in-progress work reviewed but not counted as committed release state:
-
-- Human Model dashboard working-tree integration for Apple Health backfill, normalized training-plan imports, richer training-session views, and dashboard API payloads
-- Human Model chatbot working-tree guard that skips automatic daily-card image sending when sleep data is missing
-
 ## Current Working System
 
 The current system can:
@@ -103,7 +97,7 @@ The current system can:
 8. Reuse previous workout templates through Telegram copy-forward logging.
 9. Generate and send a Bridget daily card through Telegram.
 10. Run a local Coach Dashboard V1 app backed by SQLite, with Notion sync/backfill paths and app-native body/review entry surfaces.
-11. Show body-measurement progress charts and dashboard-level trend summaries on the active dashboard branch.
+11. Show body-measurement progress charts and dashboard-level trend summaries.
 12. Build daily modeling features, score a baseline readiness model, generate a readable report, and expose the model output in a standalone local dashboard view.
 13. Import Apple Watch workout and active-energy rows into SQLite for training-output context.
 14. Review whether the readiness call aligned with actual movement output through the dashboard's Readiness vs Actual view.

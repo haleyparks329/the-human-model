@@ -1,6 +1,6 @@
 """Sanitized baseline readiness-modeling example.
 
-The private Coach Dashboard now has a small modeling layer that builds daily
+The live Coach Dashboard includes a small modeling layer that builds daily
 features, scores readiness against personal baselines, and emits a reviewable
 report. This public demo keeps that shape while using mock rows only.
 """

@@ -6,14 +6,22 @@ This is not presented as a finished SaaS product. It is a local-first working da
 
 ## What It Shows
 
+Implemented:
+
 - Daily operating call with readiness context and missing-data flags
 - Recovery history from Apple Watch metrics and subjective check-ins
 - Training output summaries from logged sessions
 - Body measurement trends from imported and app-entered records
-- Body-measurement progress charts on the active dashboard branch
-- Structured training-session summaries, weekly volume, review flags, and progression signals in active integration work
+- Body-measurement progress charts
+- Apple Watch workout and active-energy context for Readiness vs Actual review
 - Signal health for Notion sync and backfill jobs
 - Weekly review creation/edit surface
+
+Active integration work:
+
+- Structured training-session summaries, weekly volume, review flags, and progression signals
+- Training-plan import and richer session-detail panels
+- Dashboard V2 payloads for lift calls, evidence stacks, risk/progression, and weekly training status
 
 ## Implementation Context
 
@@ -27,7 +35,7 @@ The dashboard lives in the foundation repo and uses:
 
 The V1 design priority is operational usefulness: one place to see the current call, the evidence behind it, and whether the data feeding the system is trustworthy. Bridget remains the daily delivery surface; the dashboard is the deeper review and audit layer.
 
-Active local integration work is making the dashboard less like a raw table viewer and more like a coaching data spine. The private working tree now includes Health Auto Export backfill into SQLite, structured lifting tables, training-plan import, a dashboard V2 payload, and UI panels for today's lift call, risk/progression, weekly training status, and recent-session detail. Those pieces are documented here as directionally current but should be read as in-progress until the private implementation is committed and verified.
+Recent committed work adds Apple Watch workout and active-energy import plus a Readiness vs Actual review. Active integration work is making the dashboard less like a raw table viewer and more like a coaching data spine, with structured lifting tables, training-plan import, dashboard V2 payloads, and richer session-detail panels still being hardened.
 
 ## Screenshots
 
@@ -63,6 +71,6 @@ Active local integration work is making the dashboard less like a raw table view
 
 - The dashboard is still local-only.
 - The readiness call is a V1 interpretation layer, not a validated predictive model.
-- Structured Apple Health backfill and training-session normalization are still in active integration.
+- Structured lifting/session normalization is still in active integration.
 - Some Notion backfill paths depend on database sharing and integration access.
 - Private health and training data remain outside this public repository.

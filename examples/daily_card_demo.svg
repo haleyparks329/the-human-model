@@ -27,6 +27,6 @@
 <text x="80" y="902" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="400" fill="#0f172a">Start with the planned session, then let the first working</text>
 <text x="80" y="936" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="400" fill="#0f172a">set decide intensity.</text>
 <rect x="80" y="1010" width="740" height="90" rx="18" fill="#fffbeb"/>
-<text x="110" y="1050" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#92400e">This is mock data. In the private system, sync uncertainty</text>
-<text x="110" y="1078" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#92400e">is shown when health data is incomplete.</text>
+<text x="110" y="1050" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#92400e">This is mock data. In the live system, sync uncertainty is</text>
+<text x="110" y="1078" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#92400e">shown when health data is incomplete.</text>
 </svg>

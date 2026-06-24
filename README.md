@@ -41,7 +41,6 @@ Implemented so far:
 
 Current build work:
 
-- Body-measurement progress charts on the active dashboard branch
 - Structured dashboard backfill for Apple Health and training-plan data
 - Training-session summaries for volume, muscle groups, parse warnings, and review needs
 - A Bridget daily-card guard that waits for sleep data before sending automatic image summaries
@@ -85,7 +84,7 @@ Notable work:
 - Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
 - Baseline readiness-modeling layer: daily feature generation, transparent heuristic scoring, report generation, tests, and a standalone dashboard page
 - Readiness vs Actual training-output review using Apple Watch workout duration/type, active energy, model output, and recent alignment labels
-- Active dashboard branch work for body-measurement trend charts and structured training-session summaries
+- Body-measurement trend charts and active work on structured training-session summaries
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
 ### Human Model Chatbot
