@@ -1,6 +1,6 @@
 # Implementation Progress
 
-Last updated: 2026-06-23.
+Last updated: 2026-06-28.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
@@ -22,12 +22,14 @@ Implemented:
 - Body-measurement progress charts
 - Standalone readiness-modeling layer with daily feature generation, a transparent baseline model, report generation, tests, and a dashboard page
 - Readiness vs Actual training-output review that compares baseline readiness calls with Apple Watch movement output
+- Local MediaPipe movement-quality pipeline for RDL video, including pose extraction, rep metrics, annotated playback, and dashboard review flags
 
 Remaining active integration work reviewed:
 
 - Structured lifting schema for sessions, exercises, sets, and training-plan days
 - Structured training-session summaries for exercise count, work sets, volume load, muscle groups, parse warnings, weekly volume, and progression signals
 - Dashboard V2 API/UI payload for today's lift call, evidence stack, risk/progression cards, weekly training strip, recent-session detail, and recommendations
+- Broader integration between readiness, planned-vs-actual training review, and movement-quality signals
 
 Key commits reviewed:
 
@@ -39,6 +41,8 @@ Key commits reviewed:
 - `1ac8be43` - Add body measurement progress charts
 - `a6bf60d7` - Add standalone readiness model dashboard
 - `fd259d2d` - Add readiness vs training output review
+- `f13993f2` - Add local MediaPipe form analysis pipeline
+- `ce2d810e` - Add movement quality dashboard
 
 ## Chatbot Repo
 
@@ -64,6 +68,9 @@ Implemented:
 - Bridget rhythm prompts and preference calibration
 - Bridget planned-workout logging for lower-typing training follow-up
 - Bridget daily card generation for a chat-friendly readiness summary
+- Append-only Bridget training event ledger for planned-vs-actual review
+- Modular app, integration, pipeline, and storage boundaries for the chatbot layer
+- Telegram workout file exchange for sending and importing structured workout spreadsheets
 - Unit tests for core parser and scheduling behavior
 
 Key commits reviewed:
@@ -82,6 +89,10 @@ Key commits reviewed:
 - `38c59a3` - Add Bridget rhythm prompts and readiness tracking
 - `313ecc6` - Add planned Bridget workout logging
 - `7bcde69` - Add Bridget daily card
+- `7543262` - Add Bridget workout recommendation ledger
+- `0101607` - Add modular Human Model pipeline foundation
+- `0a1aee7` - Wire workout file exchange into Telegram
+- `49d5cbc` - Document pipeline boundaries and future matching
 
 ## Current Working System
 
@@ -101,6 +112,7 @@ The current system can:
 12. Build daily modeling features, score a baseline readiness model, generate a readable report, and expose the model output in a standalone local dashboard view.
 13. Import Apple Watch workout and active-energy rows into SQLite for training-output context.
 14. Review whether the readiness call aligned with actual movement output through the dashboard's Readiness vs Actual view.
+15. Analyze a local RDL video into rep-level movement-quality metrics and inspect the results through a dashboard review page.
 
 ## Coach Dashboard V1 Screenshots
 
@@ -124,15 +136,16 @@ Included examples:
 - A dependency-light SVG daily card renderer for a chat-friendly readiness summary
 - Dashboard data shaping for body trend deltas, training session volume, weekly load, parse warnings, progression signals, and import health
 - Baseline readiness modeling with personal HRV/resting-HR baselines, data-quality labels, limiting factors, and report-style output
+- Movement-quality interpretation with mock rep traces, range-of-motion flags, tempo checks, and set-level review wording
 
 ## What Is Still Early
 
 - The readiness model is a transparent V0 baseline, not a validated predictive model.
 - Coach Dashboard V1 exists, but it is still a local working dashboard rather than a polished product.
-- Structured dashboard backfill/session work is under active local integration and should be treated as in progress until it lands cleanly.
+- Structured dashboard backfill/session work is partly implemented and still being hardened across training-plan and session-detail paths.
 - Notion Weekly Review historical backfill is blocked until the database is shared with the integration or replaced with a confirmed ID.
 - Analytics notebooks are still future work.
-- Movement-quality sensing is planned but not implemented yet.
+- Movement-quality analysis has a first local computer-vision prototype, but it is narrow, exercise-specific, and not yet a generalized sensing system.
 - Recommendations are intentionally limited until the data spine has enough real use.
 - Private health/training data lives in Notion and local files, not in public GitHub.
 
@@ -152,7 +165,8 @@ project concept
 -> Bridget daily cards
 -> local dashboard, readiness data model, structured trend/session summaries, and transparent baseline modeling
 -> Apple Watch movement-output review against readiness calls
--> future calibration, stronger analytics, and sensing
+-> local movement-quality prototype for explainable rep review
+-> future calibration, stronger analytics, and broader sensing
 ```
 
 That path shows practical systems integration around a real personal workflow.

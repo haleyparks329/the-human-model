@@ -15,6 +15,8 @@ prototype:
 - `dashboard_data_shaping_demo.py` shows dashboard aggregation for body trends,
   training-session summaries, weekly volume, parse warnings, progression
   signals, and import health.
+- `movement_quality_demo.py` shows how rep-level movement metrics can become
+  explainable dashboard flags without publishing video or pose data.
 
 Run all examples:
 
@@ -24,6 +26,7 @@ python3 examples/readiness_modeling_demo.py
 python3 examples/bridget_prompt_demo.py
 python3 examples/daily_card_demo.py
 python3 examples/dashboard_data_shaping_demo.py
+python3 examples/movement_quality_demo.py
 ```
 
 Run tests:

@@ -14,6 +14,7 @@ Implemented:
 - Body measurement trends from imported and app-entered records
 - Body-measurement progress charts
 - Apple Watch workout and active-energy context for Readiness vs Actual review
+- Movement-quality review for a first RDL video-analysis prototype
 - Signal health for Notion sync and backfill jobs
 - Weekly review creation/edit surface
 
@@ -35,7 +36,7 @@ The dashboard lives in the foundation repo and uses:
 
 The V1 design priority is operational usefulness: one place to see the current call, the evidence behind it, and whether the data feeding the system is trustworthy. Bridget remains the daily delivery surface; the dashboard is the deeper review and audit layer.
 
-Recent committed work adds Apple Watch workout and active-energy import plus a Readiness vs Actual review. Active integration work is making the dashboard less like a raw table viewer and more like a coaching data spine, with structured lifting tables, training-plan import, dashboard V2 payloads, and richer session-detail panels still being hardened.
+Recent committed work adds Apple Watch workout and active-energy import, a Readiness vs Actual review, and a first movement-quality dashboard for local RDL analysis. Active integration work is making the dashboard less like a raw table viewer and more like a coaching data spine, with structured lifting tables, training-plan import, dashboard V2 payloads, richer session-detail panels, and broader movement context still being hardened.
 
 ## Screenshots
 
@@ -72,5 +73,6 @@ Recent committed work adds Apple Watch workout and active-energy import plus a R
 - The dashboard is still local-only.
 - The readiness call is a V1 interpretation layer, not a validated predictive model.
 - Structured lifting/session normalization is still in active integration.
+- Movement analysis is narrow and exercise-specific; it should be read as review evidence, not automated technique coaching.
 - Some Notion backfill paths depend on database sharing and integration access.
 - Private health and training data remain outside this public repository.

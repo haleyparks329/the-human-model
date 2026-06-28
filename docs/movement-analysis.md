@@ -28,28 +28,34 @@ That distinction matters for:
 - Performance consistency
 - Human-machine interaction
 
-## Future Workflow
+## Current Prototype
+
+A first local computer-vision prototype now exists for one narrow movement-analysis use case: Romanian deadlift review. The private implementation uses MediaPipe-derived pose landmarks to create rep-level metrics, annotated playback, angle trends, and explainable dashboard flags.
+
+This is useful implementation progress, but it is not a generalized movement coach. The current value is narrower and more honest: turn a single exercise video into reviewable evidence about range of motion, tempo, tracking quality, and consistency.
+
+## Workflow
 
 ```text
-capture movement
--> extract signal
--> identify movement features
--> compare across reps or sessions
--> provide feedback
+exercise video
+-> pose landmarks and angle traces
+-> rep-level metrics
+-> annotated playback and dashboard flags
+-> review alongside recovery and training context
 ```
 
-The first practical prototype will likely use a simple IMU-based joint angle tracker before expanding into richer sensing or computer vision.
+The longer-term sensing path may still include a simple IMU-based joint angle tracker, VBT-style output tests, or other sensors. The current landed prototype starts with computer vision because it can reuse normal training video without requiring new hardware.
 
 Recent VBT research adds an intermediate option: a controlled output test that asks whether today's physical output is above, near, or below the personal baseline. That could be a bar-speed test, jump test, or simple movable-pod protocol before the system attempts broad exercise-quality coverage.
 
 ## Relationship to Current Work
 
-Movement analysis is not implemented yet. The current recovery and training-log work is building the context layer that movement data will eventually connect to:
+Movement analysis is now connected to the same product direction as readiness and training review:
 
 - Recovery state before the session
 - Training plan and exercise selection
 - Logged sets, reps, load, and notes
 - Readiness state and data freshness from Coach Dashboard V1
-- Future movement-quality features such as ROM, tempo, and fatigue drift
+- Movement-quality features such as ROM, tempo, tracking confidence, and fatigue drift
 
-The first movement prototype should answer one narrow question well, such as whether range of motion or tempo changes across a set.
+The next useful step is not a broader claim. It is to test whether this narrow movement signal helps explain real training decisions better than load/reps alone.

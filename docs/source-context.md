@@ -15,6 +15,7 @@ Some links may require access. The public overview is designed to stand on its o
 - [Product Research](https://app.notion.com/p/37bcf4d8ba1880d0be52c355b2947695)
 - [Competitive Teardown](https://app.notion.com/p/37bcf4d8ba1880daba34d201c8a62181)
 - [VBT Product Research](https://app.notion.com/p/37dcf4d8ba188170a1b6ec3b4ada0465)
+- Live Project Log updates titled "Movement Quality Enters the Dashboard" and "Bridget Gets a Modular Spine"
 
 ## Repositories Reviewed
 
@@ -33,6 +34,8 @@ Main repo:
 - `59523704` - Add local coach dashboard app
 - `a6bf60d7` - Add standalone readiness model dashboard
 - `fd259d2d` - Add readiness vs training output review
+- `f13993f2` - Add local MediaPipe form analysis pipeline
+- `ce2d810e` - Add movement quality dashboard
 
 Chatbot repo:
 
@@ -47,12 +50,22 @@ Chatbot repo:
 - `68b54d3` - Add copy-forward workout logging
 - `a69448e` - Support non-numeric workout loads
 - `0bbc1c7` - Support workout notes in Telegram logging
+- `7543262` - Add Bridget workout recommendation ledger
+- `0101607` - Add modular Human Model pipeline foundation
+- `0a1aee7` - Wire workout file exchange into Telegram
+- `49d5cbc` - Document pipeline boundaries and future matching
 
 Foundation work reviewed on 2026-06-23:
 
 - Apple Watch workout and active-energy import path for training-output context
 - Training output dashboard view connecting readiness calls, watch movement output, and recent alignment labels
 - Additional modeling feature/report updates around readiness quality and daily output review
+
+Additional work reviewed on 2026-06-28:
+
+- Local MediaPipe movement-quality pipeline and dashboard page for RDL review
+- Bridget modularization across app, integration, pipeline, and storage boundaries
+- Telegram workout file exchange and future matching boundaries
 
 ## Public/Private Boundary
 
