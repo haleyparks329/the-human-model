@@ -27,6 +27,7 @@ flowchart TD
     D1[Weekly review] --> D
     D2[Coach Dashboard V1] --> D
     D3[Baseline readiness modeling] --> D
+    D5[Movement-quality review] --> D
     D4[Future notebooks] --> D
 ```
 
@@ -46,6 +47,8 @@ It is responsible for:
 - Future notebooks, dashboards, and hardware notes
 
 The repo now also contains the first local Coach Dashboard V1 app and a standalone readiness-modeling layer. For the dashboard, SQLite is the canonical local store and Notion is treated as a mirror, review, and selected manual-input layer. The modeling layer builds daily features, scores a transparent baseline model, and writes reviewable outputs before any LLM explanation layer touches the result.
+
+The foundation repo also now holds a narrow movement-quality prototype. The current implementation is local, exercise-specific, and review-oriented: it extracts pose-derived RDL metrics, annotates video, and exposes dashboard flags without turning those flags into automated coaching claims.
 
 ### `human-model-chatbot`
 
@@ -77,6 +80,7 @@ This repo is the public narrative layer. It explains the system, implementation 
 - FastAPI backend for the local dashboard
 - Next.js frontend for the local dashboard UI
 - Transparent readiness-modeling scripts for feature generation, baseline scoring, and report output
+- Local MediaPipe movement-analysis scripts and dashboard review endpoints
 - Health Auto Export for Apple Health JSON exports
 - Apple Vision/OCR flow through the Zenfit importer
 - macOS `launchd` for local scheduled automation
@@ -141,6 +145,15 @@ Baseline readiness call + Apple Watch movement output
 -> alignment label
 -> recent 14-day review table
 -> calibration questions for later model improvement
+```
+
+### Movement-Quality Review
+
+```text
+RDL training video
+-> pose landmarks and rep metrics
+-> annotated playback, angle trends, and explainable flags
+-> dashboard review alongside readiness and training context
 ```
 
 See [Coach Dashboard V1](coach-dashboard-v1.md) for the current local UI screenshots.

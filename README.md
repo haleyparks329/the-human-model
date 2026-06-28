@@ -38,12 +38,13 @@ Implemented so far:
 - Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
 - Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions auditable rather than LLM-generated
 - Apple Watch workout and active-energy import for training-output context, plus a dashboard review comparing readiness calls with actual movement output
+- Local movement-quality prototype for RDL video analysis, with MediaPipe-derived rep metrics, annotated playback, angle trends, and dashboard review flags
 
 Current build work:
 
-- Structured dashboard backfill for Apple Health and training-plan data
-- Training-session summaries for volume, muscle groups, parse warnings, and review needs
-- A Bridget daily-card guard that waits for sleep data before sending automatic image summaries
+- Hardening structured dashboard backfill for Apple Health, training-plan, and session-detail data
+- Integrating movement-quality results into the broader readiness and training review loop
+- Continuing to separate the Bridget prototype into clearer app, pipeline, storage, and integration boundaries
 
 Current focus:
 
@@ -52,7 +53,7 @@ Current focus:
 - Keep Bridget useful as the low-friction daily surface
 - Make the local dashboard useful as the weekly/deeper review surface
 - Connect readiness, training context, and data freshness without overstating recommendation quality
-- Prepare the next movement-quality prototype around IMU or output-sensing experiments
+- Keep movement analysis explainable before treating it as coaching intelligence
 
 ## Public Code Examples
 
@@ -63,6 +64,7 @@ This repo includes small, sanitized examples extracted from the private working 
 - [Bridget prompt demo](examples/bridget_prompt_demo.py)
 - [Daily card demo](examples/daily_card_demo.py)
 - [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
+- [Movement-quality demo](examples/movement_quality_demo.py)
 
 The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
 
@@ -84,6 +86,7 @@ Notable work:
 - Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
 - Baseline readiness-modeling layer: daily feature generation, transparent heuristic scoring, report generation, tests, and a standalone dashboard page
 - Readiness vs Actual training-output review using Apple Watch workout duration/type, active energy, model output, and recent alignment labels
+- Local MediaPipe movement-quality pipeline for RDL analysis, including rep-level metrics, annotated video output, and a dashboard page for explainable flags
 - Body-measurement trend charts and active work on structured training-session summaries
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
@@ -104,6 +107,7 @@ Notable work:
 - Copy-forward workout logging for stable training templates
 - Flexible workout parsing for per-set weights, non-numeric loads, workout notes, and month-name dates
 - Bridget rhythm prompts, preference calibration, daily card generation, and planned-workout follow-up logic
+- Modular app, pipeline, storage, and integration boundaries for Bridget, including workout file exchange and future sensor/data matching
 - Unit tests for parser, scheduling, and data edge cases
 
 ## System Concept

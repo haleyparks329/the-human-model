@@ -59,12 +59,14 @@ Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQ
 
 ## Phase 5: Movement Quality Prototype
 
-Status: planned.
+Status: started with a narrow local computer-vision prototype.
 
-- Build a simple IMU joint angle tracker
-- Log movement data
-- Estimate range of motion and rep timing
-- Explore tempo consistency and fatigue drift
+- Build a local MediaPipe-based RDL analysis pipeline
+- Log rep-level movement metrics
+- Estimate range of motion, rep timing, tracking quality, and consistency
+- Review annotated playback and dashboard flags
+- Explore tempo consistency and fatigue drift across sets
+- Build a simple IMU joint angle tracker if direct sensor data becomes more useful than video
 - Evaluate a VBT-inspired output test, such as bar speed or a controlled jump/pod protocol, as an intermediate performance signal
 - Compare movement-quality features across sessions
 
@@ -86,9 +88,9 @@ Status: future.
 ## Near-Term Next Steps
 
 - Keep the morning recovery loop stable in daily use.
-- Finish and commit the structured lifting and dashboard V2 integration after local verification.
-- Finish committing and verifying the chatbot readiness writeback path.
+- Harden the structured lifting and dashboard V2 integration after local verification.
+- Keep the modular Bridget pipeline boundaries stable while adding new evidence sources.
 - Use Coach Dashboard V1 and the baseline modeling layer against real recovery/training rows, then tighten data freshness and calibration states.
 - Resolve Notion Weekly Review access or keep that dashboard section visibly blocked.
-- Decide whether the next prototype should be VBT-inspired output testing, IMU movement sensing, or dashboard analytics hardening.
+- Decide whether the next movement iteration should deepen video analysis, add VBT-inspired output testing, or test IMU movement sensing.
 - Keep public docs current as implementation changes land.

@@ -40,6 +40,12 @@ from readiness_modeling_demo import (  # noqa: E402
     sample_history as modeling_sample_history,
     score_day,
 )
+from movement_quality_demo import (  # noqa: E402
+    RepTrace,
+    sample_reps,
+    set_quality_summary,
+    summarize_rep,
+)
 
 
 class ReadinessScoringDemoTests(unittest.TestCase):
@@ -173,6 +179,23 @@ class ReadinessModelingDemoTests(unittest.TestCase):
         target = DailyFeature("2026-06-23", 6.4, 72, 54, None, None, None, True, 410, 45)
 
         self.assertIn("45 min workout", movement_output_summary(target))
+
+
+class MovementQualityDemoTests(unittest.TestCase):
+    def test_rep_summary_flags_short_range_and_fast_tempo(self):
+        quality = summarize_rep(RepTrace(1, (160, 148, 130, 126, 140, 158), 2.0, 0.92))
+
+        self.assertEqual(quality.range_of_motion, 34)
+        self.assertIn("short range of motion", quality.flags)
+        self.assertIn("fast tempo", quality.flags)
+
+    def test_set_summary_keeps_movement_as_review_context(self):
+        summary = set_quality_summary(sample_reps())
+
+        self.assertEqual(summary["rep_count"], 3)
+        self.assertTrue(summary["needs_review"])
+        self.assertIn("short range of motion", summary["flags"])
+        self.assertIn("review", summary["interpretation"].lower())
 
 
 if __name__ == "__main__":
