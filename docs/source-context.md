@@ -2,19 +2,19 @@
 
 This overview was synthesized from active project repositories, GitHub commit history, and private Notion planning pages available during setup.
 
-Some links may require access. The public overview is designed to stand on its own even when implementation details depend on private Notion databases or local health/training data.
+The public overview is designed to stand on its own even when implementation details depend on private Notion databases or local health/training data.
 
 ## Notion Pages Reviewed
 
-- [The Human Model Notion overview](https://www.notion.so/350cf4d8ba18802db664cb170a45248a)
-- [Evolution of the Idea](https://app.notion.com/p/37acf4d8ba1881b1a5c3c0a56e9262b2)
-- [Long-Term Expansion Path](https://app.notion.com/p/37acf4d8ba18817ab88ac9307f00aade)
-- [Next Sprint: Recovery Tracking V1](https://www.notion.so/35ecf4d8ba1881cc8b52f397187ded25)
-- [Next Sprint: Recovery Loop Review V1](https://app.notion.com/p/367cf4d8ba18810fa13dd79471d333fd)
-- [Coach Dashboard V1](https://app.notion.com/p/37bcf4d8ba1881d28a0bc7658ccdcbe3)
-- [Product Research](https://app.notion.com/p/37bcf4d8ba1880d0be52c355b2947695)
-- [Competitive Teardown](https://app.notion.com/p/37bcf4d8ba1880daba34d201c8a62181)
-- [VBT Product Research](https://app.notion.com/p/37dcf4d8ba188170a1b6ec3b4ada0465)
+- The Human Model overview
+- Evolution of the Idea
+- Long-Term Expansion Path
+- Next Sprint: Recovery Tracking V1
+- Next Sprint: Recovery Loop Review V1
+- Coach Dashboard V1
+- Product Research
+- Competitive Teardown
+- VBT Product Research
 - Live Project Log updates titled "Movement Quality Enters the Dashboard" and "Bridget Gets a Modular Spine"
 
 ## Repositories Reviewed
