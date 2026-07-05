@@ -37,12 +37,14 @@ Implemented so far:
 - Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
 - Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
 - Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions auditable rather than LLM-generated
+- Training-load modeling pipeline with normalized load features, set-role-aware evaluation, and guarded next-session weight recommendations
 - Apple Watch workout and active-energy import for training-output context, plus a dashboard review comparing readiness calls with actual movement output
 - Local movement-quality prototype for RDL video analysis, with MediaPipe-derived rep metrics, annotated playback, angle trends, and dashboard review flags
 
 Current build work:
 
 - Hardening structured dashboard backfill for Apple Health, training-plan, and session-detail data
+- Keeping Bridget's editable workout-sheet flow connected to guarded model recommendations, including workout order, suggested reps, and rows the model cannot predict cleanly yet
 - Integrating movement-quality results into the broader readiness and training review loop
 - Continuing to separate the Bridget prototype into clearer app, pipeline, storage, and integration boundaries
 
@@ -65,8 +67,13 @@ This repo includes small, sanitized examples extracted from the private working 
 - [Daily card demo](examples/daily_card_demo.py)
 - [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
 - [Movement-quality demo](examples/movement_quality_demo.py)
+- [Training prediction sheet demo](examples/training_prediction_sheet_demo.py)
 
 The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
+
+## Demo Assets
+
+- [MediaPipe RDL form demo](demo/mediapipe-rdl-form/) shows an early screen recording of the local RDL movement-analysis prototype with pose overlay and charted movement signal.
 
 ## Project Repositories
 
@@ -85,6 +92,7 @@ Notable work:
 - Weekly Review V1
 - Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
 - Baseline readiness-modeling layer: daily feature generation, transparent heuristic scoring, report generation, tests, and a standalone dashboard page
+- Training-load modeling layer: normalized load history, set-role-aware evaluation, and guarded next-session recommendation outputs
 - Readiness vs Actual training-output review using Apple Watch workout duration/type, active energy, model output, and recent alignment labels
 - Local MediaPipe movement-quality pipeline for RDL analysis, including rep-level metrics, annotated video output, and a dashboard page for explainable flags
 - Body-measurement trend charts and active work on structured training-session summaries
@@ -107,6 +115,7 @@ Notable work:
 - Copy-forward workout logging for stable training templates
 - Flexible workout parsing for per-set weights, non-numeric loads, workout notes, and month-name dates
 - Bridget rhythm prompts, preference calibration, daily card generation, and planned-workout follow-up logic
+- Bridget V2 training recommendations that read the model's next-session prediction output and send an editable workout sheet plus separate model/debug CSV
 - Modular app, pipeline, storage, and integration boundaries for Bridget, including workout file exchange and future sensor/data matching
 - Unit tests for parser, scheduling, and data edge cases
 

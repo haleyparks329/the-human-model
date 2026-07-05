@@ -48,6 +48,8 @@ It is responsible for:
 
 The repo now also contains the first local Coach Dashboard V1 app and a standalone readiness-modeling layer. For the dashboard, SQLite is the canonical local store and Notion is treated as a mirror, review, and selected manual-input layer. The modeling layer builds daily features, scores a transparent baseline model, and writes reviewable outputs before any LLM explanation layer touches the result.
 
+The foundation repo also contains the training-load modeling pipeline. It normalizes historical load conventions, evaluates set-role-aware predictions, and writes guarded next-session recommendation files that downstream tools can inspect or attach.
+
 The foundation repo also now holds a narrow movement-quality prototype. The current implementation is local, exercise-specific, and review-oriented: it extracts pose-derived RDL metrics, annotates video, and exposes dashboard flags without turning those flags into automated coaching claims.
 
 ### `human-model-chatbot`
@@ -65,6 +67,7 @@ It is responsible for:
 - Running local scheduled jobs through macOS `launchd`
 - Supporting Telegram workout logging, copy-forward templates, flexible load parsing, workout notes, and Bridget daily cards
 - Supporting Bridget readiness context and daily-card behavior
+- Reading training-load prediction output and sending editable workout sheets while keeping model/debug files separate from training notes
 
 ### `the-human-model-overview`
 
@@ -80,6 +83,7 @@ This repo is the public narrative layer. It explains the system, implementation 
 - FastAPI backend for the local dashboard
 - Next.js frontend for the local dashboard UI
 - Transparent readiness-modeling scripts for feature generation, baseline scoring, and report output
+- Training-load modeling scripts for normalized load history, set-role-aware evaluation, and guarded next-session recommendations
 - Local MediaPipe movement-analysis scripts and dashboard review endpoints
 - Health Auto Export for Apple Health JSON exports
 - Apple Vision/OCR flow through the Zenfit importer
@@ -136,6 +140,16 @@ Health sync + readiness context + Bridget state
 -> chat-friendly image and short prompt
 -> one small reply or correction
 -> updated context for later review
+```
+
+### Training Prediction Loop
+
+```text
+historical workout rows
+-> normalized load and set-role features
+-> guarded next-session recommendation file
+-> Bridget pre-gym summary and editable workout sheet
+-> actual weights, reps, and notes for later model review
 ```
 
 ### Readiness vs Actual Review

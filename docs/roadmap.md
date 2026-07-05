@@ -41,7 +41,7 @@ Status: implemented for core capture paths and still being hardened.
 
 ## Phase 4: Analytics
 
-Status: started, with the first local dashboard, transparent readiness baseline, readiness-vs-output review, and first movement-quality prototype implemented.
+Status: started, with the first local dashboard, transparent readiness baseline, readiness-vs-output review, guarded training-load recommendations, and first movement-quality prototype implemented.
 
 - Export or query structured recovery/training data
 - Build first local dashboard
@@ -51,12 +51,14 @@ Status: started, with the first local dashboard, transparent readiness baseline,
 - Import Apple Watch workout duration, workout type, and daily active energy as training-output context
 - Compare readiness model calls with actual movement output in the dashboard
 - Build a dashboard V2 payload that combines readiness, weekly volume, recent session detail, review warnings, and progression signals
+- Generate guarded next-session training-load recommendations from historical workout rows
+- Keep model/debug predictions separate from editable workout sheets used for real training notes
 - Add a local MediaPipe/RDL movement-quality review surface
 - Analyze recovery and training trends
 - Compare subjective recovery with performance outputs
 - Identify useful weekly review metrics
 
-Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. The first standalone readiness-modeling layer has landed as a transparent V0 baseline, the dashboard now has Apple Watch movement-output context for Readiness vs Actual review, and movement-quality review has started with a local MediaPipe/RDL prototype. Structured lifting, dashboard V2 data shaping, and generalized movement analysis remain active local integration work, not public release claims yet.
+Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. The first standalone readiness-modeling layer has landed as a transparent V0 baseline, the dashboard now has Apple Watch movement-output context for Readiness vs Actual review, training-load modeling now produces guarded next-session recommendations, and movement-quality review has started with a local MediaPipe/RDL prototype. Structured lifting, dashboard V2 data shaping, stronger recommendation calibration, and generalized movement analysis remain active local integration work, not public release claims yet.
 
 ## Phase 5: Movement Quality Prototype
 
@@ -91,6 +93,7 @@ Status: future.
 - Keep the morning recovery loop stable in daily use.
 - Harden the structured lifting and dashboard V2 integration after local verification.
 - Keep the modular Bridget pipeline boundaries stable while adding new evidence sources.
+- Review Bridget's generated workout sheets against actual training results before treating recommendations as more than cautious suggestions.
 - Use Coach Dashboard V1 and the baseline modeling layer against real recovery/training rows, then tighten data freshness and calibration states.
 - Resolve Notion Weekly Review access or keep that dashboard section visibly blocked.
 - Decide whether the next movement iteration should deepen video analysis, add VBT-inspired output testing, or test IMU movement sensing.
