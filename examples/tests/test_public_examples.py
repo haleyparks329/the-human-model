@@ -46,6 +46,12 @@ from movement_quality_demo import (  # noqa: E402
     set_quality_summary,
     summarize_rep,
 )
+from training_prediction_sheet_demo import (  # noqa: E402
+    build_editable_workout_sheet,
+    sample_exercise_order,
+    sample_predictions,
+    summarize_sheet,
+)
 
 
 class ReadinessScoringDemoTests(unittest.TestCase):
@@ -196,6 +202,45 @@ class MovementQualityDemoTests(unittest.TestCase):
         self.assertTrue(summary["needs_review"])
         self.assertIn("short range of motion", summary["flags"])
         self.assertIn("review", summary["interpretation"].lower())
+
+
+class TrainingPredictionSheetDemoTests(unittest.TestCase):
+    def test_sheet_preserves_plan_order_reps_and_non_modelable_loads(self):
+        rows = build_editable_workout_sheet(
+            sample_predictions(),
+            sample_exercise_order(),
+            target_date="2026-07-05",
+            workout_name="Delts",
+        )
+
+        self.assertEqual(
+            [row["exercise"] for row in rows],
+            [
+                "Smith Machine Incline Bench Press",
+                "Incline One Arm Dumbbell Front Raise",
+                "Smith Machine Shoulder Press",
+                "Smith Machine Shoulder Press",
+            ],
+        )
+        self.assertEqual(rows[0]["exercise_order"], "1")
+        self.assertEqual(rows[0]["recommended_reps"], "10")
+        self.assertEqual(rows[2]["recommended_weight_kg"], "machine weight")
+        self.assertEqual(rows[2]["actual_weight_kg"], "")
+
+    def test_sheet_summary_surfaces_guardrails_for_review(self):
+        rows = build_editable_workout_sheet(
+            sample_predictions(),
+            sample_exercise_order(),
+            target_date="2026-07-05",
+            workout_name="Delts",
+        )
+        summary = summarize_sheet(rows)
+
+        self.assertTrue(summary["ready_for_bridget"])
+        self.assertEqual(summary["set_count"], 4)
+        self.assertEqual(summary["exercise_count"], 3)
+        self.assertEqual(summary["guardrails_applied"], ["warmup_preserved"])
+        self.assertEqual(summary["non_modelable_loads"], ("Smith Machine Shoulder Press",))
 
 
 if __name__ == "__main__":

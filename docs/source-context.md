@@ -16,6 +16,9 @@ The public overview is designed to stand on its own even when implementation det
 - Competitive Teardown
 - VBT Product Research
 - Live Project Log updates titled "Movement Quality Enters the Dashboard" and "Bridget Gets a Modular Spine"
+- Tone and Identity guidance for public Human Model voice and confidence calibration
+- Current Systems pages for Bridget and Predictive Models
+- Live Project Log updates titled "Bridget Can Use Training Predictions" and "Workout Sheets Become Editable"
 
 ## Repositories Reviewed
 
@@ -36,6 +39,8 @@ Main repo:
 - `fd259d2d` - Add readiness vs training output review
 - `f13993f2` - Add local MediaPipe form analysis pipeline
 - `ce2d810e` - Add movement quality dashboard
+- `97490d3f` - Add set-role V2 training load reports
+- `c56319f8` - Add guarded next-session recommendations
 
 Chatbot repo:
 
@@ -54,6 +59,8 @@ Chatbot repo:
 - `0101607` - Add modular Human Model pipeline foundation
 - `0a1aee7` - Wire workout file exchange into Telegram
 - `49d5cbc` - Document pipeline boundaries and future matching
+- `e69d547` - Add Bridget V2 training recommendations
+- `6cf6467` - Import generated workout sheets
 
 Foundation work reviewed on 2026-06-23:
 
@@ -66,6 +73,19 @@ Additional work reviewed on 2026-06-28:
 - Local MediaPipe movement-quality pipeline and dashboard page for RDL review
 - Bridget modularization across app, integration, pipeline, and storage boundaries
 - Telegram workout file exchange and future matching boundaries
+
+Additional work reviewed on 2026-07-02:
+
+- Training-load model V2 reports using set-role features
+- Guarded next-session recommendations that preserve warmup/feeder logic, progression floors, and set ordering
+- Bridget pre-gym recommendation flow with editable workout sheets and separate model/debug prediction files
+- Public Tone and Identity guidance emphasizing confidence without exaggeration
+
+Additional local diffs reviewed on 2026-07-05:
+
+- Training prediction generation preserving raw exercise order so generated sheets can follow the planned workout instead of model output order alone
+- Bridget workout-sheet parsing preserving suggested reps and text-only load notes, such as machine-weight rows
+- Workout-sheet import tests covering ordered exercises, retained non-modelable rows, and separate actual-vs-recommended fields
 
 ## Public/Private Boundary
 

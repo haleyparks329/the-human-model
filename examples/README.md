@@ -17,6 +17,9 @@ prototype:
   signals, and import health.
 - `movement_quality_demo.py` shows how rep-level movement metrics can become
   explainable dashboard flags without publishing video or pose data.
+- `training_prediction_sheet_demo.py` shows how guarded model output becomes an
+  editable Bridget workout sheet while preserving order, reps, and qualitative
+  loads.
 
 Run all examples:
 
@@ -27,6 +30,7 @@ python3 examples/bridget_prompt_demo.py
 python3 examples/daily_card_demo.py
 python3 examples/dashboard_data_shaping_demo.py
 python3 examples/movement_quality_demo.py
+python3 examples/training_prediction_sheet_demo.py
 ```
 
 Run tests:

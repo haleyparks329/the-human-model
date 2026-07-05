@@ -34,6 +34,8 @@ A first local computer-vision prototype now exists for one narrow movement-analy
 
 This is useful implementation progress, but it is not a generalized movement coach. The current value is narrower and more honest: turn a single exercise video into reviewable evidence about range of motion, tempo, tracking quality, and consistency.
 
+Demo asset: [MediaPipe RDL form demo](../demo/mediapipe-rdl-form/) shows the early overlay and movement-chart view from the first prototype steps.
+
 ## Workflow
 
 ```text
