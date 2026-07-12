@@ -16,6 +16,7 @@ flowchart TD
     A3[Apple Watch metrics] --> A
     A6[Apple Watch workouts / active energy] --> A
     A4[Zenfit screenshots] --> A
+    A7[Training videos / media uploads] --> A
     A5[Future IMU / sensor data] --> A
 
     B1[Telegram chatbot] --> B
@@ -52,6 +53,8 @@ The foundation repo also contains the training-load modeling pipeline. It normal
 
 The foundation repo also now holds a narrow movement-quality prototype. The current implementation is local, exercise-specific, and review-oriented: it extracts pose-derived RDL metrics, annotates video, and exposes dashboard flags without turning those flags into automated coaching claims.
 
+Recent architecture work also defines a shared media-intake boundary for future desktop drops, Apple Shortcuts, Bridget uploads, and manual imports. That boundary is design-only today: it describes the canonical request shape, manifest/review records, dedupe strategy, metadata inference, and provider seams before live file movement or model routing is enabled.
+
 ### `human-model-chatbot`
 
 The chatbot repo is the capture and automation layer.
@@ -85,6 +88,7 @@ This repo is the public narrative layer. It explains the system, implementation 
 - Transparent readiness-modeling scripts for feature generation, baseline scoring, and report output
 - Training-load modeling scripts for normalized load history, set-role-aware evaluation, and guarded next-session recommendations
 - Local MediaPipe movement-analysis scripts and dashboard review endpoints
+- Design-only media-ingestion contracts for future local media review and routing
 - Health Auto Export for Apple Health JSON exports
 - Apple Vision/OCR flow through the Zenfit importer
 - macOS `launchd` for local scheduled automation
@@ -168,6 +172,15 @@ RDL training video
 -> pose landmarks and rep metrics
 -> annotated playback, angle trends, and explainable flags
 -> dashboard review alongside readiness and training context
+```
+
+### Media Intake Boundary
+
+```text
+desktop drop / shortcut / Bridget upload / manual import
+-> canonical intake request
+-> dedupe, metadata inference, manifest, and review queue
+-> later routing to movement-quality or body-progress analysis
 ```
 
 See [Coach Dashboard V1](coach-dashboard-v1.md) for the current local UI screenshots.

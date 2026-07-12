@@ -46,6 +46,13 @@ from movement_quality_demo import (  # noqa: E402
     set_quality_summary,
     summarize_rep,
 )
+from media_ingestion_router_demo import (  # noqa: E402
+    MediaIntakeRequest,
+    build_manifest,
+    infer_camera_view,
+    route_request,
+    sample_requests,
+)
 from training_prediction_sheet_demo import (  # noqa: E402
     build_editable_workout_sheet,
     sample_exercise_order,
@@ -241,6 +248,35 @@ class TrainingPredictionSheetDemoTests(unittest.TestCase):
         self.assertEqual(summary["exercise_count"], 3)
         self.assertEqual(summary["guardrails_applied"], ["warmup_preserved"])
         self.assertEqual(summary["non_modelable_loads"], ("Smith Machine Shoulder Press",))
+
+
+class MediaIngestionRouterDemoTests(unittest.TestCase):
+    def test_camera_view_inference_uses_filename_or_note(self):
+        self.assertEqual(infer_camera_view("2026-07-10_rdl_front_set1.mov"), "front")
+        self.assertEqual(infer_camera_view("clip.mov", "right side view"), "side")
+        self.assertEqual(infer_camera_view("clip.mov"), "unknown")
+
+    def test_manifest_routes_rdl_videos_and_marks_duplicates(self):
+        manifest = build_manifest(sample_requests())
+
+        self.assertEqual(manifest[0]["analysis_route"], "movement_quality_rdl")
+        self.assertEqual(manifest[0]["camera_view"], "side")
+        self.assertEqual(manifest[1]["camera_view"], "front")
+        self.assertEqual(manifest[2]["analysis_route"], "body_or_progress_review")
+        self.assertEqual(manifest[3]["review_status"], "duplicate")
+
+    def test_unsupported_files_are_blocked_before_analysis(self):
+        row = route_request(
+            MediaIntakeRequest(
+                source="manual",
+                filename="private_export.zip",
+                content_fingerprint="mock-export",
+                captured_at="2026-07-10T09:13:00",
+            )
+        )
+
+        self.assertEqual(row["media_kind"], "unsupported")
+        self.assertEqual(row["review_status"], "blocked")
 
 
 if __name__ == "__main__":
