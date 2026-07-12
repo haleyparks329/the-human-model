@@ -40,12 +40,14 @@ Implemented so far:
 - Training-load modeling pipeline with normalized load features, set-role-aware evaluation, and guarded next-session weight recommendations
 - Apple Watch workout and active-energy import for training-output context, plus a dashboard review comparing readiness calls with actual movement output
 - Local movement-quality prototype for RDL video analysis, with MediaPipe-derived rep metrics, annotated playback, angle trends, and dashboard review flags
+- Multi-angle RDL batch-analysis tooling that keeps each camera view as a separate observation and marks non-side views as experimental review context
 
 Current build work:
 
 - Hardening structured dashboard backfill for Apple Health, training-plan, and session-detail data
 - Keeping Bridget's editable workout-sheet flow connected to guarded model recommendations, including workout order, suggested reps, and rows the model cannot predict cleanly yet
 - Integrating movement-quality results into the broader readiness and training review loop
+- Designing a shared media-ingestion boundary for desktop drops, Apple Shortcuts, Bridget uploads, and manual review queues before wiring live file automation
 - Continuing to separate the Bridget prototype into clearer app, pipeline, storage, and integration boundaries
 
 Current focus:
@@ -68,6 +70,7 @@ This repo includes small, sanitized examples extracted from the private working 
 - [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
 - [Movement-quality demo](examples/movement_quality_demo.py)
 - [Training prediction sheet demo](examples/training_prediction_sheet_demo.py)
+- [Media ingestion router demo](examples/media_ingestion_router_demo.py)
 
 The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
 
@@ -95,7 +98,9 @@ Notable work:
 - Training-load modeling layer: normalized load history, set-role-aware evaluation, and guarded next-session recommendation outputs
 - Readiness vs Actual training-output review using Apple Watch workout duration/type, active energy, model output, and recent alignment labels
 - Local MediaPipe movement-quality pipeline for RDL analysis, including rep-level metrics, annotated video output, and a dashboard page for explainable flags
+- Multi-angle RDL batch analysis with filename-based view inference, metadata templates, per-view summary rows, and explicit limits for non-side camera views
 - Body-measurement trend charts and active work on structured training-session summaries
+- Design-only media-ingestion architecture for routing future desktop, shortcut, Bridget, and manual media uploads through one reviewable intake contract
 - Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
 
 ### Human Model Chatbot
@@ -159,6 +164,7 @@ The broader direction reaches into sports performance, physical therapy, rehabil
 - [Roadmap](docs/roadmap.md)
 - [Research Notes](docs/research-notes.md)
 - [Source Context](docs/source-context.md)
+- [Project Log Automation](docs/project-log-automation.md)
 
 ## What This Demonstrates
 

@@ -20,6 +20,8 @@ prototype:
 - `training_prediction_sheet_demo.py` shows how guarded model output becomes an
   editable Bridget workout sheet while preserving order, reps, and qualitative
   loads.
+- `media_ingestion_router_demo.py` shows how future media uploads can be
+  normalized into reviewable manifests without touching private files.
 
 Run all examples:
 
@@ -31,6 +33,7 @@ python3 examples/daily_card_demo.py
 python3 examples/dashboard_data_shaping_demo.py
 python3 examples/movement_quality_demo.py
 python3 examples/training_prediction_sheet_demo.py
+python3 examples/media_ingestion_router_demo.py
 ```
 
 Run tests:

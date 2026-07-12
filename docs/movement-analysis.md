@@ -32,7 +32,9 @@ That distinction matters for:
 
 A first local computer-vision prototype now exists for one narrow movement-analysis use case: Romanian deadlift review. The private implementation uses MediaPipe-derived pose landmarks to create rep-level metrics, annotated playback, angle trends, and explainable dashboard flags.
 
-This is useful implementation progress, but it is not a generalized movement coach. The current value is narrower and more honest: turn a single exercise video into reviewable evidence about range of motion, tempo, tracking quality, and consistency.
+The prototype now also includes multi-angle batch handling for RDL review. Each video remains its own view-specific observation, with camera view and side inferred from filenames or a small metadata file. Side-view and unknown-view clips can use the current hinge metrics; front, rear, and oblique clips are retained as review evidence but are not forced through side-view formulas.
+
+This is useful implementation progress, but it is not a generalized movement coach. The current value is narrower and more honest: turn exercise video into reviewable evidence about range of motion, tempo, tracking quality, camera context, and consistency.
 
 Demo asset: [MediaPipe RDL form demo](../demo/mediapipe-rdl-form/) shows the early overlay and movement-chart view from the first prototype steps.
 
@@ -44,6 +46,15 @@ exercise video
 -> rep-level metrics
 -> annotated playback and dashboard flags
 -> review alongside recovery and training context
+```
+
+For multi-angle sessions, the batch layer adds a provenance step before interpretation:
+
+```text
+camera-specific video files
+-> metadata template and filename-based view inference
+-> one summary row per video/view
+-> later comparison without averaging incompatible camera angles
 ```
 
 The longer-term sensing path may still include a simple IMU-based joint angle tracker, VBT-style output tests, or other sensors. The current landed prototype starts with computer vision because it can reuse normal training video without requiring new hardware.
@@ -59,5 +70,6 @@ Movement analysis is now connected to the same product direction as readiness an
 - Logged sets, reps, load, and notes
 - Readiness state and data freshness from Coach Dashboard V1
 - Movement-quality features such as ROM, tempo, tracking confidence, and fatigue drift
+- Camera-view provenance so front/rear/oblique evidence is stored without being treated as side-view hinge data
 
 The next useful step is not a broader claim. It is to test whether this narrow movement signal helps explain real training decisions better than load/reps alone.

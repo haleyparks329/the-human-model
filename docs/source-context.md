@@ -19,6 +19,9 @@ The public overview is designed to stand on its own even when implementation det
 - Tone and Identity guidance for public Human Model voice and confidence calibration
 - Current Systems pages for Bridget and Predictive Models
 - Live Project Log updates titled "Bridget Can Use Training Predictions" and "Workout Sheets Become Editable"
+- Live Project Log update titled "Public Overview Shows Training Predictions"
+- Live Project Log updates titled "Multi-Angle RDL Batch Analysis", "Media Ingestion Gets a Shared Boundary", and "Project Log Gets Public Boundaries"
+- Public project-log automation rule that `Summary` powers the standalone detail page while `Front Page Summary` powers the homepage card
 
 ## Repositories Reviewed
 
@@ -41,6 +44,8 @@ Main repo:
 - `ce2d810e` - Add movement quality dashboard
 - `97490d3f` - Add set-role V2 training load reports
 - `c56319f8` - Add guarded next-session recommendations
+- `105b7982` - Add multi-angle RDL batch analysis
+- `4388fd1b` - Update training prediction outputs
 
 Chatbot repo:
 
@@ -86,6 +91,13 @@ Additional local diffs reviewed on 2026-07-05:
 - Training prediction generation preserving raw exercise order so generated sheets can follow the planned workout instead of model output order alone
 - Bridget workout-sheet parsing preserving suggested reps and text-only load notes, such as machine-weight rows
 - Workout-sheet import tests covering ordered exercises, retained non-modelable rows, and separate actual-vs-recommended fields
+
+Additional work reviewed on 2026-07-12:
+
+- Multi-angle RDL batch analysis that preserves camera-view metadata, creates a metadata template, writes one summary row per video/view, and limits side-view hinge metrics to side/unknown views
+- Training prediction output refreshes through July 6, including updated history snapshots and workout-sheet artifacts
+- Design-only media-ingestion architecture for future desktop, shortcut, Bridget, and manual upload flows, with canonical requests, dedupe, manifests, review queues, and provider boundaries
+- Public Project Log automation documentation for the split between homepage summaries and full update-page summaries
 
 ## Public/Private Boundary
 

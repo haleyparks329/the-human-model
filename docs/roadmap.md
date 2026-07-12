@@ -41,7 +41,7 @@ Status: implemented for core capture paths and still being hardened.
 
 ## Phase 4: Analytics
 
-Status: started, with the first local dashboard, transparent readiness baseline, readiness-vs-output review, guarded training-load recommendations, and first movement-quality prototype implemented.
+Status: started, with the first local dashboard, transparent readiness baseline, readiness-vs-output review, guarded training-load recommendations, first movement-quality prototype, and a design-only media-ingestion boundary in place.
 
 - Export or query structured recovery/training data
 - Build first local dashboard
@@ -54,11 +54,13 @@ Status: started, with the first local dashboard, transparent readiness baseline,
 - Generate guarded next-session training-load recommendations from historical workout rows
 - Keep model/debug predictions separate from editable workout sheets used for real training notes
 - Add a local MediaPipe/RDL movement-quality review surface
+- Preserve camera-view provenance for multi-angle RDL batches instead of averaging incompatible views
+- Define a shared media-intake boundary before automating file movement, review queues, or analysis routing
 - Analyze recovery and training trends
 - Compare subjective recovery with performance outputs
 - Identify useful weekly review metrics
 
-Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. The first standalone readiness-modeling layer has landed as a transparent V0 baseline, the dashboard now has Apple Watch movement-output context for Readiness vs Actual review, training-load modeling now produces guarded next-session recommendations, and movement-quality review has started with a local MediaPipe/RDL prototype. Structured lifting, dashboard V2 data shaping, stronger recommendation calibration, and generalized movement analysis remain active local integration work, not public release claims yet.
+Current implementation note: Coach Dashboard V1 now exists as a local FastAPI/SQLite + Next.js app in the foundation repo. It is a working dashboard foundation, not a finished analytics product. The first standalone readiness-modeling layer has landed as a transparent V0 baseline, the dashboard now has Apple Watch movement-output context for Readiness vs Actual review, training-load modeling now produces guarded next-session recommendations, and movement-quality review has started with a local MediaPipe/RDL prototype. Multi-angle RDL batch handling and media-ingestion design are useful foundations, but generalized movement analysis and live media automation remain active local integration work, not public release claims yet.
 
 ## Phase 5: Movement Quality Prototype
 
@@ -69,6 +71,7 @@ Status: started with a narrow local computer-vision prototype.
 - Estimate range of motion, rep timing, tracking quality, and consistency
 - Review annotated playback and dashboard flags
 - Explore tempo consistency and fatigue drift across sets
+- Keep separate rows for each camera angle in multi-angle movement batches
 - Build a simple IMU joint angle tracker if direct sensor data becomes more useful than video
 - Evaluate a VBT-inspired output test, such as bar speed or a controlled jump/pod protocol, as an intermediate performance signal
 - Compare movement-quality features across sessions
@@ -97,4 +100,5 @@ Status: future.
 - Use Coach Dashboard V1 and the baseline modeling layer against real recovery/training rows, then tighten data freshness and calibration states.
 - Resolve Notion Weekly Review access or keep that dashboard section visibly blocked.
 - Decide whether the next movement iteration should deepen video analysis, add VBT-inspired output testing, or test IMU movement sensing.
+- Turn the media-ingestion boundary into a live workflow only after privacy, dedupe, and manual-review behavior are proven.
 - Keep public docs current as implementation changes land.
