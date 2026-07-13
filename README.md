@@ -1,67 +1,100 @@
 # The Human Model
 
-The Human Model is an independent human-performance systems project that turns recovery, training, Apple Watch, and natural-language check-in data into usable feedback loops.
+The Human Model is a public research and product repository for building personalized computational models of recovery, training, movement, behavior, and response to intervention.
 
-The short version: I am building an n=1 performance lab with a Telegram coaching surface, Apple Health imports, a local Coach Dashboard, and transparent readiness modeling that can be audited before it becomes a recommendation engine.
+The project starts from a simple product thesis: the product is not the watch, chatbot, dashboard, or individual model. The product is the personalized human model underneath them.
 
 Portfolio page: [The Human Model](https://hallowed-seat-b6b.notion.site/The-Human-Model-382cf4d8ba1880a188dbc6a664b5a7cc)
 
-```text
-measure -> model -> optimize -> adapt
+## The Problem
+
+Most health and performance tools are good at collecting data and weak at turning it into decisions. Wearables can report sleep, HRV, activity, and resting heart rate. Training apps can store workouts. Dashboards can visualize trends. Chatbots can ask questions. But the user is still left doing the hardest work: deciding which signal matters, whether it applies today, and what should actually change.
+
+That gap matters because the useful question is rarely "what happened?" It is "what does this mean for this person, in this context, right now?"
+
+The Human Model explores that layer. It treats recovery signals, training history, subjective context, movement quality, and feedback loops as evidence for a living model of one human system.
+
+## Core Thesis
+
+The durable product is a personalized model that learns how a person responds.
+
+Interfaces are delivery surfaces. Bridget can ask for context or send a morning card. A dashboard can expose audit trails and weekly review. A readiness model can make a cautious training call. A movement-analysis pipeline can flag a rep pattern. None of those surfaces is the whole product.
+
+The center is the model underneath them: a transparent, local-first, reviewable system that connects inputs, uncertainty, decisions, and outcomes over time.
+
+## Why Bodybuilding Is The First Test Environment
+
+Bodybuilding is a useful first test environment because it creates repeated, measurable, high-feedback cycles:
+
+- training sessions with exercises, sets, reps, loads, and qualitative notes
+- recovery constraints that affect performance and adherence
+- movement patterns that can be compared across sessions
+- visible consequences when fatigue, stress, or poor execution accumulates
+- enough structure to model, but enough messiness to keep the system honest
+
+This is not because bodybuilding is the final market. It is because it makes the modeling problem concrete. The same underlying questions show up in sports performance, rehabilitation, physical therapy, assistive technology, chronic-condition management, and human-machine interaction.
+
+## What Works Today
+
+The project is early-stage and actively evolving, but several working loops exist today across the private implementation repositories and this public demonstration layer.
+
+Implemented:
+
+- Apple Health recovery import for sleep, HRV, resting heart rate, weight, workout duration, workout type, and active energy.
+- Telegram-based Bridget workflows for recovery check-ins, morning context, workout logging, daily cards, calibration, and low-friction corrections.
+- A local Coach Dashboard backed by SQLite for recovery, training, body, signal health, weekly review, readiness, and movement-quality review.
+- Transparent readiness modeling that produces auditable push/maintain/modify/rest calls instead of hiding decisions inside an LLM.
+- Training-load modeling that creates guarded next-session recommendations and keeps model/debug output separate from editable workout notes.
+- A local MediaPipe RDL movement-analysis prototype with rep metrics, annotated playback, angle trends, and review flags.
+- Public-safe examples in this repository using mock data instead of private health records, Notion IDs, or local secrets.
+
+Experimental:
+
+- Multi-angle movement review, where camera views are preserved as separate observations instead of averaged into invalid metrics.
+- Shared media-ingestion boundaries for future desktop drops, Apple Shortcuts, Bridget uploads, and manual review queues.
+- Dashboard V2-style training/session summaries and planned-vs-actual review loops.
+
+Future:
+
+- Stronger calibration against outcomes.
+- Broader sensing beyond commodity wearable data.
+- More general movement-quality modeling.
+- Intervention testing where recommendations can be evaluated against actual behavior and response.
+
+## High-Level System Architecture
+
+```mermaid
+flowchart TD
+    A[Inputs] --> B[Capture and Storage]
+    B --> C[Personalized Human Model]
+    C --> D[Review and Explanation]
+    C --> E[Decision Support]
+    D --> F[Human Review]
+    E --> G[Intervention or Adjustment]
+    F --> C
+    G --> A
+
+    A1[Wearables] --> A
+    A2[Training Logs] --> A
+    A3[Subjective Check-ins] --> A
+    A4[Movement Video] --> A
+    A5[Future Sensors] --> A
+
+    B1[Bridget] --> B
+    B2[Local Dashboard Store] --> B
+    B3[Notion Review Layer] --> B
+
+    C1[Readiness Modeling] --> C
+    C2[Training-Load Modeling] --> C
+    C3[Movement Analysis] --> C
+    C4[Behavior and Context Memory] --> C
 ```
 
-## Current Status
+The architecture is intentionally modular. Bridget is the daily conversational surface. The dashboard is the deeper review and audit surface. Readiness modeling, training-load modeling, and movement analysis are separate reasoning layers. The public repository is the narrative and demonstration layer for the system as a whole.
 
-This is an early-stage research and engineering project, not a finished product. The current milestone is turning the data spine into a usable coach-style feedback loop: reliable capture, structured records, Bridget as the daily delivery surface, local dashboarding for deeper review, and a transparent baseline readiness model.
+## Current Prototypes And Demos
 
-Implemented so far:
-
-**Capture and automation**
-
-- Main project repo with Recovery Tracking V1 schema, weekly review template, and chatbot logging contract
-- Telegram chatbot powered by a local Ollama model
-- Natural-language recovery check-in parsing and Notion upserts
-- Apple Health import for sleep, HRV, resting heart rate, and weight
-- Scheduled morning check-ins through macOS `launchd`
-- Guardrails for missing or suspicious Apple Watch sleep data
-- Zenfit screenshot OCR/import workflow for workouts, weekly coach check-ins, and body measurements
-- Telegram workout logging path with tests, including copy-forward logging, per-set weights, qualitative loads, and notes
-
-**Bridget and daily feedback**
-
-- Bridget daily card V1 for a chat-delivered morning summary
-- Planned-workout logging so Bridget can reuse expected training context instead of making the user retype the whole workout
-
-**Dashboard and modeling**
-
-- Local Coach Dashboard V1 app in the foundation repo, using FastAPI, SQLite, and a Next.js frontend
-- Dashboard data audit and source mapping across recovery, readiness, training entries, body metrics, notes, reviews, import runs, and sync events
-- Standalone readiness-modeling layer in the foundation repo that builds daily features, scores against personal baselines, emits reportable readiness bands, and keeps model decisions auditable rather than LLM-generated
-- Training-load modeling pipeline with normalized load features, set-role-aware evaluation, and guarded next-session weight recommendations
-- Apple Watch workout and active-energy import for training-output context, plus a dashboard review comparing readiness calls with actual movement output
-- Local movement-quality prototype for RDL video analysis, with MediaPipe-derived rep metrics, annotated playback, angle trends, and dashboard review flags
-- Multi-angle RDL batch-analysis tooling that keeps each camera view as a separate observation and marks non-side views as experimental review context
-
-Current build work:
-
-- Hardening structured dashboard backfill for Apple Health, training-plan, and session-detail data
-- Keeping Bridget's editable workout-sheet flow connected to guarded model recommendations, including workout order, suggested reps, and rows the model cannot predict cleanly yet
-- Integrating movement-quality results into the broader readiness and training review loop
-- Designing a shared media-ingestion boundary for desktop drops, Apple Shortcuts, Bridget uploads, and manual review queues before wiring live file automation
-- Continuing to separate the Bridget prototype into clearer app, pipeline, storage, and integration boundaries
-
-Current focus:
-
-- Keep the recovery loop reliable in real daily use
-- Review patterns across Apple Watch metrics, subjective check-ins, and training context
-- Keep Bridget useful as the low-friction daily surface
-- Make the local dashboard useful as the weekly/deeper review surface
-- Connect readiness, training context, and data freshness without overstating recommendation quality
-- Keep movement analysis explainable before treating it as coaching intelligence
-
-## Public Code Examples
-
-This repo includes small, sanitized examples extracted from the private working system:
+This repository includes sanitized, runnable examples extracted from the working system:
 
 - [Readiness scoring demo](examples/readiness_scoring_demo.py)
 - [Readiness modeling demo](examples/readiness_modeling_demo.py)
@@ -72,106 +105,46 @@ This repo includes small, sanitized examples extracted from the private working 
 - [Training prediction sheet demo](examples/training_prediction_sheet_demo.py)
 - [Media ingestion router demo](examples/media_ingestion_router_demo.py)
 
-The examples use mock data and omit private Notion IDs, health records, secrets, and local automation details. See [examples/README.md](examples/README.md) for how to run them.
+The examples use mock data and are designed to run without private Notion databases, personal health records, Telegram tokens, or local automation paths. See [examples/README.md](examples/README.md) for run instructions.
 
-## Demo Assets
+Demo asset:
 
-- [MediaPipe RDL form demo](demo/mediapipe-rdl-form/) shows an early screen recording of the local RDL movement-analysis prototype with pose overlay and charted movement signal.
+- [MediaPipe RDL form demo](demo/mediapipe-rdl-form/) shows an early local RDL movement-analysis prototype with pose overlay and charted movement signal.
 
-## Project Repositories
+## Principles And Safeguards
 
-The active implementation is split across two working repos plus this public overview layer.
+- Local-first where possible: private health and training data stays in local files, local databases, or private Notion workspaces.
+- Transparent modeling: baseline models should expose inputs, confidence, missing data, and limiting factors.
+- Human review before automation: recommendations are treated as decision support, not autonomous coaching.
+- Public/private separation: this repository can explain architecture and demos without exposing personal records or secrets.
+- Honest status labels: implemented, experimental, and future work should stay clearly separated.
+- Low-friction capture: Bridget exists because the model improves only if the system can learn from real life without forcing long forms.
 
-### Human Model
+## Broader Research Direction
 
-The foundation repo for schemas, durable project docs, data contracts, review workflows, experiment design, and future analysis artifacts.
+The long-term research direction is a personal model that can connect data acquisition, interpretation, decision support, and intervention testing. Recovery and training are the current proving ground, but the broader question is how software can represent an individual human system well enough to support better decisions.
 
-Repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
+That makes this project partly engineering, partly product research, partly applied modeling, and partly human-computer interaction. The near-term work is deliberately narrow: keep the loops reliable, keep the claims modest, and make every model output inspectable.
 
-Notable work:
+## Technical Documentation And Implementation Repositories
 
-- Recovery Tracking V1 schema
-- Chatbot Logging Contract V1
-- Weekly Review V1
-- Local Coach Dashboard V1: FastAPI/SQLite backend, Next.js frontend, Notion sync/backfill paths, and readiness data model
-- Baseline readiness-modeling layer: daily feature generation, transparent heuristic scoring, report generation, tests, and a standalone dashboard page
-- Training-load modeling layer: normalized load history, set-role-aware evaluation, and guarded next-session recommendation outputs
-- Readiness vs Actual training-output review using Apple Watch workout duration/type, active energy, model output, and recent alignment labels
-- Local MediaPipe movement-quality pipeline for RDL analysis, including rep-level metrics, annotated video output, and a dashboard page for explainable flags
-- Multi-angle RDL batch analysis with filename-based view inference, metadata templates, per-view summary rows, and explicit limits for non-side camera views
-- Body-measurement trend charts and active work on structured training-session summaries
-- Design-only media-ingestion architecture for routing future desktop, shortcut, Bridget, and manual media uploads through one reviewable intake contract
-- Project structure for research, experiments, dashboards, notebooks, hardware notes, and data definitions
+This public repository now lives at `haleyparks329/the-human-model`.
 
-### Human Model Chatbot
+- Foundation implementation repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
+- Bridget/chatbot implementation repository: [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
+- Public repository: [haleyparks329/the-human-model](https://github.com/haleyparks329/the-human-model)
 
-The implementation repo for the conversational logging and automation layer.
+Technical docs:
 
-Repository: [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
-
-Notable work:
-
-- Python Telegram bot with local LLM support through Ollama
-- Recovery check-in parser and Notion writer
-- Apple Health importer using Health Auto Export data
-- Morning check-in one-shot service with duplicate prevention
-- Zenfit OCR pipeline and Notion sync
-- Workout logging from Telegram messages
-- Copy-forward workout logging for stable training templates
-- Flexible workout parsing for per-set weights, non-numeric loads, workout notes, and month-name dates
-- Bridget rhythm prompts, preference calibration, daily card generation, and planned-workout follow-up logic
-- Bridget V2 training recommendations that read the model's next-session prediction output and send an editable workout sheet plus separate model/debug CSV
-- Modular app, pipeline, storage, and integration boundaries for Bridget, including workout file exchange and future sensor/data matching
-- Unit tests for parser, scheduling, and data edge cases
-
-## System Concept
-
-The goal is not just to track fitness data. It is to build a personalized model that can learn how one person recovers, executes movement, responds to training, and benefits from feedback.
-
-```mermaid
-flowchart LR
-    A[Athlete] --> B[Signals]
-    B --> C[Human Model]
-    C --> D[Coach Intelligence]
-    D --> E[Intervention]
-    E --> A
-
-    B1[Apple Watch] --> B
-    B2[Chatbot check-ins] --> B
-    B3[Training logs] --> B
-    B4[Future sensors] --> B
-```
-
-## Why This Project Exists
-
-Most trackers tell people what happened. The more interesting question is what decision should change because of it.
-
-This project explores that gap by combining software, data modeling, human-centered product thinking, and future sensing systems. Bodybuilding and self-tracking are the test environment because they provide repeated movements, measurable load, adaptation cycles, and clear recovery constraints.
-
-The broader direction reaches into sports performance, physical therapy, rehabilitation, assistive technology, and human-machine interaction.
-
-## Documentation
-
-- [Vision](docs/vision.md)
 - [Architecture](docs/architecture.md)
 - [Implementation Progress](docs/implementation-progress.md)
 - [Coach Dashboard V1](docs/coach-dashboard-v1.md)
 - [Telegram Chatbot Evolution](docs/chatbot-telegram-evolution.md)
-- [Project Evolution](docs/project-evolution.md)
 - [Recovery Modeling](docs/recovery-modeling.md)
 - [Movement Analysis](docs/movement-analysis.md)
-- [Sensing Systems](docs/sensing-systems.md)
 - [Roadmap](docs/roadmap.md)
+- [Vision](docs/vision.md)
 - [Research Notes](docs/research-notes.md)
 - [Source Context](docs/source-context.md)
 - [Project Log Automation](docs/project-log-automation.md)
-
-## What This Demonstrates
-
-- Turning an ambiguous product/research idea into executable milestones
-- Building local automation around real personal workflows
-- Designing schemas and data contracts before advanced modeling
-- Integrating Telegram, Notion, Apple Health exports, OCR, and macOS services
-- Thinking across software, sensing, biomechanics, coaching, and human feedback systems
-
-Some implementation details depend on private Notion databases and local health data. This public repo is the readable overview layer.
+- [Documentation Cleanup Notes](docs/documentation-cleanup-notes.md)

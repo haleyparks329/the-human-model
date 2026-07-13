@@ -4,7 +4,7 @@
 
 Status: mostly complete.
 
-- Create the public overview repo
+- Create the official public home for The Human Model
 - Establish project purpose and architecture
 - Define the main repo structure
 - Document Recovery Tracking V1
@@ -89,7 +89,7 @@ Status: future.
 
 - [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
 - [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
-- [haleyparks329/the-human-model-overview](https://github.com/haleyparks329/the-human-model-overview)
+- [haleyparks329/the-human-model](https://github.com/haleyparks329/the-human-model)
 
 ## Near-Term Next Steps
 

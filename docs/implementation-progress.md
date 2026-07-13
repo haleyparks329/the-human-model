@@ -1,6 +1,6 @@
 # Implementation Progress
 
-Last updated: 2026-07-12.
+Last updated: 2026-07-13.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
@@ -143,7 +143,7 @@ The current local dashboard is documented in [Coach Dashboard V1](coach-dashboar
 
 ## Public Example Code
 
-The overview repo now includes sanitized example code under [`examples/`](../examples/README.md). These examples use mock data and no private Notion credentials or personal health records.
+This public research and product repository includes sanitized example code under [`examples/`](../examples/README.md). These examples use mock data and no private Notion credentials or personal health records.
 
 Included examples:
 
