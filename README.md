@@ -1,18 +1,24 @@
 # The Human Model
 
-The Human Model is a public research and product repository for building personalized computational models of recovery, training, movement, behavior, and response to intervention.
+The Human Model is a long-term research and engineering project exploring how software can build personalized computational models of recovery, training, movement, behavior, and response to intervention. This repository is the public home for that work.
 
-The project starts from a simple product thesis: the product is not the watch, chatbot, dashboard, or individual model. The product is the personalized human model underneath them.
+The project starts from a simple thesis: the product is not the watch, chatbot, dashboard, or individual model. The product is the personalized human model underneath them.
+
+I started this project because most software is very good at modeling workflows, records, and transactions, but much worse at representing people. I wanted to understand how recovery, training, movement, behavior, context, and intervention interact over time instead of leaving those signals trapped in separate apps. Bodybuilding became the first research environment because it creates repeated, measurable feedback: I can change something, observe the result, and gradually make the model less generic.
 
 Portfolio page: [The Human Model](https://hallowed-seat-b6b.notion.site/The-Human-Model-382cf4d8ba1880a188dbc6a664b5a7cc)
 
 ## The Problem
 
-Most health and performance tools are good at collecting data and weak at turning it into decisions. Wearables can report sleep, HRV, activity, and resting heart rate. Training apps can store workouts. Dashboards can visualize trends. Chatbots can ask questions. But the user is still left doing the hardest work: deciding which signal matters, whether it applies today, and what should actually change.
+Modern software is very good at recording events. It is much worse at representing people.
 
-That gap matters because the useful question is rarely "what happened?" It is "what does this mean for this person, in this context, right now?"
+Most systems store what happened: a workout was logged, a sleep score changed, a check-in was submitted, a dashboard row was updated. That matters. Records are necessary. But the important context often lives between the records: what changed, why it changed, whether it mattered, and how it relates to the same person over time.
 
-The Human Model explores that layer. It treats recovery signals, training history, subjective context, movement quality, and feedback loops as evidence for a living model of one human system.
+Health and performance tools make this especially visible. Data is fragmented across wearables, workout apps, notes, dashboards, photos, chats, and subjective memory. Each tool sees a slice. I am the integration layer, which means the most important context lives in my memory and attention. The problem is that the user is still left to reconstruct the whole picture manually, deciding which signal matters, whether it applies today, and what should actually change.
+
+The deeper problem is not limited to fitness. A lot of software stores events without learning what matters for this person. It can preserve a timeline without building a model.
+
+The Human Model explores that missing layer. It treats recovery signals, training history, subjective context, movement quality, and feedback loops as evidence for a living model of one human system.
 
 ## Core Thesis
 
@@ -24,15 +30,20 @@ The center is the model underneath them: a transparent, local-first, reviewable 
 
 ## Why Bodybuilding Is The First Test Environment
 
-Bodybuilding is a useful first test environment because it creates repeated, measurable, high-feedback cycles:
+Bodybuilding is useful not only because it is measurable, but because it creates repeated interventions and feedback loops.
 
-- training sessions with exercises, sets, reps, loads, and qualitative notes
-- recovery constraints that affect performance and adherence
-- movement patterns that can be compared across sessions
-- visible consequences when fatigue, stress, or poor execution accumulates
-- enough structure to model, but enough messiness to keep the system honest
+It allows deliberate changes to variables such as:
 
-This is not because bodybuilding is the final market. It is because it makes the modeling problem concrete. The same underlying questions show up in sports performance, rehabilitation, physical therapy, assistive technology, chronic-condition management, and human-machine interaction.
+- calories and nutrition
+- training load and volume
+- exercise selection
+- sleep and recovery behavior
+- movement execution
+- fatigue management
+
+Those interventions create outcomes that can be observed over time. A training block changes. Recovery changes. Execution changes. Energy, adherence, soreness, and performance change. The system can begin to ask better questions because the environment produces repeated cycles of action and response.
+
+This is not because bodybuilding is the final market. It is because it makes the modeling problem concrete. The same underlying questions show up in sports performance, rehabilitation, physical therapy, assistive technology, chronic-condition support, education, careers, and personal computing.
 
 ## What Works Today
 
@@ -113,12 +124,14 @@ Demo asset:
 
 ## Principles And Safeguards
 
-- Local-first where possible: private health and training data stays in local files, local databases, or private Notion workspaces.
-- Transparent modeling: baseline models should expose inputs, confidence, missing data, and limiting factors.
-- Human review before automation: recommendations are treated as decision support, not autonomous coaching.
-- Public/private separation: this repository can explain architecture and demos without exposing personal records or secrets.
-- Honest status labels: implemented, experimental, and future work should stay clearly separated.
-- Low-friction capture: Bridget exists because the model improves only if the system can learn from real life without forcing long forms.
+- Model first: interfaces, dashboards, chatbots, and reports should serve the underlying personalized model.
+- Transparent evidence and uncertainty: model outputs should show inputs, confidence, missing data, and unsupported cases.
+- Human review: recommendations are decision support, with review and override before stronger automation.
+- Local-first and user-owned where possible: private health data, memory, and model context should stay under personal control.
+- Low-friction capture: the system should learn from real life without demanding long forms or repetitive manual work.
+- Honest status boundaries: implemented, experimental, and future work should stay clearly separated.
+
+See [Design Principles](docs/design-principles.md) for the full product and engineering principles.
 
 ## Broader Research Direction
 
@@ -128,14 +141,16 @@ That makes this project partly engineering, partly product research, partly appl
 
 ## Technical Documentation And Implementation Repositories
 
-This public repository now lives at `haleyparks329/the-human-model`.
+Public repository: [haleyparks329/the-human-model](https://github.com/haleyparks329/the-human-model)
 
 - Foundation implementation repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
 - Bridget/chatbot implementation repository: [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
-- Public repository: [haleyparks329/the-human-model](https://github.com/haleyparks329/the-human-model)
 
 Technical docs:
 
+- [Why The Human Model](docs/why-the-human-model.md)
+- [Philosophy](docs/philosophy.md)
+- [Design Principles](docs/design-principles.md)
 - [Architecture](docs/architecture.md)
 - [Implementation Progress](docs/implementation-progress.md)
 - [Coach Dashboard V1](docs/coach-dashboard-v1.md)
