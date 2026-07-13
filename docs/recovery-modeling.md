@@ -43,6 +43,8 @@ The current recovery loop combines:
 - Notion as the early recovery database
 - A weekly review template for interpretation
 
+The live import and writeback path is implemented in the private working repositories. This public repository represents it through documentation, screenshots, and runnable readiness examples using mock data.
+
 The morning prompt intentionally avoids stale sleep data. If Apple sleep data is missing, it says that directly; if sleep is suspiciously low, it asks for manual correction.
 
 ## Future Model Inputs

@@ -47,11 +47,11 @@ It is responsible for:
 - Research notes
 - Future notebooks, dashboards, and hardware notes
 
-The repo now also contains the first local Coach Dashboard V1 app and a standalone readiness-modeling layer. For the dashboard, SQLite is the canonical local store and Notion is treated as a mirror, review, and selected manual-input layer. The modeling layer builds daily features, scores a transparent baseline model, and writes reviewable outputs before any LLM explanation layer touches the result.
+The private foundation repo now also contains the first local Coach Dashboard V1 app and a standalone readiness-modeling layer, represented publicly here through screenshots, documentation, and sanitized examples. For the dashboard, SQLite is the canonical local store and Notion is treated as a mirror, review, and selected manual-input layer. The modeling layer builds daily features, scores a transparent baseline model, and writes reviewable outputs before any LLM explanation layer touches the result.
 
-The foundation repo also contains the training-load modeling pipeline. It normalizes historical load conventions, evaluates set-role-aware predictions, and writes guarded next-session recommendation files that downstream tools can inspect or attach.
+The private foundation repo also contains the training-load modeling pipeline. It normalizes historical load conventions, evaluates set-role-aware predictions, and writes guarded next-session recommendation files that downstream tools can inspect or attach. This public repo includes a sanitized workout-sheet shaping example, not the full private model pipeline.
 
-The foundation repo also now holds a narrow movement-quality prototype. The current implementation is local, exercise-specific, and review-oriented: it extracts pose-derived RDL metrics, annotates video, and exposes dashboard flags without turning those flags into automated coaching claims.
+The private foundation repo also now holds a narrow movement-quality prototype. The current implementation is local, exercise-specific, and review-oriented: it extracts pose-derived RDL metrics, annotates video, and exposes dashboard flags without turning those flags into automated coaching claims. This public repo includes experimental visual evidence and mock movement-quality summaries.
 
 Recent architecture work also defines a shared media-intake boundary for future desktop drops, Apple Shortcuts, Bridget uploads, and manual imports. That boundary is design-only today: it describes the canonical request shape, manifest/review records, dedupe strategy, metadata inference, and provider seams before live file movement or model routing is enabled.
 

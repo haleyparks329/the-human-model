@@ -1,0 +1,5 @@
+date,workout_name,exercise_order,exercise,set_number,set_role,recommended_weight_kg,recommended_reps,actual_weight_kg,actual_reps,notes,guardrail
+2026-07-05,Delts,1,Smith Machine Incline Bench Press,1,Warm-up/feeder,10,10,,,,warmup_preserved
+2026-07-05,Delts,2,Incline One Arm Dumbbell Front Raise,1,Warm-up/feeder,7.5,10,,,,warmup_preserved
+2026-07-05,Delts,5,Smith Machine Shoulder Press,1,Warm-up/feeder,machine weight,10,,,,none
+2026-07-05,Delts,5,Smith Machine Shoulder Press,2,Working set,7.5,10,,,,none

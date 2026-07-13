@@ -72,6 +72,8 @@ Future:
 - More general movement-quality modeling.
 - Intervention testing where recommendations can be evaluated against actual behavior and response.
 
+See the [Public Evidence Map](docs/evidence-map.md) for how each capability is represented in this repository.
+
 ## High-Level System Architecture
 
 ```mermaid
@@ -118,6 +120,14 @@ This repository includes sanitized, runnable examples extracted from the working
 
 The examples use mock data and are designed to run without private Notion databases, personal health records, Telegram tokens, or local automation paths. See [examples/README.md](examples/README.md) for run instructions.
 
+![Coach Dashboard overview](assets/screenshots/coach-dashboard-01-overview.png)
+
+_Coach Dashboard overview, approved public UI capture._
+
+![Bridget daily card mock output](examples/sample-output/bridget-daily-card.svg)
+
+_Bridget daily-card sample generated from mock data._
+
 Demo asset:
 
 - [MediaPipe RDL form demo](demo/mediapipe-rdl-form/) shows an early local RDL movement-analysis prototype with pose overlay and charted movement signal.
@@ -151,6 +161,7 @@ Technical docs:
 - [Why The Human Model](docs/why-the-human-model.md)
 - [Philosophy](docs/philosophy.md)
 - [Design Principles](docs/design-principles.md)
+- [Public Evidence Map](docs/evidence-map.md)
 - [Architecture](docs/architecture.md)
 - [Implementation Progress](docs/implementation-progress.md)
 - [Coach Dashboard V1](docs/coach-dashboard-v1.md)
@@ -163,3 +174,4 @@ Technical docs:
 - [Source Context](docs/source-context.md)
 - [Project Log Automation](docs/project-log-automation.md)
 - [Documentation Cleanup Notes](docs/documentation-cleanup-notes.md)
+- [Asset Manifest](assets/asset-manifest.md)
