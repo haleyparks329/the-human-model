@@ -1,0 +1,12 @@
+{
+  "data": {
+    "metrics": [
+      {
+        "name": "mock_unrecognized_signal",
+        "data": [
+          {"date": "2026-06-23 10:00:00 +0200", "qty": 123}
+        ]
+      }
+    ]
+  }
+}

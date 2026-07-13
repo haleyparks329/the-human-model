@@ -1,0 +1,31 @@
+{
+  "data": {
+    "metrics": [
+      {
+        "name": "heart_rate_variability",
+        "data": [
+          {"date": "2026-06-23 02:30:00 +0200", "qty": 72},
+          {"date": "2026-06-23 12:30:00 +0200", "qty": 78}
+        ]
+      },
+      {
+        "name": "resting_heart_rate",
+        "data": [
+          {"date": "2026-06-23 06:45:00 +0200", "qty": 55}
+        ]
+      },
+      {
+        "name": "step_count",
+        "data": [
+          {"date": "2026-06-23 12:00:00 +0200", "qty": 6400}
+        ]
+      },
+      {
+        "name": "weight_body_mass",
+        "data": [
+          {"date": "2026-06-23 07:00:00 +0200", "qty": 68.6}
+        ]
+      }
+    ]
+  }
+}

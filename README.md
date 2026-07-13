@@ -74,6 +74,29 @@ Future:
 
 See the [Public Evidence Map](docs/evidence-map.md) for how each capability is represented in this repository.
 
+## Start Here For Reviewers
+
+The clearest runnable engineering slice is the [public readiness reference implementation](reference-implementation/readiness-slice/README.md). It shows one end-to-end Human Model workflow with mock data:
+
+```text
+mock Apple Health recovery export
+-> validation and normalization
+-> SQLite persistence
+-> transparent readiness model
+-> FastAPI endpoints
+-> daily review JSON
+-> tests
+```
+
+Suggested reading path:
+
+1. [Readiness slice README](reference-implementation/readiness-slice/README.md)
+2. [Health export importer](reference-implementation/readiness-slice/readiness_slice/health_import.py)
+3. [SQLite repository layer](reference-implementation/readiness-slice/readiness_slice/repository.py)
+4. [Transparent readiness model](reference-implementation/readiness-slice/readiness_slice/readiness.py)
+5. [FastAPI endpoints](reference-implementation/readiness-slice/readiness_slice/api.py)
+6. [Readiness slice tests](reference-implementation/readiness-slice/tests/)
+
 ## High-Level System Architecture
 
 ```mermaid
