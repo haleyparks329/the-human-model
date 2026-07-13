@@ -39,6 +39,22 @@ jobs:
       - name: Run public example tests
         run: python -m unittest discover -s examples/tests
 
+      - name: Install readiness slice
+        run: |
+          cd reference-implementation/readiness-slice
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run readiness slice tests
+        run: |
+          cd reference-implementation/readiness-slice
+          pytest
+
+      - name: Smoke-run readiness slice demo
+        run: |
+          cd reference-implementation/readiness-slice
+          python -m readiness_slice.demo
+
       - name: Smoke-run public examples
         run: |
           set -euo pipefail

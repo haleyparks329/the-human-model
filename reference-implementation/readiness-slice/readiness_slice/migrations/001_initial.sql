@@ -1,0 +1,42 @@
+CREATE TABLE IF NOT EXISTS recovery_days (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  date TEXT NOT NULL UNIQUE,
+  sleep_hours REAL,
+  hrv_ms REAL,
+  resting_hr_bpm REAL,
+  steps REAL,
+  weight_kg REAL,
+  source TEXT NOT NULL DEFAULT 'mock_apple_health',
+  quality_flags TEXT NOT NULL DEFAULT '',
+  raw_metrics TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS readiness_results (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  date TEXT NOT NULL UNIQUE,
+  score INTEGER,
+  status TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  factors TEXT NOT NULL DEFAULT '',
+  data_freshness TEXT NOT NULL DEFAULT '',
+  final_call TEXT NOT NULL,
+  computed_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (date) REFERENCES recovery_days(date) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS import_runs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  source TEXT NOT NULL,
+  status TEXT NOT NULL,
+  files_seen INTEGER NOT NULL DEFAULT 0,
+  rows_seen INTEGER NOT NULL DEFAULT 0,
+  rows_inserted INTEGER NOT NULL DEFAULT 0,
+  rows_updated INTEGER NOT NULL DEFAULT 0,
+  rows_unchanged INTEGER NOT NULL DEFAULT 0,
+  warnings TEXT NOT NULL DEFAULT '',
+  errors TEXT NOT NULL DEFAULT '',
+  started_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  finished_at TEXT
+);

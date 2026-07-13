@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "human-model-readiness-slice"
+version = "0.1.0"
+description = "Public-safe Human Model readiness reference slice."
+requires-python = ">=3.9"
+dependencies = [
+  "fastapi>=0.100",
+  "uvicorn>=0.23",
+  "pydantic>=2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.24",
+  "pytest>=7",
+]
+
+[tool.setuptools.packages.find]
+include = ["readiness_slice*"]
+
+[tool.setuptools.package-data]
+readiness_slice = ["migrations/*.sql"]
