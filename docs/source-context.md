@@ -1,8 +1,8 @@
 # Source Context
 
-This overview was synthesized from active project repositories, GitHub commit history, and private Notion planning pages available during setup.
+This public research and product repository was synthesized from active project repositories, GitHub commit history, and private Notion planning pages available during setup.
 
-The public overview is designed to stand on its own even when implementation details depend on private Notion databases or local health/training data.
+The Human Model public repository is designed to stand on its own even when implementation details depend on private Notion databases or local health/training data.
 
 ## Notion Pages Reviewed
 
@@ -22,12 +22,13 @@ The public overview is designed to stand on its own even when implementation det
 - Live Project Log update titled "Public Overview Shows Training Predictions"
 - Live Project Log updates titled "Multi-Angle RDL Batch Analysis", "Media Ingestion Gets a Shared Boundary", and "Project Log Gets Public Boundaries"
 - Public project-log automation rule that `Summary` powers the standalone detail page while `Front Page Summary` powers the homepage card
+- Public homepage GitHub link, updated after the repository rename from `the-human-model-overview` to `the-human-model`
 
 ## Repositories Reviewed
 
 - [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
 - [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
-- [haleyparks329/the-human-model-overview](https://github.com/haleyparks329/the-human-model-overview)
+- [haleyparks329/the-human-model](https://github.com/haleyparks329/the-human-model)
 
 ## Implementation Commits Reviewed
 

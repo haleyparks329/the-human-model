@@ -2,7 +2,7 @@
 
 The live system can generate chat-friendly daily summaries from live data.
 This demo uses mock data and standard-library SVG output so it can run in the
-public overview repo with no image dependencies.
+official public repository with no image dependencies.
 """
 
 from __future__ import annotations

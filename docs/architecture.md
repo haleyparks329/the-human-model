@@ -72,9 +72,9 @@ It is responsible for:
 - Supporting Bridget readiness context and daily-card behavior
 - Reading training-load prediction output and sending editable workout sheets while keeping model/debug files separate from training notes
 
-### `the-human-model-overview`
+### `the-human-model`
 
-This repo is the public narrative layer. It explains the system, implementation progress, roadmap, and product/research reasoning without exposing private health data or Notion database contents.
+This repository is the official public home for The Human Model. It acts as the public narrative and demonstration layer: it explains the system, implementation progress, roadmap, and product/research reasoning without exposing private health data or Notion database contents.
 
 ## Current Technical Stack
 
