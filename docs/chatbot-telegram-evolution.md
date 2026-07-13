@@ -2,7 +2,7 @@
 
 These screenshots document how the Telegram interface has evolved from a simple local-LLM conversation surface into a structured logging workflow for recovery, health context, and training.
 
-The chatbot is intentionally lightweight: Telegram is the daily capture layer, while Notion and local project code handle persistence, parsing, and later review.
+The chatbot is intentionally lightweight: Telegram is the daily capture layer, while Notion and local project code handle persistence, parsing, and later review. The live bot is not published in this repository; this page provides approved visual evidence, and `examples/` contains runnable sanitized slices.
 
 ## 1. Free-Form Recovery Coaching
 

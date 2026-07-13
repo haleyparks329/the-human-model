@@ -30,9 +30,9 @@ That distinction matters for:
 
 ## Current Prototype
 
-A first local computer-vision prototype now exists for one narrow movement-analysis use case: Romanian deadlift review. The private implementation uses MediaPipe-derived pose landmarks to create rep-level metrics, annotated playback, angle trends, and explainable dashboard flags.
+A first local computer-vision prototype now exists for one narrow movement-analysis use case: Romanian deadlift review. The private implementation uses MediaPipe-derived pose landmarks to create rep-level metrics, annotated playback, angle trends, and explainable dashboard flags. This public repository represents that work through an approved demo video and a mock movement-quality review example.
 
-The prototype now also includes multi-angle batch handling for RDL review. Each video remains its own view-specific observation, with camera view and side inferred from filenames or a small metadata file. Side-view and unknown-view clips can use the current hinge metrics; front, rear, and oblique clips are retained as review evidence but are not forced through side-view formulas.
+The prototype now also includes multi-angle batch handling for RDL review. Each video remains its own view-specific observation, with camera view and side inferred from filenames or a small metadata file. Side-view and unknown-view clips can use the current hinge metrics; front, rear, and oblique clips are retained as review evidence but are not forced through side-view formulas. The multi-angle behavior is documented here but does not yet have a separate public artifact.
 
 This is useful implementation progress, but it is not a generalized movement coach. The current value is narrower and more honest: turn exercise video into reviewable evidence about range of motion, tempo, tracking quality, camera context, and consistency.
 

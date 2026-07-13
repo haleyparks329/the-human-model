@@ -4,6 +4,8 @@ Coach Dashboard V1 is the local review surface for The Human Model. It turns the
 
 This is not presented as a finished SaaS product. It is a local-first working dashboard built to make the data spine easier to audit, review, and improve.
 
+The live dashboard app lives in the private foundation repository. This page provides approved public screenshots, while the public examples include sanitized dashboard data-shaping logic using mock data.
+
 ## What It Shows
 
 Implemented:

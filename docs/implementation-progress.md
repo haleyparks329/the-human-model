@@ -4,6 +4,8 @@ Last updated: 2026-07-13.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
+For a reader-facing map of what is publicly runnable, visually demonstrated, private-but-represented, experimental, or future, see [Public Evidence Map](evidence-map.md).
+
 ## Foundation Repo
 
 Repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)

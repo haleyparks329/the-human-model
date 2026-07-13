@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local secrets and machine state
+.env
+.env.*
+*.local
+
+# macOS
+.DS_Store
+._*
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated example output
+examples/output/*
+!examples/output/.gitkeep
+
+# Local website/build output
+site/
+_site/
+dist/
+build/
+
+# Temporary exports and media scratch space
+tmp/
+temp/
+*.tmp
+*.log
+*.bak
+*.orig
+exports/
+local_exports/
+media_scratch/

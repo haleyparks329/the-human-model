@@ -1,0 +1,48 @@
+{
+  "provenance": {
+    "generated_from_mock_data": true,
+    "source_example": "examples/movement_quality_demo.py",
+    "purpose": "Show mock movement-quality review output from rep-level traces.",
+    "scope": "Not medical advice, not autonomous coaching, and not generalized movement analysis.",
+    "date_policy": "No live date is used; rep traces are fixed for deterministic public examples."
+  },
+  "rep_count": 3,
+  "average_range_of_motion": 40.7,
+  "average_tempo_seconds": 2.53,
+  "consistency": "stable",
+  "needs_review": true,
+  "flags": [
+    "short range of motion",
+    "fast tempo"
+  ],
+  "rep_metrics": [
+    {
+      "rep_index": 1,
+      "range_of_motion": 46,
+      "bottom_angle": 118,
+      "tempo_seconds": 2.8,
+      "tracking_confidence": 0.94,
+      "flags": []
+    },
+    {
+      "rep_index": 2,
+      "range_of_motion": 42,
+      "bottom_angle": 121,
+      "tempo_seconds": 2.7,
+      "tracking_confidence": 0.91,
+      "flags": []
+    },
+    {
+      "rep_index": 3,
+      "range_of_motion": 34,
+      "bottom_angle": 128,
+      "tempo_seconds": 2.1,
+      "tracking_confidence": 0.88,
+      "flags": [
+        "short range of motion",
+        "fast tempo"
+      ]
+    }
+  ],
+  "interpretation": "Range of motion changed enough to deserve set-level review."
+}

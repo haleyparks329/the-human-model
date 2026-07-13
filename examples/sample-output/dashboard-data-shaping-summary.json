@@ -1,0 +1,68 @@
+{
+  "provenance": {
+    "generated_from_mock_data": true,
+    "source_example": "examples/dashboard_data_shaping_demo.py",
+    "purpose": "Show mock dashboard aggregation output for trends, training, signals, and review hints.",
+    "scope": "Not medical advice, not autonomous coaching, and not live private dashboard data.",
+    "date_policy": "Dates are fixed for deterministic public examples."
+  },
+  "body_trends": [
+    {
+      "metric_name": "waist_cm",
+      "date": "2026-06-15",
+      "value": 72.6,
+      "unit": "cm",
+      "previous_date": "2026-06-01",
+      "previous_value": 73.2,
+      "delta": -0.6,
+      "direction": "down",
+      "source": "mock"
+    },
+    {
+      "metric_name": "weight_kg",
+      "date": "2026-06-15",
+      "value": 66.5,
+      "unit": "kg",
+      "previous_date": "2026-06-01",
+      "previous_value": 66.4,
+      "delta": 0.1,
+      "direction": "up",
+      "source": "mock"
+    }
+  ],
+  "latest_training": {
+    "date": "2026-06-18",
+    "session_name": "Upper body",
+    "exercise_count": 3,
+    "work_set_count": 3,
+    "volume_load": 1390.0,
+    "muscle_groups": ["back", "chest", "shoulders"],
+    "needs_review": true,
+    "review_warnings": [
+      "Lateral raise: qualitative load 'unclear OCR'",
+      "Lateral raise: reps missing"
+    ],
+    "source": "mock"
+  },
+  "weekly_volume": {
+    "session_count": 3,
+    "work_sets": 9,
+    "volume_load": 6055.0,
+    "muscle_group_counts": {
+      "back": 2,
+      "chest": 2,
+      "glutes": 1,
+      "hamstrings": 1,
+      "quads": 1,
+      "shoulders": 1
+    }
+  },
+  "signals": {
+    "sources": 2,
+    "rows_seen": 16,
+    "rows_changed": 7,
+    "blocked_sources": [],
+    "status": "OK"
+  },
+  "daily_review_hint": "Training parsed with warnings; review the log before modeling load."
+}
