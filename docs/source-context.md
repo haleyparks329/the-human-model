@@ -23,6 +23,7 @@ The Human Model public repository is designed to stand on its own even when impl
 - Live Project Log updates titled "Multi-Angle RDL Batch Analysis", "Media Ingestion Gets a Shared Boundary", and "Project Log Gets Public Boundaries"
 - Public project-log automation rule that `Summary` powers the standalone detail page while `Front Page Summary` powers the homepage card
 - Public homepage GitHub link, updated after the repository rename from `the-human-model-overview` to `the-human-model`
+- Current public homepage, Bridget, Predictive Models, Decision Support Dashboard, and Tone and Identity pages reviewed on 2026-07-19
 
 ## Repositories Reviewed
 
@@ -47,6 +48,7 @@ Main repo:
 - `c56319f8` - Add guarded next-session recommendations
 - `105b7982` - Add multi-angle RDL batch analysis
 - `4388fd1b` - Update training prediction outputs
+- `0e7bb939` - Add canonical Postgres migration schema
 
 Chatbot repo:
 
@@ -99,6 +101,13 @@ Additional work reviewed on 2026-07-12:
 - Training prediction output refreshes through July 6, including updated history snapshots and workout-sheet artifacts
 - Design-only media-ingestion architecture for future desktop, shortcut, Bridget, and manual upload flows, with canonical requests, dedupe, manifests, review queues, and provider boundaries
 - Public Project Log automation documentation for the split between homepage summaries and full update-page summaries
+
+Additional work reviewed on 2026-07-19:
+
+- Canonical Postgres migration schema and focused loaders for body measurements, daily nutrition, weekly coach check-ins, old/current training logs, and training plans
+- Validation SQL for migrated source counts, date coverage, null-preserving macro/measurement fields, and canonical training/session relationships
+- Local Bridget daily-workflow backend and Airtable review-sync scaffolding, treated as active integration work because the setup pass was interrupted
+- Bridget workout-sheet hardening local diffs preserving exercise order, recommended reps, and non-modelable load text during generated-sheet import
 
 ## Public/Private Boundary
 

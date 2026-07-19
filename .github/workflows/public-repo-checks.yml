@@ -66,7 +66,8 @@ jobs:
             examples/dashboard_data_shaping_demo.py \
             examples/movement_quality_demo.py \
             examples/training_prediction_sheet_demo.py \
-            examples/media_ingestion_router_demo.py
+            examples/media_ingestion_router_demo.py \
+            examples/source_normalization_demo.py
           do
             echo "Running ${script}"
             python "${script}"

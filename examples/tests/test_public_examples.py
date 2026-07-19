@@ -53,6 +53,13 @@ from media_ingestion_router_demo import (  # noqa: E402
     route_request,
     sample_requests,
 )
+from source_normalization_demo import (  # noqa: E402
+    SourceRow,
+    dashboard_source_payload,
+    normalize_rows,
+    sample_source_rows,
+    source_coverage,
+)
 from training_prediction_sheet_demo import (  # noqa: E402
     build_editable_workout_sheet,
     sample_exercise_order,
@@ -277,6 +284,37 @@ class MediaIngestionRouterDemoTests(unittest.TestCase):
 
         self.assertEqual(row["media_kind"], "unsupported")
         self.assertEqual(row["review_status"], "blocked")
+
+
+class SourceNormalizationDemoTests(unittest.TestCase):
+    def test_normalization_preserves_nulls_as_review_notes(self):
+        records = normalize_rows(sample_source_rows())
+        nutrition = next(record for record in records if record.source == "nutrition")
+
+        self.assertEqual(str(nutrition.numeric_fields["protein_g"]), "142.5")
+        self.assertIn("carbs_g missing", nutrition.review_notes)
+        self.assertEqual(nutrition.record_type, "daily_nutrition")
+
+    def test_coverage_report_counts_sources_and_duplicate_dates(self):
+        records = normalize_rows(sample_source_rows())
+        coverage = source_coverage(records)
+
+        self.assertTrue(coverage["ready_for_dashboard"])
+        self.assertEqual(coverage["source_counts"]["training_log"], 2)
+        self.assertTrue(
+            any("duplicate source date retained" in note for note in coverage["review_notes"])
+        )
+
+    def test_dashboard_payload_keeps_private_boundary_visible(self):
+        payload = dashboard_source_payload(normalize_rows(sample_source_rows()))
+
+        self.assertEqual(payload["canonical_record_count"], 6)
+        self.assertEqual(payload["latest_training_date"], "2026-07-06")
+        self.assertIn("mock rows only", payload["private_data_policy"])
+
+    def test_unknown_source_is_rejected(self):
+        with self.assertRaises(ValueError):
+            normalize_rows([SourceRow("unknown", "row-1", "2026-07-01", {})])
 
 
 if __name__ == "__main__":
