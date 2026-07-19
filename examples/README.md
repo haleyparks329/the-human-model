@@ -22,6 +22,8 @@ prototype:
   loads.
 - `media_ingestion_router_demo.py` shows how future media uploads can be
   normalized into reviewable manifests without touching private files.
+- `source_normalization_demo.py` shows how mock source rows become typed
+  canonical records with source coverage and review notes.
 
 ## Evidence Table
 
@@ -35,6 +37,7 @@ prototype:
 | [`movement_quality_demo.py`](movement_quality_demo.py) | Mock rep-level movement-quality review | [Sample movement summary](sample-output/movement-quality-review-summary.json) | Public runnable experimental slice |
 | [`training_prediction_sheet_demo.py`](training_prediction_sheet_demo.py) | Editable workout sheet shaping from guarded recommendations | [Sample workout sheet](sample-output/training-workout-sheet.csv) | Public runnable shaping slice representing private model output |
 | [`media_ingestion_router_demo.py`](media_ingestion_router_demo.py) | Mock media-intake routing and dedupe boundary | Console manifest rows | Architecture/design demo |
+| [`source_normalization_demo.py`](source_normalization_demo.py) | Mock source normalization and coverage checks | Console source-health payload | Public runnable data-foundation slice |
 
 ## Setup
 
@@ -62,6 +65,7 @@ python3 examples/dashboard_data_shaping_demo.py
 python3 examples/movement_quality_demo.py
 python3 examples/training_prediction_sheet_demo.py
 python3 examples/media_ingestion_router_demo.py
+python3 examples/source_normalization_demo.py
 ```
 
 `examples/daily_card_demo.py` regenerates the canonical committed output

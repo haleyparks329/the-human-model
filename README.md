@@ -54,6 +54,7 @@ Implemented:
 - Apple Health recovery import for sleep, HRV, resting heart rate, weight, workout duration, workout type, and active energy.
 - Telegram-based Bridget workflows for recovery check-ins, morning context, workout logging, daily cards, calibration, and low-friction corrections.
 - A local Coach Dashboard backed by SQLite for recovery, training, body, signal health, weekly review, readiness, and movement-quality review.
+- A canonical Postgres data foundation in the private implementation for body measurements, nutrition, coach check-ins, training logs, and training plans, with focused loaders and validation checks.
 - Transparent readiness modeling that produces auditable push/maintain/modify/rest calls instead of hiding decisions inside an LLM.
 - Training-load modeling that creates guarded next-session recommendations and keeps model/debug output separate from editable workout notes.
 - A local MediaPipe RDL movement-analysis prototype with rep metrics, annotated playback, angle trends, and review flags.
@@ -63,6 +64,7 @@ Experimental:
 
 - Multi-angle movement review, where camera views are preserved as separate observations instead of averaged into invalid metrics.
 - Shared media-ingestion boundaries for future desktop drops, Apple Shortcuts, Bridget uploads, and manual review queues.
+- Bridget daily-workflow and Airtable review integration, currently local and being hardened before it is treated as a shipped workflow.
 - Dashboard V2-style training/session summaries and planned-vs-actual review loops.
 
 Future:
@@ -140,6 +142,7 @@ This repository includes sanitized, runnable examples extracted from the working
 - [Movement-quality demo](examples/movement_quality_demo.py)
 - [Training prediction sheet demo](examples/training_prediction_sheet_demo.py)
 - [Media ingestion router demo](examples/media_ingestion_router_demo.py)
+- [Source normalization demo](examples/source_normalization_demo.py)
 
 The examples use mock data and are designed to run without private Notion databases, personal health records, Telegram tokens, or local automation paths. See [examples/README.md](examples/README.md) for run instructions.
 

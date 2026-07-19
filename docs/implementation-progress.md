@@ -1,6 +1,6 @@
 # Implementation Progress
 
-Last updated: 2026-07-13.
+Last updated: 2026-07-19.
 
 This page summarizes what has been built across the active Human Model repositories. It is intentionally written as a progress log, not a product claim.
 
@@ -28,9 +28,11 @@ Implemented:
 - Multi-angle RDL batch-analysis tooling that creates/uses metadata rows, infers camera view from filenames, preserves session and set grouping, and keeps unsupported views out of side-view hinge metrics
 - Training-load modeling pipeline with normalized load history, set-role-aware V2 evaluation, model reports, and guarded next-session recommendation output
 - Design-only media-ingestion architecture describing one intake boundary for future desktop drops, Apple Shortcuts, Bridget uploads, manual review, dedupe, manifests, and downstream analysis routing
+- Canonical Postgres migration schema and focused loaders for body measurements, daily nutrition, weekly coach check-ins, old/current training logs, and training-plan sources, with validation SQL for counts, coverage, and source integrity
 
 Remaining active integration work reviewed:
 
+- Bridget daily-workflow backend routes and Airtable review sync are in local development; the shape is promising, but the setup pass was interrupted and should stay framed as active integration work.
 - Structured lifting schema for sessions, exercises, sets, and training-plan days
 - Structured training-session summaries for exercise count, work sets, volume load, muscle groups, parse warnings, weekly volume, and progression signals
 - Dashboard V2 API/UI payload for today's lift call, evidence stack, risk/progression cards, weekly training strip, recent-session detail, and recommendations
@@ -54,6 +56,7 @@ Key commits reviewed:
 - `c56319f8` - Add guarded next-session recommendations
 - `105b7982` - Add multi-angle RDL batch analysis
 - `4388fd1b` - Update training prediction outputs
+- `0e7bb939` - Add canonical Postgres migration schema
 
 ## Chatbot Repo
 
@@ -131,6 +134,7 @@ The current system can:
 16. Batch-analyze multiple RDL camera views while keeping side, front/rear, oblique, and unknown views as separate review rows.
 17. Generate guarded next-session training-load recommendations from the modeling pipeline.
 18. Send Bridget's pre-gym recommendation summary with an editable workout sheet and a separate model/debug CSV.
+19. Migrate core historical source databases into a canonical Postgres foundation with typed tables, null-preserving loaders, and validation checks.
 
 ## Coach Dashboard V1 Screenshots
 
@@ -157,6 +161,7 @@ Included examples:
 - Movement-quality interpretation with mock rep traces, range-of-motion flags, tempo checks, and set-level review wording
 - Training-prediction sheet shaping that preserves workout order, recommended reps, qualitative loads, guardrails, and blank actual-result fields for Bridget follow-up
 - Media-ingestion routing that normalizes mock desktop, shortcut, Bridget, and manual intake requests into reviewable manifests without touching private files
+- Source normalization that turns mock body, nutrition, weekly check-in, training-log, and training-plan rows into canonical records with coverage and review notes
 
 ## What Is Still Early
 
@@ -170,6 +175,8 @@ Included examples:
 - Training-load recommendations are guarded and inspectable, but still early; the model is useful for review and correction, not autonomous coaching.
 - Editable workout sheets are the current bridge between recommendations and real training notes; the important product behavior is keeping uncertain rows visible instead of hiding them.
 - Media ingestion is currently an architecture/design boundary and mock example, not live upload automation.
+- The Postgres source foundation is implemented in the private repo, but public examples use mock rows; no private Notion exports, raw health records, or local credential paths are published here.
+- The Airtable daily workflow is active local integration work and should not be treated as a complete public workflow yet.
 - Private health/training data lives in Notion and local files, not in public GitHub.
 
 ## Portfolio Takeaway
@@ -192,6 +199,7 @@ project concept
 -> multi-angle movement batches that preserve camera-view provenance
 -> guarded training-load recommendations and editable Bridget workout sheets
 -> shared media-ingestion boundary for future upload/review flows
+-> canonical Postgres source foundation for migrated body, nutrition, check-in, training-log, and training-plan data
 -> future calibration, stronger analytics, and broader sensing
 ```
 

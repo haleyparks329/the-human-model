@@ -24,7 +24,8 @@ flowchart TD
     B3[Zenfit OCR import] --> B
     C1[SQLite dashboard store] --> C
     C2[Notion databases] --> C
-    C3[Schema docs and contracts] --> C
+    C3[Postgres canonical data foundation] --> C
+    C4[Schema docs and contracts] --> C
     D1[Weekly review] --> D
     D2[Coach Dashboard V1] --> D
     D3[Baseline readiness modeling] --> D
@@ -55,6 +56,8 @@ The private foundation repo also now holds a narrow movement-quality prototype. 
 
 Recent architecture work also defines a shared media-intake boundary for future desktop drops, Apple Shortcuts, Bridget uploads, and manual imports. That boundary is design-only today: it describes the canonical request shape, manifest/review records, dedupe strategy, metadata inference, and provider seams before live file movement or model routing is enabled.
 
+The private foundation repo now also has a canonical Postgres data foundation for source-of-truth records that previously lived across separate Notion databases. The current implementation uses focused loader scripts and validation checks for body measurement sessions, daily nutrition, weekly coach check-ins, training logs, and training plans. This is data-foundation work rather than a public product surface: private rows and database IDs stay out of this repo, while the public examples show the normalization and source-health behavior with mock data.
+
 ### `human-model-chatbot`
 
 The chatbot repo is the capture and automation layer.
@@ -83,6 +86,7 @@ This repository is the official public home for The Human Model. It acts as the 
 - Ollama running a local model
 - Notion as the early database and review layer
 - SQLite as the local canonical store for Coach Dashboard V1
+- PostgreSQL as the private canonical data foundation for migrated source-of-truth records
 - FastAPI backend for the local dashboard
 - Next.js frontend for the local dashboard UI
 - Transparent readiness-modeling scripts for feature generation, baseline scoring, and report output
@@ -181,6 +185,16 @@ desktop drop / shortcut / Bridget upload / manual import
 -> canonical intake request
 -> dedupe, metadata inference, manifest, and review queue
 -> later routing to movement-quality or body-progress analysis
+```
+
+### Canonical Source Data Loop
+
+```text
+Notion source databases
+-> focused loader scripts
+-> Postgres tables, constraints, and validation checks
+-> dashboard/modeling-ready source records
+-> review of missing values, duplicates, and coverage gaps
 ```
 
 See [Coach Dashboard V1](coach-dashboard-v1.md) for the current local UI screenshots.
