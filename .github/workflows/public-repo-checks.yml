@@ -2,11 +2,9 @@ name: Public Repository Checks
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,73 +12,19 @@ permissions:
 
 jobs:
   public-repo-checks:
-    name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version:
-          - "3.9"
-          - "3.12"
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Compile public examples
+          python-version: "3.12"
+      - name: Compile toy example
         run: python -m compileall -q examples
-
-      - name: Run public example tests
+      - name: Run toy example tests
         run: python -m unittest discover -s examples/tests
-
-      - name: Install readiness slice
-        run: |
-          cd reference-implementation/readiness-slice
-          python -m pip install --upgrade pip
-          python -m pip install -e ".[dev]"
-
-      - name: Run readiness slice tests
-        run: |
-          cd reference-implementation/readiness-slice
-          pytest
-
-      - name: Smoke-run readiness slice demo
-        run: |
-          cd reference-implementation/readiness-slice
-          python -m readiness_slice.demo
-
-      - name: Smoke-run public examples
-        run: |
-          set -euo pipefail
-          for script in \
-            examples/readiness_scoring_demo.py \
-            examples/readiness_modeling_demo.py \
-            examples/bridget_prompt_demo.py \
-            examples/daily_card_demo.py \
-            examples/dashboard_data_shaping_demo.py \
-            examples/movement_quality_demo.py \
-            examples/training_prediction_sheet_demo.py \
-            examples/media_ingestion_router_demo.py \
-            examples/source_normalization_demo.py
-          do
-            echo "Running ${script}"
-            python "${script}"
-          done
-
-      - name: Validate sample outputs
-        run: python scripts/validate_sample_outputs.py
-
+      - name: Smoke-run toy example
+        run: python examples/toy_evidence_review.py
       - name: Validate local Markdown links
         run: python scripts/check_markdown_links.py
-
-      - name: Check repository diff
-        run: git diff --exit-code
-
       - name: Check whitespace
         run: git diff --check

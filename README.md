@@ -1,203 +1,66 @@
 # The Human Model
 
-The Human Model is a long-term research and engineering project exploring how software can build personalized computational models of recovery, training, movement, behavior, and response to intervention. This repository is the public home for that work.
+The Human Model is a long-running research project about representing one person as longitudinal, reviewable evidence rather than a pile of disconnected records.
 
-The project starts from a simple thesis: the product is not the watch, chatbot, dashboard, or individual model. The product is the personalized human model underneath them.
+Its central question is simple: can software connect observations, context, uncertainty, hypotheses, interventions, and outcomes over time without pretending that partial evidence is certainty?
 
-I started this project because most software is very good at modeling workflows, records, and transactions, but much worse at representing people. I wanted to understand how recovery, training, movement, behavior, context, and intervention interact over time instead of leaving those signals trapped in separate apps. Bodybuilding became the first research environment because it creates repeated, measurable feedback: I can change something, observe the result, and gradually make the model less generic.
+This public repository is the evidence and explanation layer for that work. It demonstrates product reasoning, architecture boundaries, research artifacts, screenshots, and deliberately simplified examples. It is not a deployable health system or a copy of the private implementation.
 
-Portfolio page: [The Human Model](https://hallowed-seat-b6b.notion.site/The-Human-Model-382cf4d8ba1880a188dbc6a664b5a7cc)
-
-## The Problem
-
-Modern software is very good at recording events. It is much worse at representing people.
-
-Most systems store what happened: a workout was logged, a sleep score changed, a check-in was submitted, a dashboard row was updated. That matters. Records are necessary. But the important context often lives between the records: what changed, why it changed, whether it mattered, and how it relates to the same person over time.
-
-Health and performance tools make this especially visible. Data is fragmented across wearables, workout apps, notes, dashboards, photos, chats, and subjective memory. Each tool sees a slice. I am the integration layer, which means the most important context lives in my memory and attention. The problem is that the user is still left to reconstruct the whole picture manually, deciding which signal matters, whether it applies today, and what should actually change.
-
-The deeper problem is not limited to fitness. A lot of software stores events without learning what matters for this person. It can preserve a timeline without building a model.
-
-The Human Model explores that missing layer. It treats recovery signals, training history, subjective context, movement quality, and feedback loops as evidence for a living model of one human system.
-
-## Core Thesis
-
-The durable product is a personalized model that learns how a person responds.
-
-Interfaces are delivery surfaces. Bridget can ask for context or send a morning card. A dashboard can expose audit trails and weekly review. A readiness model can make a cautious training call. A movement-analysis pipeline can flag a rep pattern. None of those surfaces is the whole product.
-
-The center is the model underneath them: a transparent, local-first, reviewable system that connects inputs, uncertainty, decisions, and outcomes over time.
-
-## Why Bodybuilding Is The First Test Environment
-
-Bodybuilding is useful not only because it is measurable, but because it creates repeated interventions and feedback loops.
-
-It allows deliberate changes to variables such as:
-
-- calories and nutrition
-- training load and volume
-- exercise selection
-- sleep and recovery behavior
-- movement execution
-- fatigue management
-
-Those interventions create outcomes that can be observed over time. A training block changes. Recovery changes. Execution changes. Energy, adherence, soreness, and performance change. The system can begin to ask better questions because the environment produces repeated cycles of action and response.
-
-This is not because bodybuilding is the final market. It is because it makes the modeling problem concrete. The same underlying questions show up in sports performance, rehabilitation, physical therapy, assistive technology, chronic-condition support, education, careers, and personal computing.
-
-## What Works Today
-
-The project is early-stage and actively evolving, but several working loops exist today across the private implementation repositories and this public demonstration layer.
-
-Implemented:
-
-- Apple Health recovery import for sleep, HRV, resting heart rate, weight, workout duration, workout type, and active energy.
-- Telegram-based Bridget workflows for recovery check-ins, morning context, workout logging, daily cards, calibration, and low-friction corrections.
-- A local Coach Dashboard backed by SQLite for recovery, training, body, signal health, weekly review, readiness, and movement-quality review.
-- A canonical Postgres data foundation in the private implementation for body measurements, nutrition, coach check-ins, training logs, and training plans, with focused loaders and validation checks.
-- Transparent readiness modeling that produces auditable push/maintain/modify/rest calls instead of hiding decisions inside an LLM.
-- Training-load modeling that creates guarded next-session recommendations and keeps model/debug output separate from editable workout notes.
-- A local MediaPipe RDL movement-analysis prototype with rep metrics, annotated playback, angle trends, and review flags.
-- Public-safe examples in this repository using mock data instead of private health records, Notion IDs, or local secrets.
-
-Experimental:
-
-- Multi-angle movement review, where camera views are preserved as separate observations instead of averaged into invalid metrics.
-- Shared media-ingestion boundaries for future desktop drops, Apple Shortcuts, Bridget uploads, and manual review queues.
-- Bridget daily-workflow and Airtable review integration, currently local and being hardened before it is treated as a shipped workflow.
-- Dashboard V2-style training/session summaries and planned-vs-actual review loops.
-
-Future:
-
-- Stronger calibration against outcomes.
-- Broader sensing beyond commodity wearable data.
-- More general movement-quality modeling.
-- Intervention testing where recommendations can be evaluated against actual behavior and response.
-
-See the [Public Evidence Map](docs/evidence-map.md) for how each capability is represented in this repository.
-
-## Start Here For Reviewers
-
-The clearest runnable engineering slice is the [public readiness reference implementation](reference-implementation/readiness-slice/README.md). It shows one end-to-end Human Model workflow with mock data:
-
-```text
-mock Apple Health recovery export
--> validation and normalization
--> SQLite persistence
--> transparent readiness model
--> FastAPI endpoints
--> daily review JSON
--> tests
-```
-
-Suggested reading path:
-
-1. [Readiness slice README](reference-implementation/readiness-slice/README.md)
-2. [Health export importer](reference-implementation/readiness-slice/readiness_slice/health_import.py)
-3. [SQLite repository layer](reference-implementation/readiness-slice/readiness_slice/repository.py)
-4. [Transparent readiness model](reference-implementation/readiness-slice/readiness_slice/readiness.py)
-5. [FastAPI endpoints](reference-implementation/readiness-slice/readiness_slice/api.py)
-6. [Readiness slice tests](reference-implementation/readiness-slice/tests/)
-
-## High-Level System Architecture
+## The model loop
 
 ```mermaid
-flowchart TD
-    A[Inputs] --> B[Capture and Storage]
-    B --> C[Personalized Human Model]
-    C --> D[Review and Explanation]
-    C --> E[Decision Support]
-    D --> F[Human Review]
-    E --> G[Intervention or Adjustment]
+flowchart LR
+    A["Observations"] --> B["Provenance and uncertainty"]
+    B --> C["Longitudinal model"]
+    C --> D["Hypothesis or prediction"]
+    D --> E["Human review"]
+    E --> F["Intervention and outcome"]
     F --> C
-    G --> A
-
-    A1[Wearables] --> A
-    A2[Training Logs] --> A
-    A3[Subjective Check-ins] --> A
-    A4[Movement Video] --> A
-    A5[Future Sensors] --> A
-
-    B1[Bridget] --> B
-    B2[Local Dashboard Store] --> B
-    B3[Notion Review Layer] --> B
-
-    C1[Readiness Modeling] --> C
-    C2[Training-Load Modeling] --> C
-    C3[Movement Analysis] --> C
-    C4[Behavior and Context Memory] --> C
 ```
 
-The architecture is intentionally modular. Bridget is the daily conversational surface. The dashboard is the deeper review and audit surface. Readiness modeling, training-load modeling, and movement analysis are separate reasoning layers. The public repository is the narrative and demonstration layer for the system as a whole.
+The model owns domain evidence, interpretations, hypotheses, and evaluation. Interfaces may help capture or present context, but they do not own the model. Bridget is one possible bounded continuity interface; it is a separate system and is not the Human Model's database, orchestrator, or source of truth.
 
-## Current Prototypes And Demos
+## What the public work demonstrates
 
-This repository includes sanitized, runnable examples extracted from the working system:
+- longitudinal evidence with source provenance
+- explicit missingness and uncertainty
+- separation of observation, interpretation, and decision
+- predictions evaluated against later outcomes
+- human review and correction before stronger automation
+- product surfaces for review, including a coach dashboard and movement-analysis prototype
+- honest implemented, experimental, and future boundaries
 
-- [Readiness scoring demo](examples/readiness_scoring_demo.py)
-- [Readiness modeling demo](examples/readiness_modeling_demo.py)
-- [Bridget prompt demo](examples/bridget_prompt_demo.py)
-- [Daily card demo](examples/daily_card_demo.py)
-- [Dashboard data-shaping demo](examples/dashboard_data_shaping_demo.py)
-- [Movement-quality demo](examples/movement_quality_demo.py)
-- [Training prediction sheet demo](examples/training_prediction_sheet_demo.py)
-- [Media ingestion router demo](examples/media_ingestion_router_demo.py)
-- [Source normalization demo](examples/source_normalization_demo.py)
+## Explore the project
 
-The examples use mock data and are designed to run without private Notion databases, personal health records, Telegram tokens, or local automation paths. See [examples/README.md](examples/README.md) for run instructions.
+1. Read [Why the Human Model](docs/why-the-human-model.md).
+2. Review the [public architecture](docs/architecture.md) and [evidence map](docs/evidence-map.md).
+3. Run the [toy evidence review](examples/README.md).
+4. Explore the approved [dashboard screenshots](assets/asset-manifest.md) and [movement-analysis demo](demo/mediapipe-rdl-form/README.md).
+5. Read the [design principles](docs/design-principles.md), [movement-analysis notes](docs/movement-analysis.md), and [research notes](docs/research-notes.md).
+
+## Toy example
+
+The only executable model example is intentionally incomplete. It accepts three fictional observations, preserves their provenance, and classifies each claim as `supported`, `partial`, or `unsupported`. It contains no health-device contract, readiness score, weights, thresholds, calibration, routing, prompt, storage schema, or recommendation logic.
+
+```bash
+python3 examples/toy_evidence_review.py
+python3 -m unittest examples/tests/test_toy_evidence_review.py
+```
+
+## Public evidence
 
 ![Coach Dashboard overview](assets/screenshots/coach-dashboard-01-overview.png)
 
-_Coach Dashboard overview, approved public UI capture._
+The screenshots and demo media show real product surfaces where approved. They demonstrate how evidence and uncertainty can be reviewed; they do not expose the contracts or machinery behind those surfaces.
 
-![Bridget daily card mock output](examples/sample-output/bridget-daily-card.svg)
+## Status
 
-_Bridget daily-card sample generated from mock data._
+Implemented concepts include evidence capture, review surfaces, recovery and training experiments, and a narrow movement-analysis prototype. Calibration, broader sensing, and stronger intervention evaluation remain experimental. Public claims are intentionally narrower than the private research system.
 
-Demo asset:
+## Intentionally withheld
 
-- [MediaPipe RDL form demo](demo/mediapipe-rdl-form/) shows an early local RDL movement-analysis prototype with pose overlay and charted movement signal.
+The public repository does not include production contracts, private data models, ingestion adapters, real schemas, prompts, thresholds, weights, calibration logic, routing rules, tool permissions, runtime composition, deployment details, or private repository maps.
 
-## Principles And Safeguards
+## Safety boundary
 
-- Model first: interfaces, dashboards, chatbots, and reports should serve the underlying personalized model.
-- Transparent evidence and uncertainty: model outputs should show inputs, confidence, missing data, and unsupported cases.
-- Human review: recommendations are decision support, with review and override before stronger automation.
-- Local-first and user-owned where possible: private health data, memory, and model context should stay under personal control.
-- Low-friction capture: the system should learn from real life without demanding long forms or repetitive manual work.
-- Honest status boundaries: implemented, experimental, and future work should stay clearly separated.
-
-See [Design Principles](docs/design-principles.md) for the full product and engineering principles.
-
-## Broader Research Direction
-
-The long-term research direction is a personal model that can connect data acquisition, interpretation, decision support, and intervention testing. Recovery and training are the current proving ground, but the broader question is how software can represent an individual human system well enough to support better decisions.
-
-That makes this project partly engineering, partly product research, partly applied modeling, and partly human-computer interaction. The near-term work is deliberately narrow: keep the loops reliable, keep the claims modest, and make every model output inspectable.
-
-## Technical Documentation And Implementation Repositories
-
-Public repository: [haleyparks329/the-human-model](https://github.com/haleyparks329/the-human-model)
-
-- Foundation implementation repository: [haleyparks329/human-model](https://github.com/haleyparks329/human-model)
-- Bridget/chatbot implementation repository: [haleyparks329/human-model-chatbot](https://github.com/haleyparks329/human-model-chatbot)
-
-Technical docs:
-
-- [Why The Human Model](docs/why-the-human-model.md)
-- [Philosophy](docs/philosophy.md)
-- [Design Principles](docs/design-principles.md)
-- [Public Evidence Map](docs/evidence-map.md)
-- [Architecture](docs/architecture.md)
-- [Implementation Progress](docs/implementation-progress.md)
-- [Coach Dashboard V1](docs/coach-dashboard-v1.md)
-- [Telegram Chatbot Evolution](docs/chatbot-telegram-evolution.md)
-- [Recovery Modeling](docs/recovery-modeling.md)
-- [Movement Analysis](docs/movement-analysis.md)
-- [Roadmap](docs/roadmap.md)
-- [Vision](docs/vision.md)
-- [Research Notes](docs/research-notes.md)
-- [Source Context](docs/source-context.md)
-- [Project Log Automation](docs/project-log-automation.md)
-- [Documentation Cleanup Notes](docs/documentation-cleanup-notes.md)
-- [Asset Manifest](assets/asset-manifest.md)
+This is research and decision-support work, not medical advice. Public examples are synthetic and are not suitable for health or training decisions.

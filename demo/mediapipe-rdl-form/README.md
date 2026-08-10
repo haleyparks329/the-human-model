@@ -19,4 +19,4 @@ The recording shows an RDL form video with a pose overlay and movement chart. It
 
 This is an early prototype demo. It is not a generalized exercise coach or finished form-correction system. The current value is narrower: make movement analysis inspectable by showing the tracked body position and related signal output alongside the original lift.
 
-The private implementation continues this direction with rep-level metrics, annotated playback, angle trends, and dashboard review flags.
+The public demo shows the review surface and engineering direction. Rep metrics, calibration, thresholds, and production review rules are intentionally not documented here.

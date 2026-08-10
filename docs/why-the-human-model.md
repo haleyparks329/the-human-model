@@ -47,7 +47,7 @@ Longitudinal memory matters because many useful patterns are not visible in a si
 
 Without memory, software keeps asking the same questions and showing the same generic advice. With memory, the system can start to notice what is specific. It can become less like a form and more like a working representation of the person using it.
 
-That is why Bridget matters as more than a chatbot. Her value is not the novelty of conversation. It is the possibility of low-friction model acquisition: tiny corrections, quick confirmations, daily context, and reminders that connect back into the larger system.
+That is where bounded interfaces can help: they may request context, preserve a reference, or present a review without absorbing ownership of the Human Model. Bridget is one separate continuity interface, not the model or its source of truth.
 
 ## Why Bodybuilding Comes First
 
