@@ -1,0 +1,12 @@
+{
+  "observations": [
+    {"id": "o1", "statement": "The fictional participant completed session A.", "source": "synthetic session note"},
+    {"id": "o2", "statement": "The fictional participant reported the planned effort.", "source": "synthetic check-in"},
+    {"id": "o3", "statement": "The fictional participant changed the plan once.", "source": "synthetic review note"}
+  ],
+  "claims": [
+    {"statement": "Session A followed the plan.", "evidence_ids": ["o1", "o2"]},
+    {"statement": "The plan may need review.", "evidence_ids": ["o3"]},
+    {"statement": "The participant improved.", "evidence_ids": []}
+  ]
+}
