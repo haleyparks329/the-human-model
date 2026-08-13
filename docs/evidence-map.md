@@ -1,11 +1,26 @@
 # Public Evidence Map
 
-| Claim | Public evidence | Boundary |
-| --- | --- | --- |
-| Evidence is longitudinal and source-backed | Architecture, toy evidence example | Synthetic structure only |
-| Missingness and uncertainty remain visible | Toy input and expected output | No production rules |
-| Model outputs are reviewable | Dashboard screenshots | No private data or contracts |
-| Movement evidence can support human review | MediaPipe RDL demo and movement notes | Narrow prototype, not an automated judgment system |
-| Predictions should be evaluated against outcomes | Research and design notes | Evaluation method is described conceptually |
+This map limits what the repository claims and points to the public evidence a reader can inspect. Private systems were consulted to reconcile boundaries, not copied here.
 
-Public artifacts prove concepts and engineering judgment. They do not document private runtime composition or provide an implementation reading path.
+| Public claim | Status | Public evidence | Important limit |
+| --- | --- | --- | --- |
+| The project addresses longitudinal, provenance-aware, reviewable human state | Current research definition | [README](../README.md), [architecture](architecture.md) | A definition is not proof of generality. |
+| Source observations can retain provenance through review | Implemented public example | [toy example](../examples/README.md) and tests | Synthetic explanatory labels, not production parity. |
+| Missing or unsupported claims can remain explicit | Implemented public example | [toy fixture](../examples/toy_observations.json) and tests | Covers only a narrow evidence-review case. |
+| Corrections should be retained rather than overwrite history | Architectural invariant | [architecture](architecture.md), [design principles](design-principles.md) | No public end-to-end correction implementation is claimed. |
+| The Human Model owns canonical human-domain state | Current architecture | [architecture](architecture.md) | Detailed private contract intentionally omitted. |
+| Coach interprets bounded evidence and proposes actions | Dogfooded boundary | [architecture](architecture.md) | One-person evidence; no canonical write claim. |
+| Bridget supports continuity and reconciliation without being a gateway | Dogfooded boundary | [architecture](architecture.md), [project evolution](project-evolution.md) | No claim that every continuity problem is solved. |
+| Accepted plan and schedule state belongs to the Human Model | Current architecture / private workflow partly implemented | [architecture](architecture.md), [roadmap](roadmap.md) | Applying every confirmed proposal remains planned; public runtime proof is absent. |
+| Dashboards and chat are replaceable interfaces | Historical evidence | [asset manifest](../assets/asset-manifest.md) | Screenshots do not show current runtime. |
+| Movement-video analysis is promising | Experimental | [demo note](../demo/mediapipe-rdl-form/README.md) | No validation or assessment claim. |
+| The system learns preferences, intent, or behavior generally | Not claimed | [research notes](research-notes.md) | Observations and corrections do not establish generalized learning. |
+| The system is medically valid or broadly generalizable | Not claimed | — | Current evidence is mainly a personal performance workflow. |
+
+## Evidence hierarchy used in reconciliation
+
+For current implementation claims, running code, tests, migrations, current contracts, and operational evidence outrank older narrative documents and screenshots. Historical artifacts remain useful for lineage but cannot establish present ownership or capability.
+
+## Claim discipline
+
+Every public capability should use one of: **implemented**, **dogfooded**, **experimental**, **historical**, **planned**, or **rejected**. If no evidence supports one of those labels, the claim should be narrowed or removed.

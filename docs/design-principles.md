@@ -1,103 +1,61 @@
 # Design Principles
 
-These principles translate the philosophy of The Human Model into product and engineering rules. They are meant to guide architecture, feature design, documentation, and future audits.
+## 1. Model change, not just current values
 
-## 1. Model First
+Important state needs time, validity, and supersession semantics. A latest-value record is useful as a projection, not a complete history.
 
-Interfaces, dashboards, chatbots, and reports are surfaces. The evolving personalized model is the durable system.
+## 2. Keep provenance attached
 
-Implementation should avoid coupling the model to one interface. Bridget, the dashboard, public examples, and future surfaces should be able to read from shared structured context. The model should survive changes in presentation.
+Observations identify their sources. Derived evidence and claims retain lineage to inputs and method. A displayed number without provenance should not silently become domain truth.
 
-When a new feature is proposed, the first question should be what it contributes to the model. A surface can be temporary. The structured context it creates should remain useful.
+## 3. Separate observed, inferred, and confirmed
 
-## 2. Records Are Evidence, Not Understanding
+These are different epistemic and authority states. Confidence does not replace the distinction.
 
-CRUD systems, tables, events, and logs are necessary inputs, but they are not the model itself.
+## 4. Represent missingness, conflict, and uncertainty
 
-Preserve raw records, but also preserve relationships and context. Distinguish what was captured from what was interpreted. Do not confuse more fields with deeper understanding.
+Unknown is not zero. Missing is not normal. Disagreement is not an invitation to average sources without policy. Uncertainty belongs in the model and interface.
 
-This matters in documentation as much as code. A commit log, table, or data export can show evidence, but it should not be presented as the full understanding layer. The system needs room for meaning, provenance, and uncertainty.
+## 5. Make claims reviewable
 
-## 3. Separate Evidence, Inference, And Recommendation
+A model-generated assertion is a claim, not a fact. Important claims expose support, scope, author or process, and review state.
 
-The system should distinguish what was observed, what was derived, what is uncertain, and what action is suggested.
+## 6. Correct by amendment and supersession
 
-Model outputs should be inspectable. Confidence and data-quality states should be explicit. Inference should not silently become fact, especially when recommendations may affect training, recovery, or behavior.
+Do not erase history to make the present look clean. Corrections should state what changed and why; affected derived state should be invalidated, reviewed, or recomputed.
 
-This principle protects the boundary between data and advice. A bad night's sleep is evidence. A reduced readiness score is inference. A recommendation to modify training is a suggested action. Those layers should stay visibly separate.
+## 7. Keep one canonical domain owner
 
-## 4. Preserve Longitudinal Memory
+The Human Model owns canonical human-domain state. Consumers can interpret projections and submit proposals, but should not maintain competing truth stores.
 
-Personalization requires history across time, not only the latest event.
+## 8. Minimize projections
 
-Preserve prior context, corrections, and user feedback. Avoid repeatedly asking for information already known. Design for patterns across weeks and months, because many useful signals only appear longitudinally.
+Give a consumer the least context sufficient for its purpose, role, and authority. Projection boundaries are privacy and correctness boundaries.
 
-Memory should also include correction history. If the user repeatedly fixes the same assumption, the system should treat that as model feedback, not as isolated text.
+## 9. Require confirmation in proportion to impact
 
-## 5. Human Review Before Stronger Automation
+Reading evidence, suggesting a low-risk adjustment, scheduling a plan, and changing canonical state are different authorities. Higher impact and ambiguity require stronger review.
 
-The system should support decisions without quietly becoming the authority.
+## 10. Keep interfaces replaceable
 
-Recommendations should remain reviewable. Human override should be available. Automation boundaries should stay conservative until evidence, calibration, and trust improve.
+Dashboards, chat, Telegram, spreadsheets, and sensing tools are surfaces. The interface is disposable; the model persists.
 
-The goal is not to avoid automation forever. The goal is to earn stronger automation through evidence, review, and calibration instead of adding authority because the interface feels polished.
+## 11. Learn through explicit loops
 
-## 6. Local-First And User-Owned Where Possible
+Record hypotheses and predictions, interventions, outcomes, and updates. Do not infer generalized learning merely because the system stores behavior or produces personalized prose.
 
-Personal data, memory, and models should remain under the person's control where practical.
+## 12. Treat friction as evidence
 
-Minimize unnecessary data exposure. Preserve portability. Separate public demos from private records. Treat the personal model as personal infrastructure, not as a hidden asset owned by an interface provider.
+Repeated corrections, workarounds, ignored prompts, and duplicated entry can signal system mismatch. Investigate with the person. Do not label desire paths as user failure or automatic intent.
 
-Public examples should use mock data. Private records should stay private. Integrations should be designed so useful context can move with the person when possible.
+## 13. Design for independent use
 
-## 7. Low-Friction Model Acquisition
+The Human Model must remain usable without Bridget, Coach, or WDW. Integration should add bounded capability, not transfer ownership.
 
-A model only becomes useful if interacting with it fits real life.
+## 14. State evidence precisely
 
-Ask for the smallest useful correction. Support natural-language capture. Avoid repetitive forms. Use defaults and prior context responsibly, while making correction easy when the model is wrong.
+Implemented, dogfooded, experimental, historical, planned, and rejected are not interchangeable. Public claims should identify which applies.
 
-This is especially important for Bridget. The value of a conversational surface is not that it can ask unlimited questions. The value is that it can collect useful context with very little friction.
+## 15. Publish architecture without publishing the person
 
-## 8. Show Uncertainty
-
-A trustworthy system should expose what it does not know.
-
-Use missing-data states, confidence labels, unsupported rows, visible limitations, and cautious defaults. A weak signal should remain a weak signal, not become a polished answer.
-
-Uncertainty should be part of the user experience, not hidden in logs. If the model lacks evidence, the interface should say so plainly and still offer the next useful step.
-
-## 9. Optimize For Understanding, Not Engagement
-
-The system should help the person make sense of themselves rather than maximize time spent in the product.
-
-Avoid unnecessary notifications and addictive engagement loops. Prioritize clarity and actionability. Let the interface disappear when it is not needed.
-
-A good outcome may be fewer prompts, fewer screens, and less time spent managing the system. The product should earn attention only when it can give attention back.
-
-## 10. Technology Can Be Serious Without Being Sterile
-
-Personal software can be warm, expressive, playful, and enjoyable while remaining technically rigorous.
-
-Personality and aesthetics are legitimate product concerns. Approachable interfaces should not hide reasoning. Playful surfaces can coexist with inspectable systems.
-
-This principle matters because personal software is used inside real routines, not abstract demos. Warmth can reduce friction. Expressiveness can make the system easier to return to. Neither should replace evidence.
-
-## 11. Machines Carry Coordination; Humans Keep Agency
-
-> Give the machines the burden of remembering, coordinating, searching, and connecting. Give people their attention back.
-
-Automate glue work. Reduce cognitive overhead. Preserve judgment, choice, and correction for the human.
-
-This means the system should remember context, search across prior information, coordinate between surfaces, and bring back the relevant detail at the right time. The human should keep control over meaning and action.
-
-## 12. Build From Real Use, Not Idealized Data
-
-The model should survive missing logs, contradictory signals, subjective uncertainty, stale data, and real-life interruptions.
-
-Test with imperfect workflows. Represent data quality explicitly. Avoid designing only for clean datasets. Prefer narrow working loops over broad speculative claims.
-
-Real use includes skipped entries, delayed imports, inconsistent exercise names, tired replies, unexpected schedule changes, and ambiguous signals. The system should treat those as normal operating conditions.
-
-## How To Use These Principles
-
-These principles are decision filters, not fixed implementation rules. When architecture or product choices conflict, they should help clarify the tradeoff: protect the model, preserve evidence, expose uncertainty, reduce cognitive overhead, and keep the human in the loop.
+Synthetic examples can demonstrate lineage, review, and uncertainty. Private data, schemas, prompts, calibration, operational thresholds, and private cross-system contracts are not required for public credibility.

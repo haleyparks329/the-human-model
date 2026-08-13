@@ -1,168 +1,78 @@
 # Project Evolution
 
-This project evolved through several versions before landing on the current framing. That evolution is part of the project: it shows how the idea moved from a device concept into a broader human-performance system.
+The Human Model did not begin as a clean abstraction. It emerged through repeated attempts to make a real bodybuilding and performance workflow retain context. This history is valuable because it shows which concerns persisted as interfaces changed.
 
-## Version 0: Better Fitness Wearable
+## 1. Documents and spreadsheets
 
-Initial thought:
+**Status: Historical**
 
-> Something between a smartwatch and a smart ring.
+Early plans, logs, and summaries lived in documents and sheets. They were practical but fragmented. The same information was repeatedly copied, reconciled, and re-explained.
 
-Motivation:
+Lesson: durable continuity needs structured ownership and provenance, not only better summaries.
 
-- Current wearables miss exercise execution.
-- Current wearables miss effort quality.
-- Current wearables miss coaching insights.
+## 2. Recovery and readiness models
 
-At this stage the focus was mostly form factor, hardware, and sensor placement.
+**Status: Historical foundation / current research question**
 
-## Version 1: Exercise Quality Wearable
+Recovery modeling introduced explicit inputs, missingness, weighting, and daily decisions. It also exposed how easily a score can overstate certainty or hide conflicting sources.
 
-The first major realization was that the problem is not only recovery. The problem is:
+Lesson: derived values need lineage and review; a score is evidence for judgment, not a verdict.
 
-> How do I know if I performed the exercise well?
+## 3. Bridget and Telegram workflows
 
-Desired feedback:
+**Status: Historical interface; universal gateway rejected**
 
-- Range-of-motion quality
-- Tempo consistency
-- Symmetry
-- Fatigue detection
-- Form drift
-- Compensation patterns
+Conversation and messaging reduced interaction cost and created useful continuity experiments. Over time, too much architecture was described through one assistant and one transport.
 
-Example feedback:
+Lesson: conversational continuity is useful, but canonical domain state should not belong to a chatbot or require it as a gateway.
 
-- ROM dropped 15%.
-- Tempo is speeding up.
-- Lower back compensation detected.
+## 4. Coach dashboard
 
-## Version 2: Coaching Judgments
+**Status: Historical prototype**
 
-The second major realization was that the most valuable feedback is not just movement metrics. It is coaching judgment.
+The dashboard brought training, recovery, body, signals, and reviews into one view. It helped reveal missing provenance, ambiguous status, and the need to distinguish evidence from interpretation.
 
-Desired feedback:
+Lesson: a dashboard can make a model legible, but it is not the model.
 
-- You had 3 reps left.
-- Add 5 kg.
-- Drop weight by 10%.
-- You are sandbagging.
-- Push harder.
+## 5. Sensing and movement experiments
 
-Key insight:
+**Status: Experimental / historical prototypes**
 
-> Users do not want measurements. Users want decisions.
+Media ingestion and movement overlays explored richer observations. These experiments were not validated as assessment systems.
 
-Shift:
+Lesson: new sensing increases the provenance and uncertainty burden; video does not become a trustworthy conclusion merely because a model can process it.
 
-```text
-measure -> coach
-```
+## 6. Canonical Human Model domain
 
-instead of:
+**Status: Implemented and dogfooded in a bounded performance domain**
 
-```text
-measure -> display
-```
+The architecture separated canonical human-domain evidence from interfaces and specialist judgment. Source normalization, explicit scheduling state, provenance-aware derived evidence, and bounded reads became domain responsibilities.
 
-## Version 3: Personalized Athlete Model
+Lesson: one owner for accepted domain state prevents dashboards, agents, and notes from becoming competing truths.
 
-The third major realization was that coaching does not work well from population averages alone.
+## 7. Resident and world boundaries
 
-The system must learn:
+**Status: Current architecture; partly dogfooded**
 
-- Individual fatigue patterns
-- Individual effort patterns
-- Individual recovery responses
-- Individual adaptation rates
+The Wonderful Digital World introduced a broader environment with specialist residents. Coach owns coaching judgment and proposals. Bridget owns continuity and reconciliation. Each consumes bounded context without absorbing Human Model ownership.
 
-Major shift:
+Lesson: useful persistence comes from stable boundaries and minimum-sufficient projections, not universal access to a person-shaped context blob.
 
-```text
-generic fitness tracking -> personalized athlete modeling
-```
+## What remained stable
 
-## Version 4: Coach Intelligence System
+- The bodybuilding and performance origin supplies the strongest evidence.
+- Human correction matters more than polished prediction.
+- State changes over time and must retain history.
+- Interfaces are replaceable.
+- Source, interpretation, accepted state, and action authority must be separated.
 
-The fourth major realization was that the system should not replace coaches. It should augment them.
+## What was narrowed or rejected
 
-Online coaches manage many athletes but often have limited visibility. Current inputs are mostly check-ins, photos, measurements, and subjective feedback.
+- The project is not a dashboard product.
+- Bridget is not the Human Model and is not a mandatory gateway.
+- Telegram is not the current architecture.
+- A model-generated claim is not automatically knowledge.
+- Behavior is not automatically intent or consent.
+- Confirmed action recording is not the same as completed canonical mutation.
 
-Desired inputs:
-
-- Recovery trend
-- Execution quality
-- Effort estimation
-- Performance trend
-
-Core coach questions:
-
-1. Did they recover?
-2. Did they execute?
-3. Did they push?
-4. Did they adapt?
-
-At this stage, the dashboard and intelligence layer became more important than the hardware.
-
-## Version 5: Modular Sensing Pod
-
-The fifth major realization was that the innovation is not a ring. The innovation is:
-
-> One sensing pod that can move to wherever the question is.
-
-Examples:
-
-- Sleep: ring attachment
-- Daily use: bracelet attachment
-- Squats: thigh strap
-- Deadlifts: lower back clip
-- Running: shoe attachment
-
-This creates adaptive sensor placement instead of fixed wearable placement.
-
-## Version 6: Human Performance Operating System
-
-The current vision:
-
-The pod is not the product. The dashboard is not the product. The chatbot is not the product.
-
-The product is:
-
-> A personalized model of human performance.
-
-The system:
-
-- Measures recovery, movement, and effort.
-- Models athlete behavior, fatigue, and adaptation.
-- Optimizes training and recovery decisions.
-- Controls feedback, coach alerts, and adaptive recommendations.
-
-Architecture:
-
-```text
-Athlete
-  -> Sensors
-  -> Human Model
-  -> Coach Intelligence
-  -> Intervention
-```
-
-## Long-Term Expansion Path
-
-The project started in bodybuilding, but it naturally expands into broader human performance and augmentation.
-
-Potential domains:
-
-- Sports performance: strength training, endurance, team sports
-- Physical therapy: ROM tracking and recovery monitoring
-- Rehabilitation: stroke recovery, gait analysis, compensation detection
-- Assistive technology: prosthetics, exoskeletons, human augmentation
-- Bionics engineering: human sensing, human modeling, human-machine interaction
-
-Final realization:
-
-> Bodybuilding is the test environment.
-
-The actual project is:
-
-> Measuring, modeling, and augmenting human capability.
+Historical documents, screenshots, and examples remain in the repository with explicit classifications. They show the path to the current architecture without being allowed to define it.
