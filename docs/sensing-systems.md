@@ -1,87 +1,36 @@
-# Sensing Systems
+# Experimental Sensing Directions
 
-The sensing layer is the bridge between software and physical movement.
+**Status: experimental or planned. No general-purpose sensing hardware is claimed as implemented.**
 
-The near-term hardware direction is intentionally simple: one clean sensor-to-data-to-insight project before attempting a larger robotics, rehab, or assistive-technology system.
+Possible sources include exercise video, inertial sensors, force or pressure measurements, and controlled output tests. Their value is not the volume of data they collect; it is whether they add reviewable evidence to a decision the existing model cannot make well.
 
-## Current Hardware Context
+## Candidate experiments
 
-The current setup combines consumer wearable data with a local development environment:
+### Video
 
-- Mac mini for local development, chatbot operation, data scripts, and future always-on workflows
-- Apple Watch as the first wearable data source for recovery and activity signals
-- Health Auto Export for moving Apple Watch metrics into local JSON files
-- Planned Arduino / IMU setup for direct movement-quality sensing
+Test one movement, one camera protocol, and a small set of explainable features. Preserve the recording and tracking quality as provenance.
 
-## Candidate Prototypes
+### Inertial sensing
 
-### Joint Angle Tracker
+Test whether a simple sensor can measure a repeatable angle or tempo signal under controlled placement. Reattachment and calibration error are part of the experiment.
 
-Use an IMU sensor, such as an MPU6050, to estimate joint angle during a movement.
+### Force or velocity
 
-What it explores:
+Evaluate whether a short output test can provide a stable personal comparison without being mistaken for whole-body readiness.
 
-- Acceleration and gyroscope data
-- Noise and filtering
-- Calibration
-- Range of motion estimates
-- Rep consistency
+### Feedback
 
-### Force / Pressure Measurement
+Only add real-time feedback after measurement validity and false-positive costs are understood. Review-first output is the safer default.
 
-Use a force sensor or load cell to measure pressure, grip, or weight distribution.
+## Promotion criteria
 
-What it explores:
+A sensing experiment should remain experimental until it has:
 
-- Analog signal reading
-- Calibration
-- Mapping voltage to physical meaning
-- Strength or pressure trends
+- a stated decision it supports;
+- known source and calibration conditions;
+- visible quality or uncertainty;
+- a user correction path;
+- repeatability evidence; and
+- privacy and retention rules.
 
-### Simple EMG Experiment
-
-Use a muscle sensor to explore muscle activation signals.
-
-What it explores:
-
-- Biosignals
-- Noisy data handling
-- Threshold detection
-- Human-machine control concepts
-
-### Closed-Loop Feedback
-
-Use a sensor and feedback output, such as vibration, sound, or a motor, to guide behavior.
-
-What it explores:
-
-- Feedback loops
-- Control systems
-- System response
-- Human-in-the-loop design
-
-## Recommended First Build
-
-The strongest first hardware milestone is:
-
-```text
-IMU joint angle tracker
--> Python data logging
--> basic visualization
--> simple feedback cue
-```
-
-That keeps the project coherent and directly connected to recovery, movement quality, and adaptive feedback.
-
-## Product Direction
-
-The longer-term sensing idea is a modular pod rather than a fixed wearable form factor: one sensor package that can move to the body location relevant to the question.
-
-Examples:
-
-- Sleep: ring-like or wrist attachment
-- Squats: thigh strap
-- Deadlifts: lower-back clip
-- Running: shoe attachment
-
-The key principle is adaptive sensor placement: measure from the location that best answers the performance question.
+See [Movement Analysis](movement-analysis.md) for the historical computer-vision prototype.

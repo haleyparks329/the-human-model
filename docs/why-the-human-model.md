@@ -1,87 +1,49 @@
-# Why The Human Model
+# Why the Human Model?
 
-The Human Model exists because tracking alone is not enough.
+Human-facing software often has plenty of data and very little continuity. Measurements live in one service, plans in another, conversation in a third, and corrections in memory. Systems repeatedly rebuild a partial picture from whichever context is nearest.
 
-I do not want another place to store numbers. I already have plenty of those. Wearables store recovery metrics. Training apps store exercises. Notes store context. Chat threads store fragments of how a day felt. Dashboards can pull some of it together, but even a good dashboard usually stops at showing me what happened.
+The deeper problem is not retrieval. A person changes, sources disagree, plans are revised, observations age, and meaning depends on time and purpose. A static profile hides those properties. A long prompt can hide them more elegantly, but it does not solve them.
 
-The harder question is what any of it means.
+The Human Model asks how to represent a changing person as longitudinal, provenance-aware, reviewable state.
 
-Did poor sleep actually matter today, or did the training session go fine anyway? Was a missed lift a recovery issue, a programming issue, a movement-quality issue, or just a normal bad set? Did a change in calories, sleep schedule, exercise selection, or stress show up in performance two weeks later? Which signals are reliable for me, and which ones are noise?
+## Why bodybuilding and performance?
 
-Most tools are not built to answer those questions because they are organized around separate domains. The watch knows the sleep data. The workout app knows the sets. The dashboard knows the chart. The notes know the story. I am the integration layer, which means the most important context lives in my memory and attention.
+The project began with training, nutrition, recovery, measurements, and coaching. This domain exposes the problem sharply:
 
-That is the part I want to change.
+- yesterday's plan may not be today's plan;
+- a device reading and a person's felt experience may conflict;
+- one difficult session is weak evidence, while a repeated pattern may matter;
+- an imported program does not establish the dates it was actually performed;
+- an intervention needs an outcome before it becomes useful learning.
 
-## The Goal Is A Model, Not Another Dashboard
+This origin remains central evidence, not a limit on the architecture. Similar problems appear wherever a system must maintain responsible continuity about a person.
 
-The Human Model is not a fitness app. It is a long-term research and engineering project exploring how software can represent an individual well enough to support better decisions over time.
+## Why not just memory?
 
-A dashboard can be useful. Bridget can be useful. A readiness score can be useful. Movement analysis can be useful. But those are surfaces. The durable thing is the model underneath them: the system that remembers, connects, calibrates, and updates.
+Memory systems answer “what might be relevant?” The Human Model must also answer:
 
-I am interested in a model that can hold relationships across domains:
+- Where did this come from?
+- Was it observed, inferred, or confirmed?
+- What time and scope does it apply to?
+- What supports this claim?
+- Has it been corrected or superseded?
+- Who is allowed to see it or change it?
 
-- recovery and training
-- movement quality and fatigue
-- subjective state and objective signals
-- planned intervention and actual outcome
-- confidence and missing data
-- what happened once and what keeps happening
+Those questions require domain state and governance, not only text retrieval.
 
-A useful personal model should expose what it knows, what it is guessing, and what it cannot support yet.
+## Why reviewability matters
 
-## Decisions Matter More Than Passive Metrics
+A model about a person will sometimes be wrong. The standard cannot be perfect inference. It must be legible error: the person can see why a claim exists, correct it, and understand how that correction affects future use.
 
-Passive metrics are easy to collect and hard to use.
+The goal is therefore not a digital replica or a total model of a human. It is a useful, bounded, revisable account of domain-relevant state that preserves human authority.
 
-It is not enough to know that HRV went down, sleep was short, or training volume increased. The practical question is whether a decision should change. Should I push, maintain, modify, or rest? Should I keep the planned load? Should I change exercise selection? Should I treat a movement flag as a coaching issue, a fatigue issue, or just something to review later?
+## Research questions
 
-The Human Model is built around that decision layer. Readiness outputs are transparent baseline calls. Training-load recommendations are guarded and inspectable. Movement analysis is review context, not a generalized form judge.
+1. How should conflicting observations coexist before resolution?
+2. When should inferred state decay or require revalidation?
+3. How can corrections update derived state without erasing history?
+4. What is the minimum sufficient projection for a given resident or tool?
+5. How should a system learn from outcomes without overstating causality?
+6. How can workflow friction and repeated workarounds become design evidence without becoming surveillance?
 
-That discipline matters because it keeps the project honest. The point is not to generate more confident answers. The point is to build a system that can become more useful as it gathers better evidence.
-
-## Longitudinal Memory Is The Missing Piece
-
-A person is not a row in a table. A person is a system changing over time.
-
-Longitudinal memory matters because many useful patterns are not visible in a single event. They appear across weeks and months: how I respond to higher volume, what tends to happen after poor sleep, which movements degrade under fatigue, how subjective energy compares with actual performance, and which interventions reliably help.
-
-Without memory, software keeps asking the same questions and showing the same generic advice. With memory, the system can start to notice what is specific. It can become less like a form and more like a working representation of the person using it.
-
-That is where bounded interfaces can help: they may request context, preserve a reference, or present a review without absorbing ownership of the Human Model. Bridget is one separate continuity interface, not the model or its source of truth.
-
-## Why Bodybuilding Comes First
-
-Bodybuilding is the first research environment because it gives the model something concrete to learn from.
-
-It creates repeated interventions. Calories can change. Training load can change. Volume can change. Exercise selection can change. Sleep and recovery behavior can change. Movement execution can change. Fatigue management can change. Those changes create outcomes that can be observed over time.
-
-This makes bodybuilding useful in a way that goes beyond measurement. It is a structured environment for testing action and response. The feedback loops are short enough to inspect, but messy enough to be real.
-
-That messiness is important. If the system only worked in clean toy data, it would not be very interesting. Real training includes missed logs, bad sleep, subjective uncertainty, non-numeric loads, form drift, emotional context, and days where the obvious answer is wrong. The model has to survive that.
-
-## Why It Might Matter Beyond Training
-
-The current work is grounded in recovery, training, and movement because that is where I can test it honestly. But the architecture is not limited to fitness.
-
-The same pattern appears anywhere software needs to support a person over time:
-
-- rehabilitation, where progress depends on movement, adherence, pain, fatigue, and response to therapy
-- assistive technology, where systems need to adapt to a person's abilities and environment
-- chronic-condition support, where context and longitudinal patterns matter more than isolated measurements
-- education, where learning is shaped by goals, feedback, behavior, and memory
-- careers, where decisions depend on history, preferences, constraints, opportunities, and timing
-- personal computing, where a user's digital environment should reduce coordination burden instead of adding more tabs and tasks
-
-The Human Model does not need to solve all of those domains to matter. A system that can model one person's recovery, behavior, movement, interventions, and outcomes can teach useful lessons about how personal software should be built.
-
-## An Ongoing Research Direction
-
-This is an evolving research and engineering platform.
-
-The current priority is to make the loops real: reliable capture, clean boundaries, transparent models, useful review surfaces, and public-safe examples that show the shape of the work without exposing private data.
-
-The longer-term question is bigger and more interesting:
-
-What would software look like if it represented people as dynamic systems rather than as accounts, records, and disconnected transactions?
-
-The Human Model is my attempt to explore that question from the ground up, with one real person, real data, real constraints, and models that show their limits.
+These questions are more durable than any current dashboard, chatbot, or storage layer.

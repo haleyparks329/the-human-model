@@ -1,24 +1,53 @@
-# Public Research Roadmap
+# Roadmap
 
-## Current
+This roadmap follows the current ownership model: the Human Model owns canonical human-domain state, Coach produces specialized interpretations and proposals, Bridget supports continuity and coordination, and Wonderful Digital World supplies the broader environment. It is not a promise of dates or a claim that every concept below is implemented.
 
-- keep provenance and missingness visible across public explanations;
-- improve evaluation stories that connect hypotheses with later outcomes;
-- document the narrow movement-analysis prototype and its limitations;
-- keep screenshots and aggregate claims reviewable and current;
-- maintain the separation between the Human Model domain and its interfaces.
+Status words use the repository-wide vocabulary: **implemented**, **dogfooded**, **experimental**, **historical**, **planned**, and **rejected**.
 
-## Experimental
+## Now: strengthen the canonical performance model
 
-- compare model hypotheses with observed outcomes over longer periods;
-- explore additional sensing only where it improves evidence quality;
-- improve correction and audit views;
-- evaluate whether review surfaces support better human decisions.
+**Implemented and dogfooded, with bounded scope.**
 
-## Future
+- Keep source provenance, timestamps, review state, and correction history visible.
+- Preserve imported plan order separately from a confirmed schedule anchor.
+- Treat Coach outputs as proposals until the Human Model accepts a canonical change.
+- Continue exercising resident projections without making a resident the owner of human state.
+- Audit ambiguous or stale evidence rather than turning it into false certainty.
 
-- test bounded interventions and measure whether they help;
-- broaden the research beyond the initial training environment;
-- publish aggregate evaluation lessons when the evidence is strong enough.
+## Next: close the confirmation-to-mutation gap
 
-Production adapters, data models, calibration, runtime integrations, and private repository plans are intentionally outside this public roadmap.
+**Planned.**
+
+The proposed-action ledger can record confirmation idempotently, but confirmation is not yet a universal canonical mutation. The next architectural milestone is an explicit, reviewable application path for supported proposal types, including failure behavior and provenance.
+
+## Next: improve public evidence
+
+**Planned.**
+
+- Define small public contracts for claims, corrections, projections, and evaluations without copying private schemas.
+- Add synthetic longitudinal fixtures that demonstrate contradiction, correction, staleness, and revalidation.
+- Separate implemented reference code from historical interface examples more visibly.
+- Reassess old screenshots and videos; retain them only when their historical value is clear.
+
+## Later: broaden carefully
+
+**Planned research.**
+
+- Test whether the model generalizes beyond one performance domain and one primary user.
+- Evaluate bounded confidence, decay, and revalidation rules before presenting them as general infrastructure.
+- Study preference, routine, and intent learning with explicit consent and correction paths.
+- Explore privacy-preserving local and shared projections for additional residents.
+
+## Experimental directions
+
+Movement video, IMUs, readiness scores, and other sensing or modeling ideas remain experiments. A useful experiment must identify its source, uncertainty, review path, and decision value. It does not become part of the canonical model merely because it can produce a number.
+
+## Explicit non-goals
+
+- A universal chatbot gateway is **rejected**.
+- Silent cross-system writes are **rejected**.
+- Treating a Coach recommendation as accepted human state is **rejected**.
+- Inferring a real schedule from imported plan order alone is **rejected**.
+- Claiming a complete digital replica of a person is **rejected**.
+
+See the [Evidence Map](evidence-map.md) for public claim support and [Architecture](architecture.md) for ownership boundaries.
