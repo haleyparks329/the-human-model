@@ -50,7 +50,7 @@ Repeated corrections, workarounds, ignored prompts, and duplicated entry can sig
 
 ## 13. Design for independent use
 
-The Human Model must remain usable without Bridget, Coach, or WDW. Integration should add bounded capability, not transfer ownership.
+The Human Model must remain usable without [Bridget](https://github.com/haleyparks329/bridget-architecture), Coach, or [WDW](https://github.com/Wonderful-Digital-World/wonderful-digital-world). Integration should add bounded capability, not transfer ownership.
 
 ## 14. State evidence precisely
 

@@ -26,7 +26,7 @@ The Human Model studies how software can represent a changing person as longitud
 
 - What minimum-sufficient projection does each resident need?
 - How can Coach remain a specialist interpreter while the Human Model remains the owner of accepted state?
-- How can Bridget coordinate continuity without becoming a mandatory gateway or a second Human Model?
+- How can [Bridget](https://github.com/haleyparks329/bridget-architecture) coordinate continuity without becoming a mandatory gateway or a second Human Model?
 
 ### Evaluation
 

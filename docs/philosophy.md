@@ -36,7 +36,7 @@ Chat, dashboards, spreadsheets, and specialist residents are ways to interact wi
 - Record hypotheses and predictions before claiming learning from outcomes.
 - Keep corrections traceable.
 - Prefer minimum-sufficient projections over universal context.
-- Do not make Bridget, Coach, or any interface the owner of the person.
+- Do not make [Bridget](https://github.com/haleyparks329/bridget-architecture), Coach, or any interface the owner of the person.
 - Reject automatic high-impact action without appropriate authority.
 - Describe current evidence precisely, especially when it comes from one-person dogfooding.
 

@@ -99,11 +99,11 @@ Consumes a fitness-relevant projection. It owns specialized interpretation, coac
 
 Coach does not silently write canonical state. The current private action path records confirmation but does not yet apply every confirmed proposal as a canonical mutation. That incomplete mutation work is **planned**.
 
-### Bridget
+### [Bridget](https://github.com/haleyparks329/bridget-architecture)
 
 Supports continuity, reconciliation, attention, and conversational coordination. Bridget may help gather or reconcile information, but does not own the Human Model and is not a mandatory gateway. The Human Model remains usable without Bridget.
 
-### Wonderful Digital World
+### [Wonderful Digital World](https://github.com/Wonderful-Digital-World/wonderful-digital-world)
 
 WDW is the broader persistent environment in which multiple domain systems and residents can operate. It does not absorb Human Model ownership. Residents receive minimum-sufficient projections appropriate to role, task, and authority.
 
