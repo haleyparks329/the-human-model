@@ -1,6 +1,6 @@
 # Roadmap
 
-This roadmap follows the current ownership model: the Human Model owns canonical human-domain state, Coach produces specialized interpretations and proposals, Bridget supports continuity and coordination, and Wonderful Digital World supplies the broader environment. It is not a promise of dates or a claim that every concept below is implemented.
+This roadmap follows the current ownership model: the Human Model owns canonical human-domain state, Coach produces specialized interpretations and proposals, [Bridget](https://github.com/haleyparks329/bridget-architecture) supports continuity and coordination, and [Wonderful Digital World](https://github.com/Wonderful-Digital-World/wonderful-digital-world) supplies the broader environment. It is not a promise of dates or a claim that every concept below is implemented.
 
 Status words use the repository-wide vocabulary: **implemented**, **dogfooded**, **experimental**, **historical**, **planned**, and **rejected**.
 

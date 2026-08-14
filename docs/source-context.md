@@ -70,7 +70,7 @@ This applies to readiness scores, summaries, projections, and model-generated cl
 
 A projection includes the minimum source-backed context a consumer needs. It may omit sensitive or irrelevant evidence and can expose absence without exposing why data was withheld. Projection policy is part of system design, not just serialization.
 
-Coach, Bridget, and other WDW residents do not need identical context. Their views should reflect role and authority rather than convenience.
+Coach, [Bridget](https://github.com/haleyparks329/bridget-architecture), and other [WDW](https://github.com/Wonderful-Digital-World/wonderful-digital-world) residents do not need identical context. Their views should reflect role and authority rather than convenience.
 
 ## Public source policy
 

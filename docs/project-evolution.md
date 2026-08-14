@@ -18,7 +18,7 @@ Recovery modeling introduced explicit inputs, missingness, weighting, and daily 
 
 Lesson: derived values need lineage and review; a score is evidence for judgment, not a verdict.
 
-## 3. Bridget and Telegram workflows
+## 3. [Bridget](https://github.com/haleyparks329/bridget-architecture) and Telegram workflows
 
 **Status: Historical interface; universal gateway rejected**
 
@@ -54,7 +54,7 @@ Lesson: one owner for accepted domain state prevents dashboards, agents, and not
 
 **Status: Current architecture; partly dogfooded**
 
-The Wonderful Digital World introduced a broader environment with specialist residents. Coach owns coaching judgment and proposals. Bridget owns continuity and reconciliation. Each consumes bounded context without absorbing Human Model ownership.
+The [Wonderful Digital World](https://github.com/Wonderful-Digital-World/wonderful-digital-world) introduced a broader environment with specialist residents. Coach owns coaching judgment and proposals. Bridget owns continuity and reconciliation. Each consumes bounded context without absorbing Human Model ownership.
 
 Lesson: useful persistence comes from stable boundaries and minimum-sufficient projections, not universal access to a person-shaped context blob.
 

@@ -1,4 +1,4 @@
-# Telegram and Bridget: Historical Interface Lineage
+# Telegram and [Bridget](https://github.com/haleyparks329/bridget-architecture): Historical Interface Lineage
 
 **Status: historical.** This page records how conversational prototypes influenced the project. Telegram is not the canonical Human Model, and Bridget is not a mandatory gateway to it.
 

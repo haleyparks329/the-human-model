@@ -42,14 +42,14 @@ See [Architecture](docs/architecture.md) for the ontology and ownership rules.
 
 ## System boundaries
 
-The Human Model can be used on its own. In the wider Wonderful Digital World (WDW), it is one domain system inside a persistent environment.
+The Human Model can be used on its own. In the wider [Wonderful Digital World (WDW)](https://github.com/Wonderful-Digital-World/wonderful-digital-world), it is one domain system inside a persistent environment.
 
 | Component | Owns | Does not own |
 | --- | --- | --- |
 | **Human Model** | Canonical human-domain evidence and accepted state | General conversation, resident identity, every application workflow |
-| **WDW** | The broader persistent environment and cross-domain coordination | Human-domain canonical state |
+| **[WDW](https://github.com/Wonderful-Digital-World/wonderful-digital-world)** | The broader persistent environment and cross-domain coordination | Human-domain canonical state |
 | **Coach** | Specialized interpretation, coaching judgment, plans as proposals, and proposed actions | Canonical Human Model writes or silent scheduling decisions |
-| **Bridget** | Continuity, reconciliation, attention, and conversational coordination | The Human Model, all domain state, or mandatory access to the system |
+| **[Bridget](https://github.com/haleyparks329/bridget-architecture)** | Continuity, reconciliation, attention, and conversational coordination | The Human Model, all domain state, or mandatory access to the system |
 | **Interfaces** | Presentation and task-specific interaction | Durable truth merely because they display or collect it |
 
 WDW residents receive bounded projections: the minimum sufficient context for their role, task, and authority. A projection is a purpose-built view, not a second canonical record.
