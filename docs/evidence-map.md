@@ -9,9 +9,9 @@ This map limits what the repository claims and points to the public evidence a r
 | Missing or unsupported claims can remain explicit | Implemented public example | [toy fixture](../examples/toy_observations.json) and tests | Covers only a narrow evidence-review case. |
 | Corrections should be retained rather than overwrite history | Architectural invariant | [architecture](architecture.md), [design principles](design-principles.md) | No public end-to-end correction implementation is claimed. |
 | The Human Model owns canonical human-domain state | Current architecture | [architecture](architecture.md) | Detailed private contract intentionally omitted. |
-| Coach interprets bounded evidence and proposes actions | Dogfooded boundary | [architecture](architecture.md) | One-person evidence; no canonical write claim. |
-| [Bridget](https://github.com/haleyparks329/bridget-architecture) supports continuity and reconciliation without being a gateway | Dogfooded boundary | [architecture](architecture.md), [project evolution](project-evolution.md) | No claim that every continuity problem is solved. |
-| Accepted plan and schedule state belongs to the Human Model | Current architecture / private workflow partly implemented | [architecture](architecture.md), [roadmap](roadmap.md) | Applying every confirmed proposal remains planned; public runtime proof is absent. |
+| Coach interprets bounded evidence and proposes actions | Current architecture | [architecture](architecture.md) | No canonical write or private-runtime maturity claim. |
+| [Bridget](https://github.com/haleyparks329/bridget-architecture) supports continuity and reconciliation without being a gateway | Current architecture | [architecture](architecture.md), [project evolution](project-evolution.md) | No claim that every continuity problem is solved. |
+| Accepted plan and schedule state belongs to the Human Model | Current architecture | [architecture](architecture.md), [roadmap](roadmap.md) | Public runtime proof is absent; private contracts are not inferred. |
 | Dashboards and chat are replaceable interfaces | Historical evidence | [asset manifest](../assets/asset-manifest.md) | Screenshots do not show current runtime. |
 | Movement-video analysis is promising | Experimental | [demo note](../demo/mediapipe-rdl-form/README.md) | No validation or assessment claim. |
 | The system learns preferences, intent, or behavior generally | Not claimed | [research notes](research-notes.md) | Observations and corrections do not establish generalized learning. |

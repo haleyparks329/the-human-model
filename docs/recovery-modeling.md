@@ -1,6 +1,6 @@
 # Recovery Modeling
 
-**Status: implemented in bounded performance workflows; public scoring examples are synthetic demonstrations.**
+**Status: current modeling discipline; public scoring examples are synthetic demonstrations.**
 
 Recovery was the first modeling domain because training decisions are sensitive to sleep, soreness, stress, recent workload, and data freshness. It provided a concrete way to test longitudinal evidence without pretending that one score represents the whole person.
 

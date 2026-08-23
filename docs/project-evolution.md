@@ -44,7 +44,7 @@ Lesson: new sensing increases the provenance and uncertainty burden; video does 
 
 ## 6. Canonical Human Model domain
 
-**Status: Implemented and dogfooded in a bounded performance domain**
+**Status: Current architecture; publicly evidenced through documentation and synthetic examples**
 
 The architecture separated canonical human-domain evidence from interfaces and specialist judgment. Source normalization, explicit scheduling state, provenance-aware derived evidence, and bounded reads became domain responsibilities.
 
@@ -52,7 +52,7 @@ Lesson: one owner for accepted domain state prevents dashboards, agents, and not
 
 ## 7. Resident and world boundaries
 
-**Status: Current architecture; partly dogfooded**
+**Status: Current architecture**
 
 The [Wonderful Digital World](https://github.com/Wonderful-Digital-World/wonderful-digital-world) introduced a broader environment with specialist residents. Coach owns coaching judgment and proposals. Bridget owns continuity and reconciliation. Each consumes bounded context without absorbing Human Model ownership.
 

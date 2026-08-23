@@ -6,7 +6,7 @@ Status words use the repository-wide vocabulary: **implemented**, **dogfooded**,
 
 ## Now: strengthen the canonical performance model
 
-**Implemented and dogfooded, with bounded scope.**
+**Current architecture, with bounded public evidence.**
 
 - Keep source provenance, timestamps, review state, and correction history visible.
 - Preserve imported plan order separately from a confirmed schedule anchor.
@@ -18,7 +18,7 @@ Status words use the repository-wide vocabulary: **implemented**, **dogfooded**,
 
 **Planned.**
 
-The proposed-action ledger can record confirmation idempotently, but confirmation is not yet a universal canonical mutation. The next architectural milestone is an explicit, reviewable application path for supported proposal types, including failure behavior and provenance.
+Confirmation is not the same as canonical mutation. The next public architectural milestone is an explicit, reviewable application pattern for supported proposal types, including failure behavior and provenance, without claiming private implementation completeness.
 
 ## Next: improve public evidence
 
