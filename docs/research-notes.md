@@ -1,6 +1,6 @@
 # Research Notes
 
-The Human Model studies how software can represent a changing person as longitudinal, provenance-aware, reviewable state. Bodybuilding and training supplied the first demanding test environment; they are the origin, not the limit, of the research.
+The Human Model studies how software can represent a changing person as longitudinal, provenance-aware, reviewable state. Bodybuilding and training supplied dense evidence, frequent observable outcomes, sustained use, and multiple downstream consumers. Fitness is therefore the deepest proving ground, not the limit, of the research.
 
 ## Current working questions
 
@@ -36,7 +36,7 @@ The Human Model studies how software can represent a changing person as longitud
 
 ## Evidence discipline
 
-The current private system provides evidence for a bounded performance model, proposal workflows, plan/schedule handling, and resident projections. It does not yet establish generalized intent learning, universal confidence decay, broad autonomy, or a complete model of a person.
+Public evidence establishes a bounded fitness research lineage, architectural boundaries, and narrow synthetic examples. It does not establish private runtime maturity, generalized intent learning, universal confidence decay, broad autonomy, or a complete model of a person.
 
 Historical Telegram, dashboard, readiness, and movement prototypes are useful interface and research lineage. They are not evidence that those surfaces or algorithms define the current architecture.
 

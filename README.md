@@ -1,12 +1,12 @@
 # The Human Model
 
-The Human Model is an engineering and research project for representing a changing person as longitudinal, provenance-aware, reviewable state.
+The Human Model is a general-purpose longitudinal model of a person: an engineering and research project for representing changing human context as provenance-aware, reviewable state.
 
 Its central question is:
 
 > How can a system remain useful across time without reducing a person to a static profile or treating uncertain evidence as fact?
 
-The project began in bodybuilding and performance coaching, where training, nutrition, recovery, measurements, plans, and lived context change continually. That origin remains a demanding test case. The architecture is broader: any long-running human-facing system must distinguish what was observed, what was inferred, what was confirmed, what changed, and why.
+The project began in bodybuilding and performance coaching, where training, nutrition, recovery, measurements, plans, and lived context change continually. Fitness remains the deepest proving ground because it combines dense evidence, observable outcomes, sustained use, and multiple downstream consumers. It is not the system boundary. The architecture is broader: any long-running human-facing system must distinguish what was observed, what was inferred, what was confirmed, what changed, and why.
 
 “I am not a Markdown file” is the shorthand. The engineering consequence is not that documents are useless; it is that a person cannot be faithfully represented by one timeless summary.
 
@@ -58,7 +58,7 @@ WDW residents receive bounded projections: the minimum sufficient context for th
 
 Coach may interpret evidence and formulate a coaching plan or proposed change. Once a plan or schedule is accepted as the person's operative state, the Human Model owns its canonical representation, including provenance and supersession history.
 
-The current private implementation records confirmed proposed actions but does not yet apply every approved action as a canonical mutation. That gap is documented as **planned**, not presented here as completed automation. Imported program order is not silently treated as an actual schedule; scheduling requires an explicit, confirmed anchor.
+Turning an accepted proposal into operative state requires an explicit, reviewable canonical mutation path. This public repository does not claim that every private proposal type has such a path. Imported program order is not silently treated as an actual schedule; scheduling requires an explicit, confirmed anchor.
 
 ## Ontology in brief
 
@@ -79,7 +79,7 @@ The current private implementation records confirmed proposed actions but does n
 
 Information should also carry an epistemic status where relevant: **observed**, **inferred**, or **confirmed**. These statuses must not be collapsed into one generic “known” field.
 
-## Evidence and implementation status
+## Public evidence and implementation status
 
 This repository uses a strict vocabulary:
 
@@ -95,8 +95,8 @@ At the public level:
 | Area | Status | Evidence represented here |
 | --- | --- | --- |
 | Evidence and provenance review toy | Implemented | Runnable synthetic example and tests |
-| Current private Human Model evidence core | Implemented | Public claim limited to boundaries; private schema and contracts are not reproduced |
-| Bounded resident projections | Dogfooded | Architectural relationship is current; private contracts are intentionally omitted |
+| Human Model domain ownership | Current architecture | Public documentation and synthetic examples; no private-runtime maturity claim |
+| Bounded resident projections | Current architecture | Boundary and purpose are documented; private contracts and runtime parity are intentionally omitted |
 | General confidence decay and revalidation | Planned | Design direction, not a system-wide capability claim |
 | Automatic learning from all behavior | Rejected | Behavioral traces may be evidence; they are not permission or truth |
 | Dashboard as the product | Historical | Screenshots are retained as lineage |
@@ -168,6 +168,6 @@ Useful adaptation preserves judgment:
 
 ## Current limits
 
-The Human Model does not claim to model a whole person, remove the need for judgment, or infer intent reliably from behavior. It does not make medical diagnoses. Its current strongest evidence comes from a single maintainer's performance and health workflow, so generality remains a research question.
+The Human Model does not claim to model a whole person exhaustively, remove the need for judgment, or infer intent reliably from behavior. It does not make medical diagnoses. Public evidence is deepest in a single maintainer's fitness and health workflow; that proving ground motivates the general-purpose architecture but does not establish generality across people or domains.
 
 The immediate work is less glamorous and more important: strengthen correction and supersession semantics, complete confirmation-gated canonical mutations, evaluate projection sufficiency, and test whether the model remains understandable over longer time horizons.

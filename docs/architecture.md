@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Human Model represents changing human-domain state without confusing an observation, an inference, or a model output with settled fact. It is a domain system, not an interface. Its architecture is organized around evidence lineage, reviewable canonical state, and bounded projections.
+The Human Model is a general-purpose longitudinal model of a person. It represents changing human-domain state without confusing an observation, an inference, or a model output with settled fact. Fitness is its deepest proving ground, not its system boundary. It is a domain system, not an interface, organized around evidence lineage, reviewable canonical state, and bounded projections.
 
 ## The state loop
 
@@ -97,7 +97,7 @@ Owns canonical human-domain state and its provenance: accepted training and nutr
 
 Consumes a fitness-relevant projection. It owns specialized interpretation, coaching judgment, and proposals. A coaching plan may be produced by Coach as a proposal; after acceptance, its canonical representation and history belong to the Human Model.
 
-Coach does not silently write canonical state. The current private action path records confirmation but does not yet apply every confirmed proposal as a canonical mutation. That incomplete mutation work is **planned**.
+Coach does not silently write canonical state. Confirmation and canonical mutation are distinct steps; supported proposal types need an explicit application path with provenance and failure behavior. This public architecture does not claim private implementation completeness.
 
 ### [Bridget](https://github.com/haleyparks329/bridget-architecture)
 
