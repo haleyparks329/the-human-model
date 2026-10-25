@@ -49,3 +49,6 @@ temp/
 exports/
 local_exports/
 media_scratch/
+*.egg-info/
+__pycache__/
+.pytest_cache/

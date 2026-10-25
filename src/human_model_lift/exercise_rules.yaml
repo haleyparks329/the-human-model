@@ -1,0 +1,392 @@
+- canonical_exercise_id: conventional_barbell_deadlift
+  exercise_aliases: ["Deadlift (Barbell)", "Conventional Deadlift (Barbell)", "Conventional Barbell Deadlift", "Barbell Conventional Deadlift"]
+  equipment_type: barbell
+  load_input_type: total_external_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: conventional_deadlift
+  notes: "Explicit standard/conventional barbell titles only. Hevy weight_kg is total logged bar load; do not add bar weight. A generic legacy 'deadlift' remains unresolved; titles do not verify technique."
+- canonical_exercise_id: cable_glute_kickback
+  exercise_aliases: ["Cable Glute Kickback", "Standing Cable Glute Kickbacks"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: glute_kickback
+  notes: "Cable stack is logged as displayed stack weight per working side."
+- canonical_exercise_id: cable_tricep_extension
+  exercise_aliases: ["Cable V-Bar Tricep Extension", "Cable V-Bar Tricep Extension (1)"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: tricep_extension
+  notes: "Cable stack is logged as displayed stack weight."
+- canonical_exercise_id: close_grip_ez_bar_bench_press
+  exercise_aliases: ["Close Grip EX Bar Bench Press B", "Close Grip EX Bar Bench Press B (1)"]
+  equipment_type: ez_bar
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: horizontal_press_close_grip
+  notes: "Logged as total bar load convention."
+- canonical_exercise_id: dumbbell_6_ways
+  exercise_aliases: ["Dumbbell 6 Ways"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: shoulder_raise
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: dumbbell_lateral_raise
+  exercise_aliases: ["Dumbbell Lateral Raise", "Lateral Raise (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: lateral_raise
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: dumbbell_romanian_deadlift
+  exercise_aliases: ["Dumbbell Romanian Deadlift", "Romanian Deadlift (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: hip_hinge
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: dumbbell_step_up
+  exercise_aliases: ["Dumbbell Step Up"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: single_leg_squat
+  notes: "Performed with one dumbbell; logged load is the single implement."
+- canonical_exercise_id: dumbbell_walking_lunge
+  exercise_aliases: ["Dumbbell Walking Lunge"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: single_leg_squat
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: hyperextension
+  exercise_aliases: ["Hyperextension", "Hyperextension A"]
+  equipment_type: bodyweight_or_plate
+  load_input_type: added_load
+  load_side_basis: center
+  multiplier: 1
+  substitution_group: hip_extension
+  notes: "Logged load is added external load, not bodyweight."
+- canonical_exercise_id: incline_dumbbell_fly
+  exercise_aliases: ["Incline Dumbbell Fly", "Incline Dumbbell Fly (1)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: chest_fly
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: one_arm_dumbbell_front_raise
+  exercise_aliases: ["Incline One Arm Dumbbell Front Raise"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: front_raise
+  notes: "One-arm dumbbell movement; effective load is one working side."
+- canonical_exercise_id: kettlebell_sumo_squat
+  exercise_aliases: ["Kettlebell Sumo Squat B", "Sumo Squat (Kettlebell)"]
+  equipment_type: kettlebell
+  load_input_type: total_load
+  load_side_basis: center
+  multiplier: 1
+  substitution_group: squat
+  notes: "Single implement logged as total load."
+- canonical_exercise_id: leg_extension
+  exercise_aliases: ["Leg Extension A", "Leg Extension B", "Leg Extension (Machine)"]
+  equipment_type: machine_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: knee_extension
+  notes: "Machine load is logged as displayed full stack weight."
+- canonical_exercise_id: lying_tricep_extension
+  exercise_aliases: ["Lying Tricep Extension A", "Lying Tricep Extension A (1)"]
+  equipment_type: ez_bar
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: tricep_extension
+  notes: "Logged as total bar load convention."
+- canonical_exercise_id: machine_hack_squat
+  exercise_aliases: ["Machine Hack Squat"]
+  equipment_type: plate_loaded_machine
+  load_input_type: per_side
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: squat
+  notes: "Plate-loaded machine is logged per side."
+- canonical_exercise_id: machine_lying_leg_curl
+  exercise_aliases: ["Machine Lying Leg Curl", "Lying Leg Curl (Machine)"]
+  equipment_type: machine_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: knee_flexion
+  notes: "Machine load is logged as displayed full stack weight."
+- canonical_exercise_id: machine_row
+  exercise_aliases: ["Machine Row"]
+  equipment_type: machine_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: row
+  notes: "Machine load is logged as displayed full stack weight."
+- canonical_exercise_id: one_arm_cable_front_raise
+  exercise_aliases: ["One Arm Cable Front Raise", "One Arm Cable Front Raise (1)"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: front_raise
+  notes: "One-arm cable movement; effective load is one working side."
+- canonical_exercise_id: one_arm_cable_pulldown
+  exercise_aliases: ["One Arm Cable Pull Down", "Single Arm Lat Pulldown"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: pulldown
+  notes: "One-arm cable movement; effective load is one working side."
+- canonical_exercise_id: one_arm_dumbbell_row
+  exercise_aliases: ["One Arm Dumbbell Bent Over Row"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: row
+  notes: "One-arm dumbbell row; logged load is the working-side dumbbell."
+- canonical_exercise_id: plate_front_raise
+  exercise_aliases: ["Plate Front Raise", "Plate Front Raise (1)"]
+  equipment_type: plate
+  load_input_type: total_load
+  load_side_basis: both_hands
+  multiplier: 1
+  substitution_group: front_raise
+  notes: "Single plate is logged as total load."
+- canonical_exercise_id: seated_arnold_press
+  exercise_aliases: ["Seated Arnold Press"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: overhead_press
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: seated_dumbbell_tricep_kickback
+  exercise_aliases: ["Seated Dumbbell Tricep Kickback", "Seated Dumbbell Tricep Kickback (1)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: tricep_extension
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: smith_machine_hip_thrust
+  exercise_aliases: ["Smith Machine Hip Thrust", "Hip Thrust (Smith Machine)"]
+  equipment_type: smith_machine
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: hip_thrust
+  notes: "Smith/bar load is logged as total bar load convention."
+- canonical_exercise_id: smith_machine_incline_bench_press
+  exercise_aliases: ["Smith Machine Incline Bench Press"]
+  equipment_type: smith_machine
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: incline_press
+  notes: "Smith/bar load is logged as total bar load convention."
+- canonical_exercise_id: smith_machine_shoulder_press
+  exercise_aliases: ["Smith Machine Shoulder Press", "Seated Smith Machine Shoulder Press"]
+  equipment_type: smith_machine
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: overhead_press
+  notes: "Smith/bar load is logged as total bar load convention."
+- canonical_exercise_id: stack_loaded_machine_chest_press
+  exercise_aliases: ["Stack Loaded Machine Chest Press", "Stack Loaded Machine Chest Press (1)"]
+  equipment_type: machine_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: horizontal_press
+  notes: "Machine load is logged as displayed full stack weight."
+- canonical_exercise_id: alternating_dumbbell_bicep_curl
+  exercise_aliases: ["Standing Alternating Dumbbell Bicep Curl"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: single_side
+  multiplier: 1
+  substitution_group: bicep_curl
+  notes: "Alternating curl is modeled as one working side; logged load is per hand."
+- canonical_exercise_id: standing_bent_over_dumbbell_fly
+  exercise_aliases: ["Standing Bent Over Dumbbell Fly B"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: rear_delt_fly
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: straight_arm_pulldown
+  exercise_aliases: ["Straight Arm Pull Down A"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: pulldown
+  notes: "Cable stack is logged as displayed stack weight."
+- canonical_exercise_id: machine_leg_press
+  exercise_aliases: ["Leg Press (Machine)"]
+  equipment_type: plate_loaded_machine
+  load_input_type: total_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: leg_press
+  notes: "Hevy machine title; logged as total machine load. Plate-loaded versus stack machine is not verified by the title."
+- canonical_exercise_id: kettlebell_swing
+  exercise_aliases: ["Kettlebell Swing"]
+  equipment_type: kettlebell
+  load_input_type: total_load
+  load_side_basis: center
+  multiplier: 1
+  substitution_group: hip_hinge_ballistic
+  notes: "Single implement logged as total load."
+- canonical_exercise_id: reverse_grip_barbell_row
+  exercise_aliases: ["Reverse Grip Barbell Bent Over Row"]
+  equipment_type: barbell
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: horizontal_row
+  notes: "Logged as total bar load convention."
+- canonical_exercise_id: seated_cable_straight_arm_pulldown
+  exercise_aliases: ["Seated Cable Straight Arm Pull Down"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: straight_arm_pulldown
+  notes: "Seated variant; kept separate from standing straight-arm pulldown."
+- canonical_exercise_id: dumbbell_overhead_press
+  exercise_aliases: ["Overhead Press (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: overhead_press
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: dumbbell_rear_delt_fly
+  exercise_aliases: ["Rear Delt Reverse Fly (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: rear_delt_fly
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: dumbbell_reverse_lunge
+  exercise_aliases: ["Reverse Lunge (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: single_leg_squat
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: cable_pull_through
+  exercise_aliases: ["Cable Pull Through"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: hip_hinge
+  notes: "Cable stack is logged as displayed stack weight."
+- canonical_exercise_id: close_grip_lat_pulldown
+  exercise_aliases: ["Lat Pulldown - Close Grip (Cable)"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: pulldown
+  notes: "Cable stack is logged as displayed stack weight."
+- canonical_exercise_id: ez_bar_biceps_curl
+  exercise_aliases: ["EZ Bar Biceps Curl"]
+  equipment_type: ez_bar
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: biceps_curl
+  notes: "Logged as total bar load convention."
+- canonical_exercise_id: cable_crunch
+  exercise_aliases: ["Cable Crunch"]
+  equipment_type: cable_stack
+  load_input_type: stack_weight
+  load_side_basis: center
+  multiplier: 1
+  substitution_group: trunk_flexion
+  notes: "Cable stack is logged as displayed stack weight."
+- canonical_exercise_id: machine_incline_chest_press
+  exercise_aliases: ["Incline Chest Press (Machine)"]
+  equipment_type: machine_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: incline_press
+  notes: "Machine load is logged as displayed full stack weight; machine type is not verified by the title."
+- canonical_exercise_id: barbell_push_press
+  exercise_aliases: ["Push Press"]
+  equipment_type: barbell
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: overhead_press
+  notes: "Hevy Push Press is the barbell movement; logged as total bar load."
+- canonical_exercise_id: dumbbell_front_raise
+  exercise_aliases: ["Front Raise (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: front_raise
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: dumbbell_hip_thrust
+  exercise_aliases: ["Hip Thrust (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: total_load
+  load_side_basis: center
+  multiplier: 1
+  substitution_group: hip_thrust
+  notes: "Single dumbbell across the hips; logged load is the single implement."
+- canonical_exercise_id: smith_machine_romanian_deadlift
+  exercise_aliases: ["Romanian Deadlift (Smith Machine)"]
+  equipment_type: smith_machine
+  load_input_type: bar_load
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: hip_hinge
+  notes: "Smith/bar load is logged as total bar load convention."
+- canonical_exercise_id: dumbbell_chest_fly
+  exercise_aliases: ["Chest Fly (Dumbbell)"]
+  equipment_type: dumbbell
+  load_input_type: per_hand
+  load_side_basis: both_sides
+  multiplier: 2
+  substitution_group: chest_fly
+  notes: "Dumbbell load is logged per hand."
+- canonical_exercise_id: machine_chest_fly
+  exercise_aliases: ["Chest Fly (Machine)"]
+  equipment_type: machine_stack
+  load_input_type: stack_weight
+  load_side_basis: both_sides
+  multiplier: 1
+  substitution_group: chest_fly
+  notes: "Machine load is logged as displayed full stack weight."
