@@ -1,173 +1,147 @@
 # The Human Model
 
-The Human Model is a general-purpose longitudinal model of a person: an engineering and research project for representing changing human context as provenance-aware, reviewable state.
+[![Checks](https://github.com/haleyparks329/the-human-model/actions/workflows/public-repo-checks.yml/badge.svg)](https://github.com/haleyparks329/the-human-model/actions/workflows/public-repo-checks.yml)
 
-Its central question is:
+A longitudinal model of one person that keeps what was observed, what was
+inferred and what was confirmed apart, and learns from its own predictions.
+I built it for my own training: it runs every night against my workout log,
+messages and health data, predicts what I will lift in my next session, and
+scores itself against what I actually did.
 
-> How can a system remain useful across time without reducing a person to a static profile or treating uncertain evidence as fact?
+This repository publishes the prediction engine with a synthetic athlete, so it
+runs without anyone's data, and the research and architecture behind it. The
+production system (Postgres ledgers, workout-app sync, the coaching agent that
+uses it) is private because it holds my health data.
 
-The project began in bodybuilding and performance coaching, where training, nutrition, recovery, measurements, plans, and lived context change continually. Fitness remains the deepest proving ground because it combines dense evidence, observable outcomes, sustained use, and multiple downstream consumers. It is not the system boundary. The architecture is broader: any long-running human-facing system must distinguish what was observed, what was inferred, what was confirmed, what changed, and why.
-
-“I am not a Markdown file” is the shorthand. The engineering consequence is not that documents are useless; it is that a person cannot be faithfully represented by one timeless summary.
-
-## What it is now
-
-The Human Model is an independent domain system. It owns canonical human-domain state: the accepted, reviewable account of relevant observations, claims, corrections, plans, interventions, and outcomes. Canonical means authoritative within this domain, not objectively or permanently true.
-
-It is not a chatbot, dashboard, prompt, database table, or autonomous digital person. Those can be interfaces or experiments around it. The interface is disposable; the model persists.
-
-The current architecture is built around four requirements:
-
-1. **Longitudinal state.** Represent change over time rather than overwrite history with a latest value.
-2. **Provenance.** Retain where information came from and how derived state was produced.
-3. **Reviewability.** Let a person inspect, correct, confirm, supersede, or reject important claims.
-4. **Bounded use.** Give each consumer only the projection it needs for its role and authority.
-
-## The model loop
-
-```text
-source -> observation -> evidence -> interpretation
-                                  -> claim -> canonical state
-
-canonical state + hypothesis -> prediction -> human judgment
-                             -> intervention -> outcome
-                             -> correction / learning update
-```
-
-This is a review loop, not a pipeline that converts every input into truth. A wearable reading may become an observation. Several observations may support evidence. A model or human may interpret that evidence and make a claim. Only explicit policy and, where appropriate, human confirmation can make that claim part of canonical state.
-
-Outcomes can support, weaken, or leave a hypothesis unresolved. Corrections remain traceable instead of silently rewriting the past. Missing data stays missing; uncertainty is represented rather than filled with confidence-shaped prose.
-
-See [Architecture](docs/architecture.md) for the ontology and ownership rules.
-
-## System boundaries
-
-The Human Model can be used on its own. In the wider [Wonderful Digital World (WDW)](https://github.com/Wonderful-Digital-World/wonderful-digital-world), it is one domain system inside a persistent environment.
-
-| Component | Owns | Does not own |
-| --- | --- | --- |
-| **Human Model** | Canonical human-domain evidence and accepted state | General conversation, resident identity, every application workflow |
-| **[WDW](https://github.com/Wonderful-Digital-World/wonderful-digital-world)** | The broader persistent environment and cross-domain coordination | Human-domain canonical state |
-| **Coach** | Specialized interpretation, coaching judgment, plans as proposals, and proposed actions | Canonical Human Model writes or silent scheduling decisions |
-| **[Bridget](https://github.com/haleyparks329/bridget-architecture)** | Continuity, reconciliation, attention, and conversational coordination | The Human Model, all domain state, or mandatory access to the system |
-| **Interfaces** | Presentation and task-specific interaction | Durable truth merely because they display or collect it |
-
-WDW residents receive bounded projections: the minimum sufficient context for their role, task, and authority. A projection is a purpose-built view, not a second canonical record.
-
-### Plan ownership
-
-Coach may interpret evidence and formulate a coaching plan or proposed change. Once a plan or schedule is accepted as the person's operative state, the Human Model owns its canonical representation, including provenance and supersession history.
-
-Turning an accepted proposal into operative state requires an explicit, reviewable canonical mutation path. This public repository does not claim that every private proposal type has such a path. Imported program order is not silently treated as an actual schedule; scheduling requires an explicit, confirmed anchor.
-
-## Ontology in brief
-
-| Term | Meaning |
-| --- | --- |
-| **Source** | An origin such as a person, device, file, service, or resident |
-| **Observation** | A source-bound record of something reported or measured |
-| **Evidence** | One or more observations made usable for a question, with lineage |
-| **Interpretation** | A meaning assigned to evidence by a human or model |
-| **Claim** | A reviewable assertion; model-generated does not mean fact |
-| **Hypothesis** | A provisional explanation that could be tested or revised |
-| **Prediction** | An expected future observation or outcome |
-| **Canonical state** | The domain's accepted, versioned account for current use |
-| **Intervention** | A deliberate action intended to affect state or test a hypothesis |
-| **Outcome** | What was observed after an intervention or passage of time |
-| **Correction** | A traceable challenge, amendment, rejection, or supersession |
-| **Projection** | A bounded view prepared for a specific consumer and purpose |
-
-Information should also carry an epistemic status where relevant: **observed**, **inferred**, or **confirmed**. These statuses must not be collapsed into one generic “known” field.
-
-## Public evidence and implementation status
-
-This repository uses a strict vocabulary:
-
-- **Implemented** — exists in running code with relevant tests or operational evidence.
-- **Dogfooded** — used in the maintainer's own workflow; this is evidence of use, not general validation.
-- **Experimental** — being explored; its shape or value remains unsettled.
-- **Historical** — useful lineage, but not the current interface or contract.
-- **Planned** — intended work without a completed implementation claim.
-- **Rejected** — explicitly not part of the architecture.
-
-At the public level:
-
-| Area | Status | Evidence represented here |
-| --- | --- | --- |
-| Evidence and provenance review toy | Implemented | Runnable synthetic example and tests |
-| Human Model domain ownership | Current architecture | Public documentation and synthetic examples; no private-runtime maturity claim |
-| Bounded resident projections | Current architecture | Boundary and purpose are documented; private contracts and runtime parity are intentionally omitted |
-| General confidence decay and revalidation | Planned | Design direction, not a system-wide capability claim |
-| Automatic learning from all behavior | Rejected | Behavioral traces may be evidence; they are not permission or truth |
-| Dashboard as the product | Historical | Screenshots are retained as lineage |
-| Telegram/Bridget as the required gateway | Rejected | Historical screenshots do not define the current architecture |
-| Movement-video analysis | Experimental | A historical prototype, not validated assessment |
-
-For the claim-by-claim audit, see the [Evidence map](docs/evidence-map.md).
-
-## Three public layers
-
-### 1. Research question
-
-The durable problem is representing changing human context without false certainty, memory drift, or accidental authority. Start with [Why the Human Model](docs/why-the-human-model.md), [Philosophy](docs/philosophy.md), and [Research notes](docs/research-notes.md).
-
-### 2. Architecture
-
-The architecture defines domain ownership, evidence lineage, review, corrections, projections, and human authority. Read [Architecture](docs/architecture.md), [Design principles](docs/design-principles.md), and [Source context](docs/source-context.md).
-
-### 3. Applications and experiments
-
-Bodybuilding, recovery, readiness, dashboards, chat, sensing, and movement analysis are applications or experiments around the core question. Their presence does not make any one interface the Human Model. See [Project evolution](docs/project-evolution.md) and the [asset manifest](assets/asset-manifest.md).
-
-## Runnable public reference
-
-[`examples/toy_evidence_review.py`](examples/toy_evidence_review.py) is a synthetic, self-contained example of a narrow architectural property:
-
-- claims remain linked to source observations;
-- unsupported claims remain explicitly unsupported;
-- deterministic behavior is covered by tests.
-
-It is a public teaching artifact, not a readiness algorithm or a mirror of private production code, schema, thresholds, prompts, data, or WDW contracts.
-
-Run it with:
+## Run it
 
 ```bash
-python3 examples/toy_evidence_review.py
-python3 -m unittest examples/tests/test_toy_evidence_review.py
+python3 -m pip install -e '.[test]'
+python3 -m human_model_lift backtest     # walk-forward backtest on a synthetic athlete
+python3 -m human_model_lift predict      # next session, with the reason for every number
+python3 -m pytest
 ```
 
-Additional [examples](examples/README.md) are synthetic demonstrations. Some intentionally preserve historical interface ideas so their lineage can be examined without claiming current parity.
+`predict` prints each recommendation with its contributors:
 
-## What this repository protects
+```text
+Deadlift (Barbell): 5 x 110.0 kg, 5 x 110.0 kg, 5 x 110.0 kg   (expected 110.0 kg)
+    progression_type   none           Named in a current strength goal or block
+    strength_estimate  base           e1RM 115.6±9.8 kg from 16 sessions; trend +0.75 kg/week
+    sleep              none           0 of last 3 nights >1 h under the 7.4 h median
+    hrv_rhr            none           HRV 55 ms vs 56±8; resting HR 59 vs 58±3
+```
 
-This public repository documents the research direction, architectural boundaries, historical evolution, and synthetic examples. It does not publish private personal data, production schemas, private prompts, behavioral calibration, operational thresholds, or private cross-system contracts.
+## How it predicts
 
-That boundary matters technically. A model about a person should make access, purpose, provenance, and authority legible—not normalize exporting a complete person-shaped record everywhere.
+For each lift in the next routine, several models predict the working sets and
+an ensemble combines them. Every run and every outcome is stored, so the models
+are judged on their record, not on how plausible they sound.
 
-## Human-centered adaptation
+| Model | What it does |
+|---|---|
+| `lift-kalman-v1` | A Kalman filter tracks each lift's estimated one-rep max (Epley) and its trend, with noise settings recalibrated nightly from the athlete's own history. Strength lifts step from the last session toward the estimate (capped at +10%); rep-range lifts use double progression. |
+| `same-as-last-v1` | Baseline: repeat the last session. Every model has to beat it. |
+| `ensemble-v1` | Equal-weight average until each model has 20 scored outcomes, then inverse recent error shrunk halfway to equal (equal weights usually win on little data). |
 
-The system should adapt, but not mistake surveillance for understanding. Repeated manual corrections, workaround spreadsheets, ignored prompts, and workflow friction can signal that the model or interface is wrong. They are evidence to review with the person, not defects in the person and not automatic consent to infer more.
+What the athlete says is read as typed signals ("my elbow feels weird" is pain in
+a region; "it flew" is easy). A signal changes the **recommendation** at once, for
+example a pain report holds the load on exercises that load that joint. It changes
+the **expected** load only after it is learned: at least 20 outcomes with it and 20
+without, a consistent direction, and an effect fitted on the older two thirds that
+also improves the newest third. Until then it is shown as a note.
 
-Useful adaptation preserves judgment:
+Details: [docs/lift-model.md](docs/lift-model.md).
 
-- make uncertainty visible;
-- expose why a claim exists;
-- let corrections change future behavior without erasing history;
-- treat desire paths as design evidence;
-- require stronger confirmation as impact and ambiguity increase.
+## What it found
 
-## Navigation
+On my real log (68 walk-forward predictions, September to October 2026), the
+expected top-set load was off by **2.4 kg** on average against **2.6 kg** for
+"same as last time" and 3.2 kg for "last + 2.5 kg". On strength lifts the gap was
+larger: 8.3 kg against 13.3 kg. A small sample, so the nightly scoring is the
+real measure.
 
-- [Architecture](docs/architecture.md)
-- [Design principles](docs/design-principles.md)
-- [Project evolution](docs/project-evolution.md)
-- [Evidence map](docs/evidence-map.md)
-- [Roadmap](docs/roadmap.md)
-- [Public examples](examples/README.md)
-- [Asset manifest](assets/asset-manifest.md)
+Three findings changed the design ([full write-up](docs/lift-model-findings.md)):
 
-## Current limits
+1. **What I say did not predict what I lift.** Adding tiredness and stress
+   signals made predictions worse. I often lifted more after saying I was
+   exhausted. Signals now shape the recommendation, and only effects that pass a
+   held-out check shift the expectation.
+2. **No readiness score predicted performance.** Six scores modeled on WHOOP-,
+   Oura-, Garmin- and Apple-style inputs, an HRV guideline and my own reports had
+   rank correlations between −0.15 and 0.16 with how I lifted over 39 days. So
+   missing wearable data is no longer a reason to be cautious.
+3. **Learning needs held-out evidence.** Effects fitted on all outcomes looked
+   real and made the next predictions worse. The held-out rule adopted none of
+   them, which was the right answer.
 
-The Human Model does not claim to model a whole person exhaustively, remove the need for judgment, or infer intent reliably from behavior. It does not make medical diagnoses. Public evidence is deepest in a single maintainer's fitness and health workflow; that proving ground motivates the general-purpose architecture but does not establish generality across people or domains.
+On the synthetic athlete in this repository (119 predictions, three seeds) the
+result is mixed, and that is the case for combining models: the ensemble is best
+overall on all three seeds; the Kalman model beats the baseline on rep-range
+lifts (0.6–0.7 kg against 1.0 kg) but overshoots on strength lifts. The generator
+is calibrated to how often loads change in my real log, not to make any model win.
 
-The immediate work is less glamorous and more important: strengthen correction and supersession semantics, complete confirmation-gated canonical mutations, evaluate projection sufficiency, and test whether the model remains understandable over longer time horizons.
+## Architecture
+
+The engine is hexagonal: the domain is pure functions, and everything it needs
+from the world comes through a port, so each adapter can be replaced.
+
+```mermaid
+flowchart LR
+    subgraph Domain["domain.py (pure)"]
+      E["Kalman estimate"] --> P["Progression and sets"]
+      L["Learned effects<br/>(held-out)"] --> P
+      P --> S["Scoring and ensemble"]
+    end
+    C["ExerciseCatalog<br/>catalog.py: YAML rules"] --> Domain
+    I["SignalInterpreter<br/>signals.py: keywords"] --> Domain
+    V["Evidence<br/>backtest.py: in memory"] --> Domain
+```
+
+| Port | Adapter here | In production |
+|---|---|---|
+| `ExerciseCatalog` | YAML exercise rules: identity across apps, equipment step, substitution groups for swaps | Same |
+| `SignalInterpreter` | Keyword reader with a body-part window and a negation guard | The coaching agent's structured reading of each message, with keywords as fallback |
+| `Evidence` | In-memory synthetic athlete | Postgres: workout log, shared message record, check-ins, Apple Health |
+| `Ledger` | (not needed for the backtest) | Append-only Postgres tables; a trigger rejects updates and deletes |
+
+Practices that carry over from the private system:
+
+- **Walk-forward evaluation only.** Each prediction uses data from before its session.
+- **A baseline every model must beat**, kept in the registry permanently.
+- **Append-only ledgers** for predictions and outcomes, so the record cannot be
+  quietly rewritten.
+- **A science journal.** Every experiment is an append-only entry with question,
+  method, result and decision, including the ones that failed. The findings
+  above come from it.
+
+## The research question
+
+> How can a system remain useful across time without reducing a person to a
+> static profile or treating uncertain evidence as fact?
+
+The lift engine is one application of a broader model: observations become
+evidence, interpretations and claims stay reviewable, and only explicit
+confirmation makes something canonical. Corrections supersede rather than
+overwrite, missing data stays missing, and each consumer gets only the projection
+it needs. Read [Why the Human Model](docs/why-the-human-model.md),
+[Architecture](docs/architecture.md) and [Design principles](docs/design-principles.md).
+
+It runs inside [Wonderful Digital World](https://github.com/Wonderful-Digital-World/wonderful-digital-world),
+where agents (a coach among them) read bounded projections of it.
+
+## Repository map
+
+| Path | What it is |
+|---|---|
+| `src/human_model_lift/` | The prediction engine, synthetic athlete and backtest |
+| `tests/` | Engine tests |
+| `examples/` | A small evidence-and-provenance review toy |
+| `docs/` | Lift model, findings, architecture and research notes |
+| `demo/`, `assets/` | Earlier prototypes (movement analysis, dashboard, chat) kept as history |
+
+## Limits
+
+Estimates measure working capacity at my usual effort, not tested maximums (I do
+not log reps in reserve). The real-data results come from one person over a few
+months. The engine does not make medical judgments.
