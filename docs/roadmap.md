@@ -27,7 +27,6 @@ Confirmation is not the same as canonical mutation. The next public architectura
 - Define small public contracts for claims, corrections, projections, and evaluations without copying private schemas.
 - Add synthetic longitudinal fixtures that demonstrate contradiction, correction, staleness, and revalidation.
 - Separate implemented reference code from historical interface examples more visibly.
-- Reassess old screenshots and videos; retain them only when their historical value is clear.
 
 ## Later: broaden carefully
 

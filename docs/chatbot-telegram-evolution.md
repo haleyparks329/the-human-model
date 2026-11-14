@@ -12,7 +12,7 @@
 6. **Flexible plan logging** exposed a crucial distinction: plan order does not establish a real calendar schedule.
 7. **Calibration and daily cards** explored preferences, concise summaries, and quick corrections.
 
-The screenshots in this repository document those stages. They are retained as historical evidence of interface learning, not current product screenshots or proof of a production contract.
+Screenshots of these stages showed real personal data and were removed from the public repository.
 
 ## What survived architecturally
 

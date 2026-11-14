@@ -75,4 +75,4 @@ Lesson: useful persistence comes from stable boundaries and minimum-sufficient p
 - Behavior is not automatically intent or consent.
 - Confirmed action recording is not the same as completed canonical mutation.
 
-Historical documents, screenshots, and examples remain in the repository with explicit classifications. They show the path to the current architecture without being allowed to define it.
+Historical documents and examples remain in the repository with explicit classifications. They show the path to the current architecture without being allowed to define it.
