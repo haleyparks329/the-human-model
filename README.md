@@ -3,7 +3,7 @@
 [![Checks](https://github.com/haleyparks329/the-human-model/actions/workflows/public-repo-checks.yml/badge.svg)](https://github.com/haleyparks329/the-human-model/actions/workflows/public-repo-checks.yml)
 
 A longitudinal model of one person that keeps what was observed, what was
-inferred and what was confirmed apart, and learns from its own predictions.
+inferred and what was confirmed apart, and keeps score of its own predictions.
 I built it for my own training: it runs every night against my workout log,
 messages and health data, predicts what I will lift in my next session, and
 scores itself against what I actually did.
@@ -44,6 +44,10 @@ are judged on their record, not on how plausible they sound.
 | `same-as-last-v1` | Baseline: repeat the last session. Every model has to beat it. |
 | `ensemble-v1` | Equal-weight average until each model has 20 scored outcomes, then inverse recent error shrunk halfway to equal (equal weights usually win on little data). |
 
+The private system also runs `her-progression-v1` (two logistic regressions for
+whether a load goes up or down). It is scored nightly but kept out of the
+ensemble until it beats the baseline.
+
 What the athlete says is read as typed signals ("my elbow feels weird" is pain in
 a region; "it flew" is easy). A signal changes the **recommendation** at once, for
 example a pain report holds the load on exercises that load that joint. It changes
@@ -55,11 +59,17 @@ Details: [docs/lift-model.md](docs/lift-model.md).
 
 ## What it found
 
-On my real log (68 walk-forward predictions, September to October 2026), the
-expected top-set load was off by **2.4 kg** on average against **2.6 kg** for
-"same as last time" and 3.2 kg for "last + 2.5 kg". On strength lifts the gap was
-larger: 8.3 kg against 13.3 kg. A small sample, so the nightly scoring is the
-real measure.
+**A simple baseline is hard to beat.** The first backtest on my real log (68
+walk-forward predictions, September 28 to October 15, 2026) put the expected
+top-set load at **2.4 kg** mean absolute error, against **2.6 kg** for "same as
+last time" and 3.2 kg for "last + 2.5 kg". I tuned the design on that same
+window, so it flatters the model. On more data the margin closed: 2.30 kg
+against 2.34 kg over 133 predictions, and 2.65 kg with message signals.
+
+The nightly ledger is the real test, and so far "same as last time" is ahead:
+**1.27 kg** against 1.77 kg for the ensemble and 2.35 kg for the Kalman model,
+over 79 sessions from October 26 to November 17, 2026. The baseline stays in the
+registry, and every model is judged against it.
 
 Three findings changed the design ([full write-up](docs/lift-model-findings.md)):
 
@@ -69,13 +79,15 @@ Three findings changed the design ([full write-up](docs/lift-model-findings.md))
    held-out check shift the expectation.
 2. **No readiness score predicted performance.** Six scores modeled on WHOOP-,
    Oura-, Garmin- and Apple-style inputs, an HRV guideline and my own reports had
-   rank correlations between −0.15 and 0.16 with how I lifted over 39 days. So
-   missing wearable data is no longer a reason to be cautious.
+   rank correlations between −0.15 and 0.16 with how I lifted over 39 days
+   (a retrospective check on one person). So missing wearable data is no longer
+   a reason to be cautious.
 3. **Learning needs held-out evidence.** Effects fitted on all outcomes looked
    real and made the next predictions worse. The held-out rule adopted none of
-   them, which was the right answer.
+   them, which was the right answer. It has not adopted any effect in a nightly
+   run yet.
 
-On the synthetic athlete in this repository (119 predictions, three seeds) the
+On the synthetic athlete in this repository (119 predictions per seed, three seeds) the
 result is mixed, and that is the case for combining models: the ensemble is best
 overall on all three seeds; the Kalman model beats the baseline on rep-range
 lifts (0.6–0.7 kg against 1.0 kg) but overshoots on strength lifts. The generator

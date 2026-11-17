@@ -2,10 +2,10 @@
 
 Summary of the experiments recorded in the private science journal (one
 append-only entry per experiment, failures included). Results are aggregates
-from one athlete (me), September to October 2026; no individual sessions or
+from one athlete (me), September to November 2026; no individual sessions or
 measurements are published.
 
-## 1. The estimator beats "same as last time", narrowly
+## 1. "Same as last time" is hard to beat
 
 The coaching agent was progressing deadlifts by a fixed +2.5 kg with no
 expectation to check against. Walk-forward over 68 predictions, mean absolute
@@ -18,9 +18,17 @@ error on the expected top-set load:
 | Same as last time | 2.6 kg |
 | Last + 2.5 kg | 3.2 kg |
 
-Strength lifts alone: 8.3 kg against 13.3 kg. The first version lost to the
-baseline (4.4 kg against 2.7 kg) because a ±5% strength cap could not follow
-early-block jumps; the cap became +10% anchored on the last session.
+Strength lifts alone (3 predictions): 8.3 kg against 13.3 kg. The first
+version lost to the baseline (4.4 kg against 2.7 kg) because a ±5% strength cap
+could not follow early-block jumps; the cap became +10% anchored on the last
+session. The design was tuned on these same sessions, so the 2.4 kg flatters it.
+
+Later results narrowed and then reversed the gap. On 133 walk-forward
+predictions the model scored 2.30 kg against 2.34 kg for same as last time
+(2.65 kg with signals). On the nightly ledger, from October 26 to November 17,
+2026 (79 sessions), same as last time scored 1.27 kg, the ensemble 1.77 kg and
+the Kalman model 2.35 kg. The baseline stays in the registry as the bar every
+model has to clear.
 
 ## 2. What I say does not predict what I lift
 
